@@ -87,12 +87,12 @@ color: #ffffff;
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li id="home" ><a href="#">HOME</a></li>
-          <li id="mens"><a href="#section1">MENS</a></li>
-          <li id="womens"><a href="#">WOMENS</a></li>
-		  <li id="kids"><a href="#">KIDS</a></li>
-		   <li id="aboutus" ><a href="#">ABOUT US</a></li>
-		  <li id="contactus"><a href="#">CONTACT US</a></li>
+          <li id="home" class="active" ><a href="#">HOME</a></li>
+          <li id="mens"><a href="#section2">MENS</a></li>
+          <li id="womens"><a href="#section3">WOMENS</a></li>
+		  <li id="kids"><a href="#section4">KIDS</a></li>
+		  
+		  
 
 
         </ul>
