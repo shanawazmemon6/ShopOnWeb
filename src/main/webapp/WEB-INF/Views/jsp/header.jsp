@@ -69,7 +69,7 @@ color: #ffffff;
 <body data-spy="scroll" data-target=".navbar" data-offset="50" >
 
 <div class="container-fluid" style="background-color:#072f52;" >
-   <a class="brand"><img  src="insta.gif" ></a>
+   <a class="brand"><img  src="/web-resources/images/insta.gif" ></a>
 
 </div>
 
@@ -87,7 +87,7 @@ color: #ffffff;
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li id="home" class="active" ><a href="#">HOME</a></li>
+          <li id="home" class="active" ><a href="#section1">HOME</a></li>
           <li id="mens"><a href="#section2">MENS</a></li>
           <li id="womens"><a href="#section3">WOMENS</a></li>
 		  <li id="kids"><a href="#section4">KIDS</a></li>

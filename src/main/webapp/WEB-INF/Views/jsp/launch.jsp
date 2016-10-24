@@ -7,6 +7,46 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div id="section1" class="container-fluid" >
+  <div class="container">
+<div id="mycarousel" class="carousel slide">
+<ul class="carousel-indicators">
+<li  data-target="mycarousel" data-to-silde="0" class="active"></li>
+<li  data-target="mycarousel" data-to-silde="1" ></li>
+</ul>
+
+<div class="carousel-inner">
+<img src="http://uomogroup.com/wp-content/uploads/2014/09/Welcome-Uomo-Group-Home-Slider-1200x500.jpg"/>
+<div class="item active" id="slide1">
+<div class="carousel-caption">
+<h3>Slide 1</h3>
+
+
+</div>
+</div>
+<div class="item" id="slide2">
+<img src="http://uomogroup.com/wp-content/uploads/2014/09/Quality-Luxury-Menswear-Uomo-Group-Home-Slider-1200x500.jpg"/>
+<div class="carousel-caption">
+
+<h3>Slide 2</h3>
+
+</div>
+</div>
+
+</div>
+<a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  </div> 
+
+</div>
+
 <div id="section2" class="container-fluid">
   <div class="panel panel-default">
    <div class="panel-heading">MENS</div>
