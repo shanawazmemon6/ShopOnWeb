@@ -18,12 +18,27 @@
 
 
 </c:when>
-<c:when test="${LaunchRequest==true}">
+<c:when test="${ContactRequest==true}">
 
+<jsp:include page="contact.jsp"></jsp:include>
+
+
+</c:when>
+<c:when test="${AboutRequest==true}">
+
+<jsp:include page="about.jsp"></jsp:include>
+
+
+</c:when>
+<c:when test="${LaunchRequest==true}">
+<br>
+<br>
 <jsp:include page="launch.jsp"></jsp:include>
 
 </c:when>
 <c:otherwise>
+<br>
+<br>
 <jsp:include page="launch.jsp"></jsp:include>
 </c:otherwise>
 

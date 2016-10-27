@@ -2,21 +2,7 @@
 <head>
   <title>Bootstrap Example</title>
   
- <style>
- footer{
-	background-color: #072f52;
-	color:#ffffff;
-	font-size:11px;
-	padding:20px;
- }
- ul.unstyle{
-	 list-style:none;
-padding:0;	 
- }
- a{
-	 color:#ffffff;
- }
- </style>
+<link rel="stylesheet" href="css/footerstyle.css"/>
  </head>
 <footer>
 
@@ -26,7 +12,7 @@ padding:0;
 <h6>Copyright &copy; 2016 {ShopOnWeb}</h6>
 </div>
 <div  class="col-sm-4">
-<h6>About Us</h6>
+<h6><a href="about">About Us</a></h6>
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
 when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -55,7 +41,7 @@ and more recently with desktop publishing software like Aldus PageMaker includin
 
 </div>
 <div class="col-sm-2">
-<h6>Contact Us</h6>
+<h6><a href="contact">Contact Us</a></h6>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.2040238816603!2d78.4724913143296!3d17.400716588070622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99e014a59329%3A0xd43768ceb3e91870!2sNIIT!5e1!3m2!1sen!2sin!4v1477289132764" width="200" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
 </div>
 

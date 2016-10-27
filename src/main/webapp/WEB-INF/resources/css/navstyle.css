@@ -1,4 +1,4 @@
- body {
+body {
       position: relative;
   }
   .affix {
@@ -21,39 +21,4 @@
 	 border-color: #041f3e;
 	  border-radius: 0 ;
 	 }
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-color: #ffffff;  /*Sets the text hover color on navbar*/
-}
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
- a:hover, .navbar-default .navbar-nav > .active > a:focus {
-color: white; /*BACKGROUND color for active*/
-background-color:#f2613c;
-}
-.navbar-custom .navbar-nav > li > a {
-   color: white; /*Change active text color here*/
-    }
-	
-.navbar-custom .navbar-toggle {
-    border-color: #041f3e;
-}
-.navbar-custom .navbar-toggle:hover,
-.navbar-custom .navbar-toggle:focus {
-    background-color: #f2613c;
-}
-.navbar-custom .navbar-toggle .icon-bar {
-    background-color: #ffffff;
-}
-.navbar-custom .navbar-collapse{
-	border-color:#051221;
-	
-	}
-
-.navbar-custom .navbar-collapse .nav > li > a:hover,
-.navbar-custom .navbar-collapse .dropdown-menu a:hover {
-background-color: #f2613c;
-
-
-color: #ffffff;
-}
-
-
+	 

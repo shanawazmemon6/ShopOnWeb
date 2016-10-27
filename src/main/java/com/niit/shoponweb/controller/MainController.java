@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class DispatcherServlet {
+public class MainController {
 
 	
 	//mapping index.jsp 
@@ -35,4 +35,22 @@ public class DispatcherServlet {
 	return "index";
 	 
 	 }
+	//mapping about.jsp
+	@RequestMapping("/about")
+	public String aboutView(Model m){
+		m.addAttribute("AboutRequest",true);
+		
+		return "index";
+		
+		
+	}
+	//mapping contact.jsp
+		@RequestMapping("/contact")
+		public String contactView(Model m){
+			m.addAttribute("ContactRequest",true);
+			
+			return "index";
+			
+			
+		}
 }
