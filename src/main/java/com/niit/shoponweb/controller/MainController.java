@@ -21,13 +21,7 @@ public class MainController {
 	return "index";
 	 
 	 }
-	//mapping login.jsp
-	@RequestMapping("/loginrequest")
- public String loginView(Model m){
-		m.addAttribute("LoginRequest", true);
-	return "index";
-	 
-	 }
+	
 	//mapping register.jsp
 	@RequestMapping("/registerrequest")
  public String registerView(Model m){
