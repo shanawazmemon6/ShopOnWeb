@@ -2,6 +2,7 @@ package com.niit.shoponweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,11 +12,12 @@ import com.niit.shoponweb.model.LoginModel;
 
 @Controller
 //mapping login.jsp
-		@RequestMapping(value="/loginrequest")
+@RequestMapping(value="/loginrequest")
 public class LoginController {
 	
 	@RequestMapping(method=RequestMethod.GET)
-		 public String loginView(Model m){
+		 public String loginView(ModelMap m){
+		   m.addAttribute("login",new LoginModel());
 			m.addAttribute("LoginRequest", true);
 		return "index";
 		 

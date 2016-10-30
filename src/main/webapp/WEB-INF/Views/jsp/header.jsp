@@ -12,13 +12,13 @@
   <style>
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
 color: #ffffff;  
-
 /*Sets the text hover color on navbar*/
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
  a:hover, .navbar-default .navbar-nav > .active > a:focus {
 color: white; /*BACKGROUND color for active*/
 background-color:#f2613c;
+
 
 }
 .navbar-custom .navbar-nav > li > a {
@@ -54,9 +54,6 @@ color: #ffffff;
   left:auto;
  background-image: none;
 }
-
-
-
 .caret-up {
     width: 0; 
     height: 0; 
@@ -68,25 +65,9 @@ color: #ffffff;
     margin-left: 2px;
     vertical-align: middle;
 }
-
 </style>
 
-<!-- <script>
-$(function(){
-    $(".dropdown").hover(            
-            function() {
-                $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-                $(this).toggleClass('open');
-                $('b', this).toggleClass("caret caret-up");                
-            },
-            function() {
-                $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-                $(this).toggleClass('open');
-                $('b', this).toggleClass("caret caret-up");                
-            });
-    });
-    
-</script> -->
+<script src="css/activeclass.js"></script> 
    
    
    
@@ -112,20 +93,20 @@ $(function(){
      
     </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li id="home"><a href="launchrequest">HOME</a></li>
-          <li id="mens" ><a href="">MENS</a></li>
-          <li id="womens"><a href="">WOMENS</a></li>
-		  <li id="kids"><a href="">KIDS</a></li>
-		  </ul>
+        <ul class="nav navbar-nav navbar-left">
+          <li ><a href="launchrequest"><b>HOME</b></a></li>
+          <li ><a href="#"><b>MENS</b></a></li>
+          <li ><a href="#"><b>WOMENS</b></a></li>
+		  <li ><a href="#"><b>KIDS</b></a></li>
+		 </ul>
 		   <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#072f52; color:#ffffff;"> Sign In
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color:#072f52; color:#ffffff;"> <b>Sign In</b>
          <b class="caret"></b></a>
         <ul class="dropdown-menu" style="background-color:#072f52;">
-          <li><a href="#"  style="color:#ffffff;"><span class="glyphicon glyphicon-user">  SignUp</a></li>
+          <li><a href="registerrequest"  style="color:#ffffff;"><span class="glyphicon glyphicon-user"></span> <b>SignUp</b></a></li>
           <br>
-          <li><a href="#" style="color:#ffffff;"><span class="glyphicon glyphicon-log-in"> Login</a></li>
+          <li><a href="loginrequest" style="color:#ffffff;"><span class="glyphicon glyphicon-log-in"></span>  <b>Login</b></a></li>
           
         </ul>
       </li>
@@ -135,7 +116,3 @@ $(function(){
   </div>
 
   </nav>
-
-
-
-
