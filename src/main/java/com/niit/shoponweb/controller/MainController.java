@@ -22,13 +22,7 @@ public class MainController {
 	 
 	 }
 	
-	//mapping register.jsp
-	@RequestMapping("/registerrequest")
- public String registerView(Model m){
-		m.addAttribute("RegisterRequest",true);
-	return "index";
-	 
-	 }
+
 	//mapping about.jsp
 	@RequestMapping("/about")
 	public String aboutView(Model m){

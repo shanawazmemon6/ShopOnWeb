@@ -6,35 +6,51 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/loginstyle.css"/>
-<style >
+<style>
 body {
     background-image: url("images/bluredimg.jpg");
     
 }
-
 </style>
+<script>
+$(function(){
+	
+	$('#hiderow').fadeIn(2000);
+	$('#hideout').fadeOut(1000);
+	
+	
+});
+
+</script>
 </head>
 <body >
 <div class="container">
-<div class="row vertical-offset-100">
+<div class="pad">
+<img src="images/trans.png" id="hideout">
+
+<div class="row vertical-offset-100"  >
 <div class="col-md-3 col-md-offset-8">
-<div class="form-group">
-<img src="images/bag.png"/ class="logo"  class="img-responsive">
+<div class="form-group" id="hiderow">
+<img src="images/bag.png" class="logo"  class="img-responsive">
 
 <f:form action="loginrequest" method="POST" modelAttribute="login">
-<f:input path="email_id" type="text" class="form-control" placeholder="Email Id"></f:input>
-<br>
-<f:input path="password_login" type="password" class="form-control"  placeholder="Password"></f:input>
-<br>
+<f:input path="email_id" type="email" class="form-control input1" placeholder="Email Id" required="true"></f:input>
+<f:input path="password_login" type="password" class="form-control input2" required="true" placeholder="Password"></f:input>
 <f:checkbox path="" value="Remember Me"  label="Remember Me"/>
-
-<f:button type="submit" class="btn btn-lg btn-success btn-block">submit</f:button>
+<f:button type="submit" class="btn btn-lg btn-success btn-block button">Login</f:button>
 </f:form>
-</div>
-</div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+
+</script>
 </body>
 </html>
