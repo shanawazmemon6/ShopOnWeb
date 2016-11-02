@@ -115,8 +115,49 @@ margin-bottom:20px;
 <img id="img1" alt="img1" style="width:80%;" src="http://www.gmkfreelogos.com/logos/L/img/Levi_s_Authorised_Dealer_Taiwan.gif">
 
 </div>
-</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:80%;" src="http://fontmeme.com/images/DG-Logo.jpg">
 
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:80%;" src="http://brandongaille.com/wp-content/uploads/2013/12/Lee-Company-Logo.jpg">
+
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:80%;" src="http://www.fetchlogos.com/wp-content/uploads/2015/10/Jerman-JEans-Logo-Denim.png">
+
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:80%;" src="https://www.spellbrand.com/images/blog/images/Diesel-logo-design.jpg">
+
+</div>
+</div>
+<div class="container">
+
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:90%;" src="http://www.fakeblack.com/wp-content/uploads/2016/02/uspa.jpg">
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:90%;" src="http://www.franchiseindia.com/uploads/news/fi/know-why-louis-philippe-is-set-t-2e24f2d62c.gif">
+
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:90%;" src="http://www.indiasocial.in/wp-content/uploads/2013/06/634966372003883750_Allen-Solly-Logo.jpg">
+
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:90%;" src="http://www.ohmyindia.com/wp-content/uploads/2016/02/Peter-England.jpg">
+
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:90%;" src="http://3.bp.blogspot.com/-W4otrp9IRms/VE0cTipxEGI/AAAAAAAAGA0/Wor4ivo0yvs/s1600/Logo%2BWrangler.png">
+
+</div>
+<div class="col-sm-2">
+<img id="img1" alt="img1" style="width:90%;" src="https://media.glassdoor.com/sqll/542948/reid-and-taylor-india-squarelogo.png">
+
+</div>
+</div>
 </div>
 
 
