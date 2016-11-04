@@ -17,6 +17,11 @@ body {
 margin-top:10px;
 	
 }
+.inputtwo{
+	padding:5px;
+margin-top:10px;
+	
+}
 </style>
 </head>
 <body>
@@ -33,6 +38,7 @@ margin-top:10px;
 <f:input path="confirmpass_register" type="password" class="form-control inputone" placeholder="Confirm Password" required="true"></f:input>
 <f:input path="number_register" type="tel" class="form-control inputone" required="true" placeholder="Phone Number"></f:input>
 <f:input path="dob_register" type="date" class="form-control inputone" placeholder="Date" required="true"></f:input>
+<f:select path="gender_register" items="${gender}" class="form-control inputtwo" ></f:select>
 <f:textarea path="address_register" type="text" class="form-control inputone" required="true" placeholder="Address"></f:textarea>
 <f:checkbox path="" value="Remember Me"  label="I agree the terms and conditions"/>
 <f:button type="submit" class="btn btn-lg btn-success btn-block button">Permit</f:button>

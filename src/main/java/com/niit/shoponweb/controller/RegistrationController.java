@@ -1,5 +1,7 @@
 package com.niit.shoponweb.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +19,10 @@ public class RegistrationController {
 	 public String registrationView(ModelMap m){
 	   m.addAttribute("register",new RegisterationModel());
 		m.addAttribute("RegisterRequest",true);
+	    ArrayList<String> gender=new ArrayList<String>();
+	    gender.add("Male");
+	    gender.add("Female");
+	    m.addAttribute("gender",gender);
 		return "index";
 	 
 	 }

@@ -6,6 +6,13 @@ public class RegisterationModel {
     private String confirmpass_register;
 	private String number_register;
 	private String dob_register;
+	private String gender_register;
+	public String getGender_register() {
+		return gender_register;
+	}
+	public void setGender_register(String gender_register) {
+		this.gender_register = gender_register;
+	}
 	private String address_register;
 	public String getEmail_register() {
 		return email_register;
