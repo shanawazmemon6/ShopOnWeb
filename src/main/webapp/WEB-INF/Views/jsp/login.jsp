@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>ShopOnWeb</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/loginstyle.css"/>
 <style>
 body {
-    background-image: url("images/bluredimg.jpg");
+    background: url("images/bluredimg.jpg")no-repeat fixed top center;
     
 }
 </style>

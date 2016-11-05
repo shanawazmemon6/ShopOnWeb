@@ -5,16 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>ShopOnWeb</title>
 <style>
-
+body {
+    background: url("images/bluredimg.jpg")no-repeat fixed top center;
+    
+}
 #logo {
      margin-top:50px;
 	width: 20%;
 	align:right;
 }
 #contact_12span{
-background-color:#C2B59B;
+background-color:#52847F;
 color:#ffffff;
 margin-top:20px;
 box-shadow: 5px 5px 15px #000;
@@ -22,7 +25,8 @@ height:500px;
 }
 #contact_6span{
 
-background-color:#333333;
+background:url("images/backgrond_contact.jpg");
+box-shadow: 5px 5px 15px #000;
 }
 
 #input_contact{
@@ -31,6 +35,14 @@ padding:10px;
 }
 #logo2 {
 	width: 50%;
+	margin-bottom:25px;
+}
+#logo3{
+
+width: 80%;
+}
+.set{
+margin-left:15px;
 }
 
 </style>
@@ -38,7 +50,7 @@ padding:10px;
 <body>
 <div class="container-fluid " >
 		<div class="jumbotron text-center hello" id="contact_12span">
-			<img alt="brand-logo" id="logo" src="images/cs.png"/>
+			<img alt="brand-logo" id="logo" src="images/cs.png" />
 			<h2>Please get in touch if you have any questions</h2>
 			<a href="#section1" class="btn btn-danger"><b>Contact</b></a>
 			</div>
@@ -46,6 +58,10 @@ padding:10px;
 			<div class="container" id="section1">
 			<div class="col-sm-6" >
 			<div class="jumbotron text-center" id="contact_6span">
+			<img src="images/telephone.png" alt="contact_telephone" id="logo3"/>
+			<br>
+			<a class="btn btn-danger set">Call Us</a>
+			<h1>18006001234</h1>
 			
 			
 			</div>
