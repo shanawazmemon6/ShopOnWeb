@@ -1,6 +1,10 @@
 package com.niit.shoponweb.model;
 
+
+
 public class LoginModel {
+	
+	
 private String email_id;
 private String password_login;
 public String getEmail_id() {

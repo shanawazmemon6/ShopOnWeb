@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.niit.shoponweb.model.LoginModel;
 
 
+
 @Controller
 //mapping login.jsp
 @RequestMapping(value="/loginrequest")
@@ -27,7 +28,8 @@ public class LoginController {
 		
 		System.out.println(login.getEmail_id());
 		System.out.println(login.getPassword_login());
-
+         
+		
     	 return "index";
     	  
     	  

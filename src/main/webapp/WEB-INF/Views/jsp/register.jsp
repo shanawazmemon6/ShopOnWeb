@@ -33,6 +33,8 @@ body {
 
 					<f:form action="registerrequest" method="POST"
 						modelAttribute="register">
+						<f:input path="name_register" type="name"
+						 class="form-control inputone" placeholder="Full Name"/>
 						<f:input path="email_register" type="email"
 							class="form-control inputone" placeholder="Email Id"
 							required="true"></f:input>
