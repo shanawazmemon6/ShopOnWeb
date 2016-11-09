@@ -33,25 +33,25 @@ body {
 
 					<f:form action="registerrequest" method="POST"
 						modelAttribute="register">
-						<f:input path="name_register" type="name"
+						<f:input path="name" type="name"
 						 class="form-control inputone" placeholder="Full Name"/>
-						<f:input path="email_register" type="email"
+						<f:input path="email" type="email"
 							class="form-control inputone" placeholder="Email Id"
 							required="true"></f:input>
-						<f:input path="password_register" type="password"
+						<input type="password"
 							class="form-control inputone" required="true"
-							placeholder="Password"></f:input>
-						<f:input path="confirmpass_register" type="password"
+							placeholder="Password"></input>
+						<f:input path="password" type="password"
 							class="form-control inputone" placeholder="Confirm Password"
 							required="true"></f:input>
-						<f:input path="number_register" type="tel"
+						<f:input path="number" type="tel"
 							class="form-control inputone" required="true"
 							placeholder="Phone Number"></f:input>
-						<f:input path="dob_register" type="date"
+						<f:input path="dob" type="date"
 							class="form-control inputone" placeholder="Date" required="true"></f:input>
-						<f:select path="gender_register" items="${gender}"
+						<f:select path="gender" items="${gender}"
 							class="form-control inputtwo"></f:select>
-						<f:textarea path="address_register" type="text"
+						<f:textarea path="address" type="text"
 							class="form-control inputone" required="true"
 							placeholder="Address"></f:textarea>
 						<f:checkbox path="" value="Remember Me"
