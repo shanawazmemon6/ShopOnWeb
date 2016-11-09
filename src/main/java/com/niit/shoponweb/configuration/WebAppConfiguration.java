@@ -1,6 +1,7 @@
 package com.niit.shoponweb.configuration;
 
 import java.util.Properties;
+import java.util.function.Supplier;
 
 import javax.sql.DataSource;
 
@@ -14,7 +15,9 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Register;
+import com.niit.shoponweb.model.Supplier_Do;
 
 
 
@@ -54,6 +57,8 @@ public class WebAppConfiguration {
 		
 		session.addProperties(getHibernateProperties());
 	      session.addAnnotatedClass(Register.class);
+	      session.addAnnotatedClass(Category.class);
+	      session.addAnnotatedClass(Supplier_Do.class);
 		System.out.println("session");
 		return session.buildSessionFactory();
 		

@@ -11,6 +11,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+
+<style>
+.row{
+
+margin-top:100px;
+  margin-bottom:100px;
+  padding:50px;
+	box-shadow: 5px 5px 15px #000;
+
+}
+.inputone{
+padding: 20px;
+	margin-top: 10px;
+}
+.inputtwo{
+padding:20px;
+margin-top:10px;
+margin-bottom:10px;
+
+
+}
+.button{
+margin-top:10px;
+margin-bottom:10px;
+}
+
+</style>
 </head>
 <body>
 <div class="container">
@@ -25,16 +52,42 @@
   <div class="tab-content">
     
     <div id="category" class="tab-pane fade in active">
-    <h1>category</h1>
-      <f:form   > 
+    
+    
+    <div class="col-sm-4 col-sm-offset-4 text-center row">
+    <h1>Category</h1>
+      <f:form action="adminrequest" method="post" modelAttribute="cate"> 
+      
+      <f:input path="cate_id" placeholder="Category Id" class="form-control inputone"/>
+      <f:input path="cate_name"  placeholder="Category Name" class="form-control inputone"/>
+      <f:input path="cate_desc"  placeholder="Category Description" class="form-control  inputtwo"/>
+      <f:button type="submit" class="btn btn-success btn-block button" >Submit</f:button>
+     <f:button type="reset" class="btn btn-warning btn-block" >Clear</f:button>
+      
+      
+      
       
       
       
       </f:form>
+      </div>
+  
     </div>
     <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      <div id="category" class="tab-pane fade in active">
+    <div class="col-sm-4 col-sm-offset-4 text-center row">
+    <h1>Supplier</h1>
+      <f:form action="adminrequest" method="post" modelAttribute="sup"> 
+    <f:input path="sup_id" placeholder="Supplier Id" class="form-control inputone"/>
+      <f:input path="sup_name"  placeholder="Supplier Name" class="form-control inputone"/>
+     <f:input path="sup_address"  placeholder="Supplier Address" class="form-control  inputtwo"/>
+      <f:input path="sup_number"  placeholder="Supplier Number" class="form-control inputone"/>
+      <f:input path="sup_email"  placeholder="Supplier Email" class="form-control inputone"/>
+      
+      <f:button type="submit" class="btn btn-success btn-block button" >Submit</f:button>
+     <f:button type="reset" class="btn btn-warning btn-block" >Clear</f:button>
+     </f:form>
+      </div>
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>Menu 3</h3>
