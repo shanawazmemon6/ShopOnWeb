@@ -8,10 +8,10 @@
 <title>Insert title here</title>
 <style>
 .row{
-
+width:30%;
 margin-top:100px;
   margin-bottom:100px;
-  padding:50px;
+  padding:40px;
 	box-shadow: 5px 5px 15px #000;
 
 }
@@ -30,20 +30,25 @@ margin-bottom:10px;
 margin-top:10px;
 margin-bottom:10px;
 }
+.clearbutton{
+margin-top:10px;
+margin-bottom:30px;
+}
 
 </style>
 </head>
 <body>
+<div class="container">
  <div class="col-sm-4 col-sm-offset-4 text-center row">
     <h1>Category</h1>
       ${message}
-      <f:form action="categoryrequestpost" method="post" modelAttribute="cate"> 
+      <f:form action="categoryrequestpost" method="post" modelAttribute="cate" onsubmit="this.submit(); this.reset(); return false;"> 
       
       <f:input path="cate_id" placeholder="Category Id" class="form-control inputone"/>
       <f:input path="cate_name"  placeholder="Category Name" class="form-control inputone"/>
       <f:input path="cate_desc"  placeholder="Category Description" class="form-control  inputtwo"/>
       <f:button type="submit" class="btn btn-success btn-block button" >Submit</f:button>
-     <f:button type="reset" class="btn btn-warning btn-block" >Clear</f:button>
+     <a  class="btn btn-warning btn-block clearbutton" href="categoryrequest" >Clear</a>
       
       
       
@@ -51,6 +56,7 @@ margin-bottom:10px;
       
       
       </f:form>
+      </div>
       </div>
 </body>
 </html>

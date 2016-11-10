@@ -11,16 +11,18 @@
 <jsp:include page="Admin_header.jsp"></jsp:include>
 <c:choose>
 <c:when test="${categoryrequest==true}">
-
 <jsp:include page="category.jsp"></jsp:include>
-
-
 </c:when>
-
+<c:when test="${supplierrequest==true}">
+<jsp:include page="supplier.jsp"></jsp:include>
+</c:when>
+<c:when test="${productrequest==true}">
+<jsp:include page="product.jsp"></jsp:include>
+</c:when>
 <c:otherwise>
 <br>
 <br>
-<jsp:include page="launch.jsp"></jsp:include>
+<jsp:include page="admin_home.jsp"></jsp:include>
 </c:otherwise>
 
 </c:choose>

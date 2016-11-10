@@ -111,8 +111,8 @@
 					<li class="dropdown">
 					<a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"
-						style="background-color: #072f52; color: #ffffff;"> <b>Sign
-								In</b> <b class="caret"></b>
+						style="background-color: #072f52; color: #ffffff;"> <b>Admin
+								</b> <b class="caret"></b>
 								
 					</a> <!-- dropdown-toggle -->
 						<ul class="dropdown-menu" style="background-color: #072f52;">
@@ -123,9 +123,7 @@
 							<li><a href="loginrequest" style="color: #ffffff;"><span
 									class="glyphicon glyphicon-log-in"></span> <b>Login</b></a>
 							</li> <!-- login request -->
-                           <li><a href="adminrequest" style="color: #ffffff;"><span
-									class="glyphicon glyphicon-log-in"></span> <b>Admin</b></a>
-							</li> <!-- login request -->
+                          
 						</ul> <!-- dropdown menu -->
 						</li> <!-- drop down -->
 				</ul>  <!-- nav -->
