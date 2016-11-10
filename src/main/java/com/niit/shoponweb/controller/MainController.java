@@ -2,6 +2,7 @@ package com.niit.shoponweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -13,8 +14,13 @@ public class MainController {
 	public String indexView(){
 		return "index";
 		}
-	
-	//mapping launch.jsp
+	@RequestMapping("/adminrequest")
+	   public String adminView(ModelMap m){
+			
+
+			return "admin";
+			
+	}	//mapping launch.jsp
 	@RequestMapping("/launchrequest")
  public String launchView(Model m){
 		m.addAttribute("LaunchRequest",true);

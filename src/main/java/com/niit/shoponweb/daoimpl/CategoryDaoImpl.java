@@ -1,6 +1,5 @@
 package com.niit.shoponweb.daoimpl;
 
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,6 +12,7 @@ import com.niit.shoponweb.model.Category;
 @Repository("categoryDao")
 public class CategoryDaoImpl implements CategoryDao {
 
+	
 	@Autowired
 	SessionFactory sessionFactory;
 	
@@ -21,16 +21,17 @@ public class CategoryDaoImpl implements CategoryDao {
 		
 	}
 	
-	public boolean saveCategory(Category cate) {
+	public boolean saveCategory(Category cate)  {
 		
 		
 		try {
 			sessionFactory.getCurrentSession().save(cate);
 			return true;
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+		catch (Exception  e) {
+		    e.printStackTrace();
+			
 			return false;
 		}
 	}
