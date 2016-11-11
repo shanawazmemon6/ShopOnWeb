@@ -32,6 +32,7 @@ body {
 			<div class="row vertical-offset-100">
 				<div class="col-sm-3 col-sm-offset-8">
 					<div class="form-group" id="hiderow">
+					
 						<img src="images/bag.png" class="logo" class="img-responsive">
 
 						<f:form action="loginrequest" method="POST" modelAttribute="login">

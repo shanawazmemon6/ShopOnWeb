@@ -7,8 +7,14 @@
 
 <c:choose>
 <c:when test="${LoginRequest==true}">
-
+<c:if test="${entry==true}">
+<div class="alert alert-success">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>${message}</strong> 
+</div>
+</c:if>
 <jsp:include page="login.jsp"></jsp:include>
+
 
 
 </c:when>

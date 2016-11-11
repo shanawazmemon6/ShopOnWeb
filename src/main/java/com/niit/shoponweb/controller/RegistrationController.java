@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.shoponweb.dao.RegisterDao;
+import com.niit.shoponweb.model.Login;
 import com.niit.shoponweb.model.Register;
 
 
@@ -36,18 +37,25 @@ public class RegistrationController {
 
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST)
-	public String registrationPost(@ModelAttribute("register") Register reg) {
+	public String registrationPost(@ModelAttribute("register") Register reg,ModelMap m) {
 
-		dao.saveRegister(reg);
-		/*System.out.println(reg.getName_register());
-		System.out.println(reg.getEmail_register());
-		System.out.println(reg.getPassword_register());
-		System.out.println(reg.getConfirmpass_register());
-		System.out.println(reg.getDob_register());
-		System.out.println(reg.getAddress_register());
-		System.out.println(reg.getNumber_register());*/
+		if(dao.saveRegister(reg)){
+			
+			m.addAttribute("LoginRequest", true);
+			m.addAttribute("login", new Login());
+			m.addAttribute("message","Registered successful");
+			m.addAttribute("entry",true);
 
-		return "index";
+			return "index";
+
+}
+		else{
+			m.addAttribute("RegisterRequest", true);
+			m.addAttribute("message","Something went wrong");
+			return "index";
+			
+		}
+		
 
 	}
 }
