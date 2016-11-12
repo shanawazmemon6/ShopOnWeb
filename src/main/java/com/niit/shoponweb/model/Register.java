@@ -25,8 +25,17 @@ public class Register {
 	private String gender;
 	@Column
 	private String address;
+	@Column
+	private String role="user";
 
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		
+		this.role = role;
+	}
 	public String getName() {
 		return name;
 	}

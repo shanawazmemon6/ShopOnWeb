@@ -22,6 +22,7 @@ public class LoginController {
 	@Autowired
 	RegisterDao regdao;
 	
+	
 
 	
 	@RequestMapping(method=RequestMethod.GET)
@@ -35,15 +36,20 @@ public class LoginController {
       public String loginPost(@ModelAttribute("login")Login login,ModelMap m){
 		
 	  boolean valid =regdao.isvalidUser(login);
-	  if(valid){
+	  if(valid &&regdao.validrole().equals("user") ){
+		  
 		  m.addAttribute("LaunchRequest", true);
+		  m.addAttribute("loggedin", true);
+          m.addAttribute("role",regdao.Username());
 		  return "index"; 
 	  }
 	  else{
-		  
-		  m.addAttribute("LoginRequest", true);
+		  m.addAttribute("loggedin", true);
 
-		  return "index";
+          m.addAttribute("role",regdao.Username());
+
+
+		  return "admin";
 	  }
          
 		

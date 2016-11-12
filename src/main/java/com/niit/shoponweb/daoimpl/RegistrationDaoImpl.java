@@ -20,6 +20,9 @@ public class RegistrationDaoImpl implements RegisterDao {
 	@Autowired
 	SessionFactory sessionFactory;
 	
+	String Role;
+	String name;
+	
 	public RegistrationDaoImpl(SessionFactory session) {
 		this.sessionFactory=session;
 	}
@@ -44,24 +47,35 @@ public class RegistrationDaoImpl implements RegisterDao {
 		
 		String email_id=log.getEmail_id();
 		String password_form=log.getPassword_login();
-	
-		
-		Query query=sessionFactory.getCurrentSession().createQuery("from Register where  email =:email and password=:password");
+	    Query query=sessionFactory.getCurrentSession().createQuery("from Register where  email =:email and password=:password");
 	    query.setParameter("email", email_id);
 	    query.setParameter("password", password_form);
-	    
-	    List<Register> list=query.list();   
+	     List<Register> list=query.list();   
          int size=list.size();
-         System.out.println(size);
-	
-         if(size==1){
-        	 
+        
+	    if(size==1){
+	    	 for (Register register : list) {
+	        	    Role=register.getRole();
+	        	    name=register.getName();
+	        	    		
+	        	}
 	  return true ;
 	}
 	else{
 		return false;
 	}
 		
+	}
+
+	public String validrole() {
+		
+		return Role;
+	}
+
+	@Override
+	public String Username() {
+		
+		return name;
 	}
 
 }

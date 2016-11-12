@@ -8,6 +8,8 @@ public interface RegisterDao {
 	
 	public  boolean saveRegister(Register reg);
 	public boolean isvalidUser(Login log);
+	public String validrole();
+	public String Username();
 		
 	
 

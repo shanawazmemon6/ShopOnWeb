@@ -6,9 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+.hello{
+margin-top:10px;
+	box-shadow: 5px 5px 15px #000;
+
+}
+</style>
 </head>
 <body>
 <jsp:include page="Admin_header.jsp"></jsp:include>
+
+<div class="container">
+<c:if test="${loggedin==true}">
+<div class="col-sm-4 col-sm-offset-4">
+<div class="alert hello text-center">
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>${role}</strong>
+  </div>
+</div>
+
+  </c:if> 
+</div>
+
 <c:choose>
 <c:when test="${categoryrequest==true}">
 <jsp:include page="category.jsp"></jsp:include>
@@ -22,6 +42,8 @@
 <c:otherwise>
 <br>
 <br>
+
+
 <jsp:include page="admin_home.jsp"></jsp:include>
 </c:otherwise>
 
