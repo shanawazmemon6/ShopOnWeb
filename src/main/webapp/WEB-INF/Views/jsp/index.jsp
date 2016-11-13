@@ -29,17 +29,20 @@
 
 	<c:choose>
 		<c:when test="${LoginRequest==true}">
-		<div class="container">
-			<c:if test="${entry==true}">
-				<div class="col-sm-4 col-sm-offset-4">
-					<div class="alert hello text-center">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>${message}</strong>
-					</div> <!-- alert -->
-				</div>   <!-- col-sm -->
+			<div class="container">
+				<c:if test="${entry==true}">
+					<div class="col-sm-4 col-sm-offset-4">
+						<div class="alert hello text-center">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>${message}</strong>
+						</div>
+						<!-- alert -->
+					</div>
+					<!-- col-sm -->
 
-			</c:if>
-			</div> <!-- container -->
+				</c:if>
+			</div>
+			<!-- container -->
 
 			<jsp:include page="login.jsp"></jsp:include>
 
@@ -47,7 +50,19 @@
 
 		</c:when>
 		<c:when test="${RegisterRequest==true}">
-
+			<div class="container">
+				<c:if test="${entry==true}">
+					<div class="col-sm-4 col-sm-offset-4">
+						<div class="alert hello text-center">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>${message}</strong>
+						</div>
+						<!-- alert -->
+					</div>
+					<!-- col-sm -->
+				</c:if>
+			</div>
+			<!-- container -->
 			<jsp:include page="register.jsp"></jsp:include>
 
 
@@ -71,8 +86,10 @@
 						<div class="alert hello text-center">
 							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 							<strong>${role}</strong>
-						</div> <!-- alert -->
-					</div> <!-- col-sm -->
+						</div>
+						<!-- alert -->
+					</div>
+					<!-- col-sm -->
 				</c:if>
 			</div>
 			<!-- container -->

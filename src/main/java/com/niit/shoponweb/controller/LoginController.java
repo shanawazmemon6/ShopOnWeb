@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.shoponweb.dao.RegisterDao;
 import com.niit.shoponweb.model.Login;
+import com.niit.shoponweb.model.Sign_list;
 
 @Controller
 // mapping login.jsp
@@ -25,6 +26,13 @@ public class LoginController {
 		m.addAttribute("login", new Login());
 		// return value true,validated in view(index.jsp)
 		m.addAttribute("LoginRequest", true);
+		Sign_list list = new Sign_list();
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		m.addAttribute("Login", list.getLogin());
+		m.addAttribute("SignUp", list.getSignup());
+		m.addAttribute("SignIn", list.getSignin());
 		return "index";
 
 	}
@@ -43,6 +51,13 @@ public class LoginController {
 			m.addAttribute("LaunchRequest", true);
 			m.addAttribute("loggedin", true);
 			m.addAttribute("role", regdao.Username());
+			Sign_list list = new Sign_list();
+			list.setLogin("Logout");
+			list.setSignin(regdao.Username());
+			list.setSignup("SignUp");
+			m.addAttribute("Login", list.getLogin());
+			m.addAttribute("SignUp", list.getSignup());
+			m.addAttribute("SignIn", list.getSignin());
 			return "index";
 		} else if (valid && regdao.validrole().equals("admin")) {
 			m.addAttribute("loggedin", true);

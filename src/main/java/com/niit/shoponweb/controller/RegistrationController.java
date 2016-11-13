@@ -9,10 +9,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.shoponweb.dao.RegisterDao;
 import com.niit.shoponweb.model.Login;
 import com.niit.shoponweb.model.Register;
+import com.niit.shoponweb.model.Sign_list;
 
 @Controller
 // mapping register.jsp
@@ -36,6 +38,13 @@ public class RegistrationController {
 		gender.add("Female");
 		// return gender list to view
 		m.addAttribute("gender", gender);
+		Sign_list list = new Sign_list();
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		m.addAttribute("Login", list.getLogin());
+		m.addAttribute("SignUp", list.getSignup());
+		m.addAttribute("SignIn", list.getSignin());
 		return "index";
 
 	}
@@ -44,23 +53,48 @@ public class RegistrationController {
 	// map the view to return String and execute only when method is post
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String registrationPost(@ModelAttribute("register") Register reg, ModelMap m) {
+	public String registrationPost(@ModelAttribute("register") Register reg, ModelMap m,
+			@RequestParam("inputpass") String pass) {
 		/*
 		 * validating if save execute successful then returning message &
 		 * true(validated in index.jsp)
 		 */
-		if (dao.saveRegister(reg)) {
+		String cpass = reg.getPassword();
 
-			m.addAttribute("LoginRequest", true);
-			m.addAttribute("login", new Login());
-			m.addAttribute("message", "Registered successful");
-			m.addAttribute("entry", true);
+		if (pass.equals(cpass)) {
+			if (dao.saveRegister(reg)) {
+				m.addAttribute("LoginRequest", true);
+				m.addAttribute("login", new Login());
+				m.addAttribute("message", "Registered successful");
+				m.addAttribute("entry", true);
+				System.out.println(cpass);
 
-			return "index";
+				return "index";
 
-		} else {
+			} else {
+
+				m.addAttribute("RegisterRequest", true);
+				m.addAttribute("entry", true);
+				ArrayList<String> gender = new ArrayList<String>();
+				gender.add("Male");
+				gender.add("Female");
+				// return gender list to view
+				m.addAttribute("gender", gender);
+				m.addAttribute("message", "something went wrong");
+				return "index";
+
+			}
+		}
+
+		else {
 			m.addAttribute("RegisterRequest", true);
-			m.addAttribute("message", "Something went wrong");
+			m.addAttribute("entry", true);
+			ArrayList<String> gender = new ArrayList<String>();
+			gender.add("Male");
+			gender.add("Female");
+			// return gender list to view
+			m.addAttribute("gender", gender);
+			m.addAttribute("message", "password you entered was wrong");
 			return "index";
 
 		}

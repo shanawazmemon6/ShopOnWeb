@@ -5,12 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.niit.shoponweb.model.Sign_list;
+
 @Controller
 public class MainController {
 
 	// mapping index.jsp
 	@RequestMapping("/")
-	public String indexView() {
+	public String indexView(Model m) {
+		Sign_list list = new Sign_list();
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		m.addAttribute("Login", list.getLogin());
+		m.addAttribute("SignUp", list.getSignup());
+		m.addAttribute("SignIn", list.getSignin());
 		return "index";
 	}
 
@@ -25,6 +34,13 @@ public class MainController {
 	@RequestMapping("/launchrequest")
 	public String launchView(Model m) {
 		m.addAttribute("LaunchRequest", true);
+		Sign_list list = new Sign_list();
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		m.addAttribute("Login", list.getLogin());
+		m.addAttribute("SignUp", list.getSignup());
+		m.addAttribute("SignIn", list.getSignin());
 		return "index";
 	}
 
