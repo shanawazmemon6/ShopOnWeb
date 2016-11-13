@@ -1,7 +1,6 @@
 package com.niit.shoponweb.configuration;
 
 import java.util.Properties;
-import java.util.function.Supplier;
 
 import javax.sql.DataSource;
 
@@ -20,17 +19,16 @@ import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Register;
 import com.niit.shoponweb.model.Supplier_Do;
 
-
-
+//configuration
 @Configuration
 @ComponentScan("com.niit.shoponweb")
 @EnableTransactionManagement
 public class WebAppConfiguration {
-	
-	
-	@Bean(name="dataSource")
-	public  DataSource getSource(){
-		DriverManagerDataSource source=new DriverManagerDataSource();
+
+	// database information
+	@Bean(name = "dataSource")
+	public DataSource getSource() {
+		DriverManagerDataSource source = new DriverManagerDataSource();
 		source.setUrl("jdbc:h2:tcp://localhost/~/test");
 		source.setDriverClassName("org.h2.Driver");
 		source.setPassword("");
@@ -38,42 +36,44 @@ public class WebAppConfiguration {
 		System.out.println("source");
 
 		return source;
-		
+
 	}
-	
-	public Properties getHibernateProperties(){
-		
-		Properties p=new Properties();
-		
+
+	// hibernate property
+	public Properties getHibernateProperties() {
+
+		Properties p = new Properties();
+
 		p.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		System.out.println("properites");
 
 		return p;
 	}
+
+	// session
 	@Autowired
-	@Bean(name="sessionFactory")
-	public SessionFactory getSession(DataSource source){
-		
-		LocalSessionFactoryBuilder session=new LocalSessionFactoryBuilder(source);
-		
+	@Bean(name = "sessionFactory")
+	public SessionFactory getSession(DataSource source) {
+
+		LocalSessionFactoryBuilder session = new LocalSessionFactoryBuilder(source);
+
 		session.addProperties(getHibernateProperties());
-	      session.addAnnotatedClass(Register.class);
-	      session.addAnnotatedClass(Category.class);
-	      session.addAnnotatedClass(Supplier_Do.class);
-	      session.addAnnotatedClass(Product.class);
+		session.addAnnotatedClass(Register.class);
+		session.addAnnotatedClass(Category.class);
+		session.addAnnotatedClass(Supplier_Do.class);
+		session.addAnnotatedClass(Product.class);
 		System.out.println("session");
 		return session.buildSessionFactory();
-		
-	}
-	
-	@Autowired
-	@Bean(name="transactionManager")
-	public HibernateTransactionManager getHibernateTransaction(SessionFactory s){
-		HibernateTransactionManager hbm=new HibernateTransactionManager(s);
-		
 
-		 return hbm;
 	}
-	
+
+	// transaction manager
+	@Autowired
+	@Bean(name = "transactionManager")
+	public HibernateTransactionManager getHibernateTransaction(SessionFactory s) {
+		HibernateTransactionManager hbm = new HibernateTransactionManager(s);
+
+		return hbm;
+	}
 
 }

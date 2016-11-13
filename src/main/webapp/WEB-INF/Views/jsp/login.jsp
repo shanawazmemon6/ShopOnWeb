@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ShopOnWeb</title>
+<title>Login</title>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -32,7 +32,7 @@ body {
 			<div class="row vertical-offset-100">
 				<div class="col-sm-3 col-sm-offset-8">
 					<div class="form-group" id="hiderow">
-					
+
 						<img src="images/bag.png" class="logo" class="img-responsive">
 
 						<f:form action="loginrequest" method="POST" modelAttribute="login">
@@ -44,15 +44,20 @@ body {
 							<f:checkbox path="" value="Remember Me" label="Remember Me" />
 							<f:button type="submit"
 								class="btn btn-lg btn-success btn-block button">Login</f:button>
-						</f:form> 
+						</f:form>
 
-					</div> <!-- form-group -->
-				</div> <!-- col-sm -->
-			</div> <!-- row -->
-		</div> <!-- pad -->
-	</div> <!-- container -->
+					</div>
+					<!-- form-group -->
+				</div>
+				<!-- col-sm -->
+			</div>
+			<!-- row -->
+		</div>
+		<!-- pad -->
+	</div>
+	<!-- container -->
 	<script>
 		
-</script>
+	</script>
 </body>
 </html>

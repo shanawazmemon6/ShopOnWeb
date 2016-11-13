@@ -1,6 +1,5 @@
 <html>
 <head>
-<title>ShopOnWeb</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -85,7 +84,8 @@
 	<div class="container-fluid" style="background-color: #072f52;">
 		<a class="brand"><img src="images/insta.gif"></a>
 
-	</div> <!-- container-fluid -->
+	</div>
+	<!-- container-fluid -->
 
 	<nav class="navbar navbar-default navbar-custom" data-spy="affix"
 		data-offset-top="197" role="navigation">
@@ -99,36 +99,40 @@
 				</button>
 				<a class="navbar-brand visible-xs" href="#" style="color: #ffffff;">ShopOnWeb</a>
 
-			</div>  <!-- nav-header -->
+			</div>
+			<!-- nav-header -->
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-left">
 					<li><a href="launchrequest"><b>HOME</b></a></li>
 					<li><a href="categoryrequest"><b>CATEGORY</b></a></li>
 					<li><a href="supplierrequest"><b>SUPPLIER</b></a></li>
 					<li><a href="productrequest"><b>PRODUCT</b></a></li>
-				</ul> <!-- nav -->
+				</ul>
+				<!-- nav -->
 				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-					<a class="dropdown-toggle"
+					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"
 						style="background-color: #072f52; color: #ffffff;"> <b>Admin
-								</b> <b class="caret"></b>
-								
+						</b> <b class="caret"></b>
+
 					</a> <!-- dropdown-toggle -->
 						<ul class="dropdown-menu" style="background-color: #072f52;">
 							<li><a href="registerrequest" style="color: #ffffff;"><span
-									class="glyphicon glyphicon-user"></span> <b>SignUp</b></a>
-							</li> <!-- register request -->
+									class="glyphicon glyphicon-user"></span> <b>SignUp</b></a></li>
+							<!-- register request -->
 							<br>
 							<li><a href="loginrequest" style="color: #ffffff;"><span
-									class="glyphicon glyphicon-log-in"></span> <b>Login</b></a>
-							</li> <!-- login request -->
-                          
-						</ul> <!-- dropdown menu -->
-						</li> <!-- drop down -->
-				</ul>  <!-- nav -->
-			</div> <!-- collapse nav-bar -->
+									class="glyphicon glyphicon-log-in"></span> <b>Login</b></a></li>
+							<!-- login request -->
 
-		</div> <!-- container -->
+						</ul> <!-- dropdown menu --></li>
+					<!-- drop down -->
+				</ul>
+				<!-- nav -->
+			</div>
+			<!-- collapse nav-bar -->
+
+		</div>
+		<!-- container -->
 
 	</nav>

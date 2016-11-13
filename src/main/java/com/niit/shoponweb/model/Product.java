@@ -3,17 +3,15 @@ package com.niit.shoponweb.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.stereotype.Component;
 
 @Entity
 @Table
 @Component
+
+// Product DO with setter & getter method
 public class Product {
 
 	@Id
@@ -21,7 +19,7 @@ public class Product {
 	@Column
 	private String pro_name;
 	@Column
-    private int pro_price;
+	private int pro_price;
 	@Column
 	private String pro_cate_id;
 	@Column
@@ -29,17 +27,16 @@ public class Product {
 	@Column
 	private String pro_desc;
 	@Column
-    private String pro_stock;
+	private String pro_stock;
 
-	
-//    @ManyToOne
-//	@JoinColumn(name="pro_cate_id",updatable=false,insertable=false,nullable=false)
-//	private String category;
-//	
-//	@ManyToMany
-//	@JoinColumn(name="pro_sup_id",updatable=false,insertable=false,nullable=false)
-//	private String supplier;
-//	
+	// @ManyToOne
+	// @JoinColumn(name="pro_cate_id",updatable=false,insertable=false,nullable=false)
+	// private String category;
+	//
+	// @ManyToMany
+	// @JoinColumn(name="pro_sup_id",updatable=false,insertable=false,nullable=false)
+	// private String supplier;
+	//
 	public String getPro_id() {
 		return pro_id;
 	}
@@ -96,24 +93,20 @@ public class Product {
 		this.pro_stock = pro_stock;
 	}
 
-//	public String getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(String category) {
-//		this.category = category;
-//	}
-//
-//	public String getSupplier() {
-//		return supplier;
-//	}
-//
-//	public void setSupplier(String supplier) {
-//		this.supplier = supplier;
-//	}
+	// public String getCategory() {
+	// return category;
+	// }
+	//
+	// public void setCategory(String category) {
+	// this.category = category;
+	// }
+	//
+	// public String getSupplier() {
+	// return supplier;
+	// }
+	//
+	// public void setSupplier(String supplier) {
+	// this.supplier = supplier;
+	// }
 
-	
-
-	
-	
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ShopOnWeb</title>
+<title>Register</title>
 <link rel="stylesheet" href="css/loginstyle.css" />
 <style>
 body {
@@ -33,22 +33,19 @@ body {
 
 					<f:form action="registerrequest" method="POST"
 						modelAttribute="register">
-						<f:input path="name" type="name"
-						 class="form-control inputone" placeholder="Full Name"/>
-						<f:input path="email" type="email"
-							class="form-control inputone" placeholder="Email Id"
-							required="true"></f:input>
-						<input type="password"
-							class="form-control inputone" required="true"
-							placeholder="Password"></input>
+						<f:input path="name" type="name" class="form-control inputone"
+							placeholder="Full Name" />
+						<f:input path="email" type="email" class="form-control inputone"
+							placeholder="Email Id" required="true"></f:input>
+						<input type="password" class="form-control inputone"
+							required="true" placeholder="Password"></input>
 						<f:input path="password" type="password"
 							class="form-control inputone" placeholder="Confirm Password"
 							required="true"></f:input>
-						<f:input path="number" type="tel"
-							class="form-control inputone" required="true"
-							placeholder="Phone Number"></f:input>
-						<f:input path="dob" type="date"
-							class="form-control inputone" placeholder="Date" required="true"></f:input>
+						<f:input path="number" type="tel" class="form-control inputone"
+							required="true" placeholder="Phone Number"></f:input>
+						<f:input path="dob" type="date" class="form-control inputone"
+							placeholder="Date" required="true"></f:input>
 						<f:select path="gender" items="${gender}"
 							class="form-control inputtwo"></f:select>
 						<f:textarea path="address" type="text"
@@ -60,9 +57,13 @@ body {
 							class="btn btn-lg btn-success btn-block button">Permit</f:button>
 					</f:form>
 
-				</div>  <!-- form-group -->
-			</div> <!-- col-sm -->
-		</div> <!-- row -->
-	</div> <!-- container -->
+				</div>
+				<!-- form-group -->
+			</div>
+			<!-- col-sm -->
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
 </body>
 </html>

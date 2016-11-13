@@ -13,37 +13,44 @@ import com.niit.shoponweb.model.Supplier_Do;
 
 @Controller
 public class SupplierController {
-	
-	@Autowired 
-	 SupplierDao supdao;
-	
-	@RequestMapping(value="/supplierrequest",method=RequestMethod.GET)
-	public String getSupplierViews(ModelMap m){
-		m.addAttribute("sup",new Supplier_Do() );
-		m.addAttribute("supplierrequest",true);
+	// injects Supplier DAO
+
+	@Autowired
+	SupplierDao supdao;
+	// map the view to return String
+
+	@RequestMapping(value = "/supplierrequest", method = RequestMethod.GET)
+	public String getSupplierViews(ModelMap m) {
+		// return the Supplier DO object
+		m.addAttribute("sup", new Supplier_Do());
+		// return value true validated in view(admin.jsp)
+		m.addAttribute("supplierrequest", true);
 		return "admin";
-		
-		
-}
-	
-	@RequestMapping(value="/supplierrequestpost",method=RequestMethod.POST)
-	public String setCategoryData(@ModelAttribute("sup")Supplier_Do sup,ModelMap m){
-		
-		
-		if(supdao.saveSupplier(sup)){
-	    m.addAttribute("message","Update Successfully");
-	    m.addAttribute("supplierrequest",true);
-	    return "admin";
+
+	}
+	// map the view to return String and execute only when method is post
+
+	@RequestMapping(value = "/supplierrequestpost", method = RequestMethod.POST)
+	public String setCategoryData(@ModelAttribute("sup") Supplier_Do sup, ModelMap m) {
+
+		/*
+		 * validating if save execute successful then returning message &
+		 * true(validated in admin.jsp)
+		 */
+		if (supdao.saveSupplier(sup)) {
+			m.addAttribute("message", "Update Successfully");
+			m.addAttribute("supplierrequest", true);
+			return "admin";
 		}
-	
-		else{
-			m.addAttribute("supplierrequest",true);
-		    m.addAttribute("message","Something Went Wrong");
+
+		else {
+			m.addAttribute("supplierrequest", true);
+			m.addAttribute("message", "Something Went Wrong");
 
 			return "admin";
 
 		}
-		
+
 	}
 
 }
