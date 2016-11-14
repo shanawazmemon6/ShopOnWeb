@@ -15,6 +15,7 @@ public class CategoryController {
 	// injects category DAO
 	@Autowired
 	CategoryDao catdao;
+	
 
 	// map the view to return String
 	@RequestMapping("/categoryrequest")

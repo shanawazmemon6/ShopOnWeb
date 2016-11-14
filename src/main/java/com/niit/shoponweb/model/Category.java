@@ -18,6 +18,9 @@ public class Category {
 	private String cate_name;
 	@Column
 	private String cate_desc;
+	
+	
+
 
 	public String getCate_id() {
 		return cate_id;

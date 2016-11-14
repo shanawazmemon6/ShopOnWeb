@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.shoponweb.dao.ProductDao;
+import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
+import com.niit.shoponweb.model.Supplier_Do;
 
 @Controller
 public class ProductController {
@@ -20,10 +22,17 @@ public class ProductController {
 	@RequestMapping(value = "/productrequest", method = RequestMethod.GET)
 	public String getProductView(ModelMap m) {
 		// return the Login Product object
-
+        
 		m.addAttribute("prod", new Product());
 		// return value true,validated in view(admin.jsp)
 		m.addAttribute("productrequest", true);
+		String cate_list=prodao.getCategoryList(new Category());
+		String sup_list=prodao.getSupplierList(new Supplier_Do());
+
+		m.addAttribute("cate_list", cate_list);
+		m.addAttribute("sup_list", sup_list);
+
+
 
 		return "admin";
 
