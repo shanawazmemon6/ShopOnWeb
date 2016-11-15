@@ -49,7 +49,6 @@ public class ProductDaoImpl implements ProductDao {
 		List<Category> cate_list=(List<Category>) SessionFactory.getCurrentSession().createCriteria(Category.class).list();
 			Gson  gson=new Gson();
 			String cate_json=gson.toJson(cate_list);
-			System.out.println(cate_json);
 		return cate_json;
 	}
 
@@ -59,9 +58,18 @@ public class ProductDaoImpl implements ProductDao {
 		List<Category> sup_list=(List<Category>) SessionFactory.getCurrentSession().createCriteria(Supplier_Do.class).list();
 			Gson  gson=new Gson();
 			String sup_json=gson.toJson(sup_list);
-			System.out.println(sup_json);
 		return sup_json;
 		
+	}
+
+	@Transactional
+	public String getProductList(Product prod) {
+		@SuppressWarnings({ "unchecked" })
+		List<Category> prod_list=(List<Category>) SessionFactory.getCurrentSession().createCriteria(Product.class).list();
+			Gson  gson=new Gson();
+			String prod_json=gson.toJson(prod_list);
+			System.out.println(prod_json);
+		return prod_json;
 	}
 
 

@@ -11,20 +11,34 @@
 <script>
 var cate_list=${cate_list};
 var sup_list=${sup_list};
+var prod_list=${prod_list};
+
 
 angular.module('product_app',[]).controller('product_ctrl',function($scope){
 	$scope.category=cate_list;
 	$scope.suplier=sup_list;
+	$scope.product=prod_list;
+
 
 	
 });
 
 
 </script>
+<style>
+.row_prod {
+	margin-top: 50px;
+	padding: 20px;
+	box-shadow: 5px 5px 15px #000;
+}
+
+
+
+</style>
 </head>
 <body>
 	<div class="container" ng-app="product_app" ng-controller="product_ctrl" >
-		<div class="col-sm-4 col-sm-offset-4 text-center row" >
+		<div class="col-sm-3 text-center row_prod" >
 			<h1>Product</h1>
 			${message}
 			<a:form action="productrequestpost" method="post"
@@ -49,8 +63,36 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
 				<a:input path="pro_stock" placeholder="Product Stock"
 					class="form-control " style="margin-top:10px"/>
 				<a:button type="submit" class="btn btn-success btn-block button">Submit</a:button>
-				<a class="btn btn-warning btn-block" href="supplierrequest">Clear</a>
+				<a class="btn btn-warning btn-block" href="productrequest">Clear</a>
 			</a:form>
+		</div> <!-- col-sm -->
+		
+		<div class="col-sm-8 col-sm-offset-1 row_prod">
+		<table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+      <th>Product Id</th>
+       <th>Product name</th>
+<th>Product Description</th>
+<th>Supplier Id</th>
+<th>Category Id</th>
+<th>Stock</th>
+<th>Price</th>
+      </tr>
+    </thead>
+     <tbody>
+<tr  ng-repeat="prod in product">
+                <td>{{prod.pro_id}}</td> 
+                 <td>{{prod.pro_name}}</td>
+                  <td>{{prod.pro_desc}}</td>
+                  <td>{{prod.pro_sup_id}}</td>
+                  <td> {{prod.pro_cate_id}}</td>
+                  <td> {{prod.pro_stock}}</td>
+                   <td> {{prod.pro_price}}</td>
+                 
+</tr>
+ </tbody>
+</table>
 		</div> <!-- col-sm -->
 	</div> <!-- container -->
 </body>

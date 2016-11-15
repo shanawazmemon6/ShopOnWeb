@@ -28,9 +28,11 @@ public class ProductController {
 		m.addAttribute("productrequest", true);
 		String cate_list=prodao.getCategoryList(new Category());
 		String sup_list=prodao.getSupplierList(new Supplier_Do());
-
-		m.addAttribute("cate_list", cate_list);
+		String prod_list=prodao.getProductList(new Product());
+        m.addAttribute("cate_list", cate_list);
 		m.addAttribute("sup_list", sup_list);
+		m.addAttribute("prod_list",prod_list);
+		
 
 
 
@@ -46,6 +48,13 @@ public class ProductController {
 		if (prodao.saveProduct(prod)) {
 			m.addAttribute("message", "Update Successfully");
 			m.addAttribute("productrequest", true);
+			String cate_list=prodao.getCategoryList(new Category());
+			String sup_list=prodao.getSupplierList(new Supplier_Do());
+			String prod_list=prodao.getProductList(new Product());
+	        m.addAttribute("cate_list", cate_list);
+			m.addAttribute("sup_list", sup_list);
+			m.addAttribute("prod_list",prod_list);
+			
 			return "admin";
 		}
 

@@ -11,6 +11,7 @@ public interface ProductDao {
 	public boolean saveProduct(Product prod);
 	public String  getCategoryList(Category cate);
 	public String  getSupplierList(Supplier_Do sup);
+	public String   getProductList(Product prod);
 
 
 }
