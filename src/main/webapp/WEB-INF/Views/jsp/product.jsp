@@ -31,6 +31,21 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
 	padding: 20px;
 	box-shadow: 5px 5px 15px #000;
 }
+.panel-heading {
+padding:5px;
+}
+#del {
+    position: relative;
+    top: -15px;
+    width:10%;
+    
+} 
+#edit{
+    position: relative;
+    top: -15px;
+    width:10%;
+    right:20px;
+} 
 
 
 
@@ -68,31 +83,41 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
 		</div> <!-- col-sm -->
 		
 		<div class="col-sm-8 col-sm-offset-1 row_prod">
-		<table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-      <th>Product Id</th>
-       <th>Product name</th>
-<th>Product Description</th>
-<th>Supplier Id</th>
-<th>Category Id</th>
-<th>Stock</th>
-<th>Price</th>
-      </tr>
-    </thead>
-     <tbody>
-<tr  ng-repeat="prod in product">
-                <td>{{prod.pro_id}}</td> 
-                 <td>{{prod.pro_name}}</td>
-                  <td>{{prod.pro_desc}}</td>
-                  <td>{{prod.pro_sup_id}}</td>
-                  <td> {{prod.pro_cate_id}}</td>
-                  <td> {{prod.pro_stock}}</td>
-                   <td> {{prod.pro_price}}</td>
-                 
-</tr>
- </tbody>
-</table>
+		<div class="row" ng-repeat="prod in product">
+		  <div class="panel-group" id="accordion">
+     <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title" >
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{prod.pro_id}}"><b>{{prod.pro_name}}</b></a>
+        
+   </h4>
+     
+   
+   <a class="btn btn-danger pull-right" id="del" name="delete" >Delete</a>&nbsp;
+    <a class="btn btn-primary pull-right" id="edit"  >Edit</a>
+   
+  
+   </div>
+   <div id={{prod.pro_id}} class="panel-collapse collapse">
+    <div class="panel-body">
+    
+    <ul class="list-group">
+  <li class="list-group-item"><span><b>Product Id:</b></span>&nbsp;&nbsp;{{prod.pro_id}}</li>
+  <li class="list-group-item"><b>Product Price:</b>&nbsp;&nbsp;{{prod.pro_price}}</li>
+  <li class="list-group-item"><b>Product Category Id:</b>&nbsp;&nbsp;{{prod.pro_cate_id}}</li>
+    <li class="list-group-item"><b>Product Supplier Id:</b>&nbsp;&nbsp;{{prod.pro_sup_id}}</li>
+  
+    <li class="list-group-item"><b>Product Description:</b>&nbsp;&nbsp;{{prod.pro_desc}}</li>
+    <li class="list-group-item"><b>Product Stock:</b>&nbsp;&nbsp;{{prod.pro_stock}}</li>
+  
+</ul>
+   </div>
+   </div>
+   </div>
+   </div>
+  
+  
+
 		</div> <!-- col-sm -->
 	</div> <!-- container -->
 </body>

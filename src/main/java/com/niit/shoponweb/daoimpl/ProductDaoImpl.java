@@ -68,7 +68,7 @@ public class ProductDaoImpl implements ProductDao {
 		List<Category> prod_list=(List<Category>) SessionFactory.getCurrentSession().createCriteria(Product.class).list();
 			Gson  gson=new Gson();
 			String prod_json=gson.toJson(prod_list);
-			System.out.println(prod_json);
+			
 		return prod_json;
 	}
 
