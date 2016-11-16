@@ -24,7 +24,8 @@ public class CategoryController {
 		map.addAttribute("cate", new Category());
 		// return value true validated in view(admin.jsp)
 		map.addAttribute("categoryrequest", true);
-
+         String cate_list=catdao.getCategoryList(new Category());
+          map.addAttribute("cate_list",cate_list);
 		return "admin";
 
 	}
@@ -35,9 +36,12 @@ public class CategoryController {
 	public String setCategoryData(@ModelAttribute("cate") Category cate, ModelMap m) {
 		// validating if save execute successful then returning message &
 		// true(validated in admin.jsp)
+		
 		if (catdao.saveCategory(cate)) {
 			m.addAttribute("message", "Update Successfully");
 			m.addAttribute("categoryrequest", true);
+			String cate_list=catdao.getCategoryList(new Category());
+	        m.addAttribute("cate_list",cate_list);
 			return "admin";
 		}
 

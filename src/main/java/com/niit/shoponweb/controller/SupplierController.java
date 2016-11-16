@@ -25,6 +25,8 @@ public class SupplierController {
 		m.addAttribute("sup", new Supplier_Do());
 		// return value true validated in view(admin.jsp)
 		m.addAttribute("supplierrequest", true);
+	String sup_list=supdao.getSuppilerList(new Supplier_Do());
+	m.addAttribute("sup_list",sup_list);
 		return "admin";
 
 	}

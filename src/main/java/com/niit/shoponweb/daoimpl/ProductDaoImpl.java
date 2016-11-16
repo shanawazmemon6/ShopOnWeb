@@ -3,6 +3,7 @@ package com.niit.shoponweb.daoimpl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,7 +56,7 @@ public class ProductDaoImpl implements ProductDao {
 	@Transactional
 	public String getSupplierList(Supplier_Do sup) {
 	  @SuppressWarnings({ "unchecked" })
-		List<Category> sup_list=(List<Category>) SessionFactory.getCurrentSession().createCriteria(Supplier_Do.class).list();
+		List<Supplier_Do> sup_list=(List<Supplier_Do>) SessionFactory.getCurrentSession().createCriteria(Supplier_Do.class).list();
 			Gson  gson=new Gson();
 			String sup_json=gson.toJson(sup_list);
 		return sup_json;
@@ -65,12 +66,54 @@ public class ProductDaoImpl implements ProductDao {
 	@Transactional
 	public String getProductList(Product prod) {
 		@SuppressWarnings({ "unchecked" })
-		List<Category> prod_list=(List<Category>) SessionFactory.getCurrentSession().createCriteria(Product.class).list();
+		List<Product> prod_list=(List<Product>) SessionFactory.getCurrentSession().createCriteria(Product.class).list();
 			Gson  gson=new Gson();
 			String prod_json=gson.toJson(prod_list);
 			
 		return prod_json;
 	}
 
+	@Transactional
+	public Product getProduct(String p_id) {
+
+			
+ Product pro= (Product) SessionFactory.getCurrentSession().get(Product.class, p_id);
+		
+			return pro;
+		
+		
+	
+		
+		
+	}
+
+	@Transactional
+	public boolean deleteProduct(String d_p_id) {
+		try {
+			
+			Product pro_del= (Product) SessionFactory.getCurrentSession().get(Product.class, d_p_id);
+	         SessionFactory.getCurrentSession().delete(pro_del);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	@Transactional
+	public boolean updateProduct(Product prod) {
+		
+		try {
+			SessionFactory.getCurrentSession().update(prod);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+	
 
 }
