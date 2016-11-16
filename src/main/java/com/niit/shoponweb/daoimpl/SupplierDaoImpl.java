@@ -41,17 +41,52 @@ public class SupplierDaoImpl implements SupplierDao {
 		}
 	}
 
-    @Transactional
+	@Transactional
 	public String getSuppilerList(Supplier_Do sup) {
-    	
-    	@SuppressWarnings("unchecked")
-		List<Supplier_Do>  sup_list=sessionFactory.getCurrentSession().createCriteria(Supplier_Do.class).list();
-    	Gson  gson=new Gson();
-    	String sup_json=gson.toJson(sup_list);
-    	
-    	
-    	
+
+		@SuppressWarnings("unchecked")
+		List<Supplier_Do> sup_list = sessionFactory.getCurrentSession().createCriteria(Supplier_Do.class).list();
+		Gson gson = new Gson();
+		String sup_json = gson.toJson(sup_list);
 		return sup_json;
 	}
+
+	@Transactional
+	public boolean deleteSupplier(String sid) {
+		   
+		   try {
+			   Supplier_Do sup=(Supplier_Do) sessionFactory.getCurrentSession().get(Supplier_Do.class, sid);
+				sessionFactory.getCurrentSession().delete(sup);
+
+				return true;
+			} catch (Exception e) {
+
+				e.printStackTrace();
+				return false;
+			}  
+	}
+
+	@Transactional
+	public Supplier_Do getSupplier(String sid) {
+		
+		Supplier_Do sup=(Supplier_Do) sessionFactory.getCurrentSession().get(Supplier_Do.class, sid);
+           
+		return sup;
+	}
+
+	@Transactional
+	public boolean updateSupplier(Supplier_Do sup) {
+		try {
+			sessionFactory.getCurrentSession().update(sup);
+
+			return true;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	
 
 }

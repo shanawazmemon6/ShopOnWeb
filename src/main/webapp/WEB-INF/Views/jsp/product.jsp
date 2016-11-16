@@ -29,9 +29,14 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
 </script>
 <style>
 .row_prod {
-	margin-top: 50px;
+	margin-top: 110px;
 	padding: 20px;
 	box-shadow: 5px 5px 15px #000;
+}
+#listpro{
+   margin-top: 15px;
+	box-shadow: 5px 5px 15px #000;
+
 }
 .panel-heading {
 padding:5px;
@@ -121,8 +126,8 @@ padding:5px;
 			</a:form>
 		</div> <!-- col-sm -->
 		</c:if> <!-- udate -->
-		<div class="col-sm-8 col-sm-offset-1 row_prod">
-		<div class="row" ng-repeat="prod in product">
+		<div class="col-sm-8 col-sm-offset-1">
+		<div class="row" ng-repeat="prod in product" id="listpro">
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">

@@ -121,10 +121,7 @@ public class ProductController {
 		m.addAttribute("prod_list",prod_list);
 		return "admin";
 
-		
-	
-		
-	}
+}
 	
 	@RequestMapping(value = "/updaterequestpost", method = RequestMethod.POST)
 	public String udateProductData(@ModelAttribute("prod") Product prod, ModelMap m) {

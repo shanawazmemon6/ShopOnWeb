@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="a"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,9 +23,15 @@ angular.module('supplierModule',[]).controller('supplierController',function($sc
 </script>
 <style>
 #product{
-margin-top: 50px;
+margin-top: 110px;
 	padding: 20px;
 	box-shadow: 5px 5px 15px #000;
+}
+#produc{
+margin-top: 15px;
+
+	box-shadow: 5px 5px 15px #000;
+
 }
 
 
@@ -57,6 +65,7 @@ padding:5px;
 <body ng-app="supplierModule" ng-controller="supplierController">
 
 	<div class="container">
+	<c:if test="${save==true}">
 		<div class="col-sm-3  text-center " id="product">
 			<h1>Supplier</h1>
 			${message}
@@ -77,9 +86,31 @@ padding:5px;
 				<a class="btn btn-warning btn-block" href="supplierrequest">Clear</a>
 			</a:form>
 		</div> <!-- col-sm -->
-		
+		</c:if><!-- save -->
+			<c:if test="${update==true}">
+		<div class="col-sm-3  text-center " id="product">
+			<h1>Supplier</h1>
+			${message}
+			<a:form action="requestpostupdate" method="post"
+				modelAttribute="sup"
+				onsubmit="this.submit(); this.reset(); return false;">
+				<a:input path="sup_id" placeholder="Supplier Id"
+					class="form-control inputone" />
+				<a:input path="sup_name" placeholder="Supplier Name"
+					class="form-control inputone" />
+				<a:input path="sup_address" placeholder="Supplier Address"
+					class="form-control  inputtwo" />
+				<a:input path="sup_number" placeholder="Supplier Number"
+					class="form-control inputone" />
+				<a:input path="sup_email" placeholder="Supplier Email"
+					class="form-control inputone" />
+				<a:button type="submit" class="btn btn-success btn-block button">Update</a:button>
+				<a class="btn btn-warning btn-block" href="supplierrequest">Clear</a>
+			</a:form>
+		</div> <!-- col-sm -->
+		</c:if><!-- update -->
 		<div class="col-sm-8 col-sm-offset-1" >
-		<div class="row" ng-repeat="sup in supplier" id="product" >
+		<div class="row" ng-repeat="sup in supplier" id="produc" >
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">
@@ -89,8 +120,8 @@ padding:5px;
    </h4>
      
    
-   <a class="btn btn-danger pull-right" id="del" name="delete" >Delete</a>&nbsp;
-    <a class="btn btn-primary pull-right" id="edit"  >Edit</a>
+   <a class="btn btn-danger pull-right" id="del" href="deletesup?sid={{sup.sup_id}}">Delete</a>&nbsp;
+    <a class="btn btn-primary pull-right" id="edit" href="updatesup?sid={{sup.sup_id}}">Edit</a>
    
   
    </div>
