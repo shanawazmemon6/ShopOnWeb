@@ -22,15 +22,28 @@ angular.module('supplierModule',[]).controller('supplierController',function($sc
 
 </script>
 <style>
-#product{
-margin-top: 110px;
+#supplier{
+margin-top: 60px;
 	padding: 20px;
 	box-shadow: 5px 5px 15px #000;
 }
-#produc{
+#sup_search{
+margin-top: 60px;
+padding: 20px;
+}
+#sup_list{
 margin-top: 15px;
 
-	box-shadow: 5px 5px 15px #000;
+box-shadow: 5px 5px 15px #000;
+
+}
+#search_sup{
+position:absolute;
+
+margin-top: 75px;
+margin-left:699px;
+
+
 
 }
 
@@ -66,7 +79,11 @@ padding:5px;
 
 	<div class="container">
 	<c:if test="${save==true}">
-		<div class="col-sm-3  text-center " id="product">
+		
+		
+		<div class="col-sm-3  text-center " id="supplier">
+		
+		
 			<h1>Supplier</h1>
 			${message}
 			<a:form action="supplierrequestpost" method="post"
@@ -88,7 +105,7 @@ padding:5px;
 		</div> <!-- col-sm -->
 		</c:if><!-- save -->
 			<c:if test="${update==true}">
-		<div class="col-sm-3  text-center " id="product">
+		<div class="col-sm-3  text-center " id="supplier">
 			<h1>Supplier</h1>
 			${message}
 			<a:form action="requestpostupdate" method="post"
@@ -110,7 +127,12 @@ padding:5px;
 		</div> <!-- col-sm -->
 		</c:if><!-- update -->
 		<div class="col-sm-8 col-sm-offset-1" >
-		<div class="row_sup" ng-repeat="sup in supplier" id="produc" >
+		<div  id="search_sup">
+		<b class="glyphicon glyphicon-search"></b>
+		</div>
+		
+		<input type="text" placeholder="Search Supplier" class="form-control" id="sup_search" ng-model="searchsup"/>
+		<div class="row_sup" ng-repeat="sup in supplier|filter:searchsup" id="sup_list" >
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">

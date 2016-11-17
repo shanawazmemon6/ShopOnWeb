@@ -29,7 +29,7 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
 </script>
 <style>
 .row_prod {
-	margin-top: 110px;
+	margin-top: 60px;
 	padding: 20px;
 	box-shadow: 5px 5px 15px #000;
 }
@@ -37,6 +37,19 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
    margin-top: 15px;
 	box-shadow: 5px 5px 15px #000;
 
+}
+#search{
+position:absolute;
+
+margin-top: 75px;
+margin-left:699px;
+
+
+
+}
+#prod_search{
+margin-top: 60px;
+	padding: 20px;
 }
 .panel-heading {
 padding:5px;
@@ -127,7 +140,12 @@ padding:5px;
 		</div> <!-- col-sm -->
 		</c:if> <!-- udate -->
 		<div class="col-sm-8 col-sm-offset-1">
-		<div class="row_pro" ng-repeat="prod in product" id="listpro">
+		<div  id="search">
+		<b class="glyphicon glyphicon-search"></b>
+		</div>
+		
+		<input type="text" placeholder="Search Product" class="form-control" id="prod_search" ng-model="searchprod"/>
+		<div class="row_pro" ng-repeat="prod in product|filter:searchprod" id="listpro">
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">

@@ -25,7 +25,7 @@ angular.module('categoryModule',[]).controller('categoryController',function($sc
 </script>
 <style >
 #cat{
-margin-top: 110px;
+margin-top: 60px;
 	padding: 20px;
 	box-shadow: 5px 5px 15px #000;
 }
@@ -53,6 +53,19 @@ padding:5px;
 
  top:10px;
  left:5px;
+}
+#cate_search{
+margin-top: 60px;
+padding: 20px;
+}
+#search_cate{
+position:absolute;
+
+margin-top: 75px;
+margin-left:699px;
+
+
+
 }
 </style>
 </head>
@@ -101,7 +114,12 @@ padding:5px;
 		<!-- col-sm -->
 		</c:if> <!-- update -->
 		<div class="col-sm-8 col-sm-offset-1">
-		<div class="row_col" ng-repeat="cate in category" id="cat_list" >
+		<div  id="search_cate">
+		<b class="glyphicon glyphicon-search"></b>
+		</div>
+		
+		<input type="text" placeholder="Search Supplier" class="form-control" id="cate_search" ng-model="searchcate"/>
+		<div class="row_col" ng-repeat="cate in category|filter:searchcate" id="cat_list" >
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">
