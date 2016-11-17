@@ -110,7 +110,7 @@ padding:5px;
 		</div> <!-- col-sm -->
 		</c:if><!-- update -->
 		<div class="col-sm-8 col-sm-offset-1" >
-		<div class="row" ng-repeat="sup in supplier" id="produc" >
+		<div class="row_sup" ng-repeat="sup in supplier" id="produc" >
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">

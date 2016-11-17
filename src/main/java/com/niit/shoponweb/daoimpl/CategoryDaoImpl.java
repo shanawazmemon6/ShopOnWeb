@@ -53,4 +53,42 @@ public class CategoryDaoImpl implements CategoryDao {
 		return cate_json;
 	}
 
+	@Transactional
+	public boolean updateCategory(Category cate) {
+		try {
+			sessionFactory.getCurrentSession().update(cate);
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+		
+	}
+
+	@Transactional
+	public Category getCategory(String cat_id) {
+		Category cat_list=(Category) sessionFactory.getCurrentSession().get(Category.class, cat_id);
+		return cat_list;
+	}
+
+	@Transactional
+	public boolean deleteCategory(String cat_id) {
+		try {
+			Category cat=(Category) sessionFactory.getCurrentSession().get(Category.class, cat_id);
+	         
+			sessionFactory.getCurrentSession().delete(cat);
+			
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+		
+		
+	}
+
 }

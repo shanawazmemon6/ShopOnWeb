@@ -91,7 +91,7 @@ padding:5px;
 					class="form-control " />
 				<a:input path="pro_stock" placeholder="Product Stock"
 					class="form-control " style="margin-top:10px"/>
-				<a:button type="submit" class="btn btn-success btn-block button">Submit</a:button>
+				<a:button type="submit" class="btn btn-success btn-block button">Save</a:button>
 				<a class="btn btn-warning btn-block" href="productrequest">Clear</a>
 			</a:form>
 		</div> <!-- col-sm -->
@@ -127,7 +127,7 @@ padding:5px;
 		</div> <!-- col-sm -->
 		</c:if> <!-- udate -->
 		<div class="col-sm-8 col-sm-offset-1">
-		<div class="row" ng-repeat="prod in product" id="listpro">
+		<div class="row_pro" ng-repeat="prod in product" id="listpro">
 		  <div class="panel-group" id="accordion">
      <div class="panel panel-default">
     <div class="panel-heading">
