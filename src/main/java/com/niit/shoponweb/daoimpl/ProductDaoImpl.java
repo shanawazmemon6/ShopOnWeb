@@ -122,10 +122,9 @@ public class ProductDaoImpl implements ProductDao {
 		List<Product> prod_list=query_pro.list();
 		Gson gson=new Gson();
 		String prod_json=gson.toJson(prod_list);
-		System.out.println(prod_json);
 		
 		
-		return null;
+		return prod_json;
 	}
 
 	

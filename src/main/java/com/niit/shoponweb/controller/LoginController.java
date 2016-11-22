@@ -27,7 +27,16 @@ public class LoginController {
 		// return the Login DO object
 		m.addAttribute("login", new Login());
 		// return value true,validated in view(index.jsp)
+		
 		m.addAttribute("LoginRequest", true);
+		Sign_list list = new Sign_list();
+
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		session.setAttribute("Login", list.getLogin());
+		session.setAttribute("SignUp", list.getSignup());
+		session.setAttribute("SignIn", list.getSignin());
 		
 		return "index";
 

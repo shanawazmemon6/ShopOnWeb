@@ -11,23 +11,13 @@ import com.niit.shoponweb.dao.ProductDao;
 
 @Controller
 public class UserProductController {
-
 	@Autowired
 	ProductDao prodao;
 	@RequestMapping(value="/userproduct",method=RequestMethod.GET)
 	public String getUserProduct(@RequestParam("proid")String pro,ModelMap m){
-		
-		
-		m.addAttribute("LaunchRequest",true);
-		prodao.userProductList(pro);
-		System.out.println(pro);
-		
+   m.addAttribute("ProductUserRequest",true);
+	String pro_userlist=prodao.userProductList(pro);
+	m.addAttribute("prolist", pro_userlist);
 		return "index";
-		
-		
-		
-	}
-	
-	
-	
+}
 }

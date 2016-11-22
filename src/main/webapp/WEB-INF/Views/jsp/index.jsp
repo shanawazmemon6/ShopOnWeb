@@ -5,6 +5,16 @@
 
 
 <head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
+
 <style>
 .hello {
 	margin-top: 10px;
@@ -13,8 +23,7 @@
 	display: none;
 }
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 	
 <script>
 
@@ -27,9 +36,16 @@
 
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
-
+				  	<jsp:include page="header.jsp"></jsp:include>
+			
 	<c:choose>
+	
+	<c:when test="${ProductUserRequest==true}">
+	
+			<jsp:include page="productuser.jsp"></jsp:include>
+
+		</c:when>
+		
 		<c:when test="${LoginRequest==true}">
 			<div class="container">
 				<c:if test="${entry==true}">
@@ -67,8 +83,9 @@
 			<!-- container -->
 			<jsp:include page="register.jsp"></jsp:include>
 
-
+       
 		</c:when>
+	
 		<c:when test="${ContactRequest==true}">
 
 			<jsp:include page="contact.jsp"></jsp:include>
@@ -81,6 +98,8 @@
 
 
 		</c:when>
+	
+		
 		<c:when test="${LaunchRequest==true}">
 			<div class="container">
 				<c:if test="${loggedin==true}">
@@ -109,8 +128,8 @@
 	</c:choose>
 	<br>
 	<br>
-	<jsp:include page="footer.jsp"></jsp:include>
-
+ 	<jsp:include page="footer.jsp"></jsp:include> 
+ 
 
 </body>
 </html>
