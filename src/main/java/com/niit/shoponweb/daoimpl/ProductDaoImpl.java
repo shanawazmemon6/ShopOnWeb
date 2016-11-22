@@ -114,6 +114,20 @@ public class ProductDaoImpl implements ProductDao {
 
 	}
 
+	@Transactional
+	public String userProductList(String pro_id) {
+		     
+		String productListQuery="from Product where pro_cate_id ='"+pro_id+"'";
+		Query query_pro=SessionFactory.getCurrentSession().createQuery(productListQuery);
+		List<Product> prod_list=query_pro.list();
+		Gson gson=new Gson();
+		String prod_json=gson.toJson(prod_list);
+		System.out.println(prod_json);
+		
+		
+		return null;
+	}
+
 	
 
 }

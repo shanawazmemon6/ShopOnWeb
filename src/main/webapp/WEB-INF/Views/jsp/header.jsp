@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -10,6 +12,8 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
 <link rel="stylesheet" href="css/navstyle.css" />
 <style>
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus
@@ -71,15 +75,38 @@
 	margin-left: 2px;
 	vertical-align: middle;
 }
+
+
+
+
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
+<script >
+
+$(function() {
+	
+	$('.list_category').fadeIn();
 
 
+});
+var cat=<%=session.getAttribute("cate_list")%>;
+
+
+angular.module('LoadModule',[]).controller('LoadController',function($scope){
+	
+	                   $scope.category=cat;
+	     
+
+});
+
+
+</script>
 
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body data-spy="scroll" data-target=".navbar" data-offset="50"  ng-app="LoadModule" ng-controller="LoadController"   >
 
 	<div class="container-fluid" style="background-color: #072f52;">
 		<a class="brand"><img src="images/insta.gif"></a>
@@ -103,26 +130,23 @@
 			<!-- nav-header -->
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="launchrequest"><b>HOME</b></a></li>
-					<li><a href="#"><b>MENS</b></a></li>
-					<li><a href="#"><b>WOMENS</b></a></li>
-					<li><a href="#"><b>KIDS</b></a></li>
+					<li style="display: none;" class="list_category"><a  href="launchrequest"><b>Home</b></a></li>
+					<li style="display: none;" ng-repeat="cate in category" value="{{cate.cate_id}}" class="list_category"><a  href="userproduct?proid={{cate.cate_id}}"><b>{{cate.cate_name}}</b></a></li>
 				</ul>
 				<!-- nav -->
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"
-						style="background-color: #072f52; color: #ffffff;"> <b>${SignIn}
-						</b> <b class="caret"></b>
+						style="background-color: #072f52; color: #ffffff;"> <b><%=session.getAttribute("SignIn") %></b> <b class="caret"></b>
 
 					</a> <!-- dropdown-toggle -->
 						<ul class="dropdown-menu" style="background-color: #072f52;">
 							<li><a href="loginrequest" style="color: #ffffff;"><span
-									class=" glyphicon glyphicon-log-in"></span> <b>${Login}</b></a></li>
+									class=" glyphicon glyphicon-log-in"></span> <b><%=session.getAttribute("Login") %></b></a></li>
 							<!-- register request -->
 							<br>
 							<li><a href="registerrequest" style="color: #ffffff;"><span
-									class="glyphicon glyphicon-user"></span> <b>${SignUp}</b></a></li>
+									class="glyphicon glyphicon-user"></span> <b><%=session.getAttribute("SignUp") %></b></a></li>
 							<!-- login request -->
 
 						</ul> <!-- dropdown menu --></li>
@@ -131,7 +155,7 @@
 				<!-- nav -->
 			</div>
 			<!-- collapse nav-bar -->
-
+         
 		</div>
 		<!-- container -->
 

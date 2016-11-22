@@ -15,6 +15,7 @@ public interface ProductDao {
 	public String   getProductList(Product prod);
 	public Product  getProduct(String p_id);
 	public boolean  deleteProduct(String d_p_id);
+	public String userProductList(String pro_id);
 
 
 

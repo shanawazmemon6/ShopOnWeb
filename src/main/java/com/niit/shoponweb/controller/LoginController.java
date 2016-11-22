@@ -1,5 +1,7 @@
 package com.niit.shoponweb.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,25 +23,19 @@ public class LoginController {
 
 	// map the view to return String execute if method is get
 	@RequestMapping(method = RequestMethod.GET)
-	public String loginView(ModelMap m) {
+	public String loginView(ModelMap m,HttpSession session) {
 		// return the Login DO object
 		m.addAttribute("login", new Login());
 		// return value true,validated in view(index.jsp)
 		m.addAttribute("LoginRequest", true);
-		Sign_list list = new Sign_list();
-		list.setLogin("Login");
-		list.setSignin("SignIn");
-		list.setSignup("SignUp");
-		m.addAttribute("Login", list.getLogin());
-		m.addAttribute("SignUp", list.getSignup());
-		m.addAttribute("SignIn", list.getSignin());
+		
 		return "index";
 
 	}
 
 	// map the view to return String and execute only when method is post
 	@RequestMapping(method = RequestMethod.POST)
-	public String loginPost(@ModelAttribute("login") Login login, ModelMap m) {
+	public String loginPost(@ModelAttribute("login") Login login, ModelMap m,HttpSession session) {
 		// if user is valid it return true
 		boolean valid = regdao.isvalidUser(login);
 		/*
@@ -55,13 +51,13 @@ public class LoginController {
 			list.setLogin("Logout");
 			list.setSignin(regdao.Username());
 			list.setSignup("SignUp");
-			m.addAttribute("Login", list.getLogin());
-			m.addAttribute("SignUp", list.getSignup());
-			m.addAttribute("SignIn", list.getSignin());
+			session.setAttribute("Login", list.getLogin());
+			session.setAttribute("SignUp", list.getSignup());
+			session.setAttribute("SignIn", list.getSignin());
 			return "index";
 		} else if (valid && regdao.validrole().equals("admin")) {
 			m.addAttribute("loggedin", true);
-
+             
 			m.addAttribute("role", regdao.Username());
 
 			return "admin";

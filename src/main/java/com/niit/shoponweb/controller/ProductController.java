@@ -25,20 +25,17 @@ public class ProductController {
 	@RequestMapping(value = "/productrequest", method = RequestMethod.GET)
 	public String getProductView(ModelMap m) {
 		// return the Login Product object
-        
+
 		m.addAttribute("prod", new Product());
 		// return value true,validated in view(admin.jsp)
 		m.addAttribute("productrequest", true);
 		m.addAttribute("edit", true);
-		String cate_list=prodao.getCategoryList(new Category());
-		String sup_list=prodao.getSupplierList(new Supplier_Do());
-		String prod_list=prodao.getProductList(new Product());
-        m.addAttribute("cate_list", cate_list);
+		String cate_list = prodao.getCategoryList(new Category());
+		String sup_list = prodao.getSupplierList(new Supplier_Do());
+		String prod_list = prodao.getProductList(new Product());
+		m.addAttribute("cate_list", cate_list);
 		m.addAttribute("sup_list", sup_list);
-		m.addAttribute("prod_list",prod_list);
-		
-
-
+		m.addAttribute("prod_list", prod_list);
 
 		return "admin";
 
@@ -53,13 +50,13 @@ public class ProductController {
 			m.addAttribute("message", "Update Successfully");
 			m.addAttribute("productrequest", true);
 			m.addAttribute("edit", true);
-			String cate_list=prodao.getCategoryList(new Category());
-			String sup_list=prodao.getSupplierList(new Supplier_Do());
-			String prod_list=prodao.getProductList(new Product());
-	        m.addAttribute("cate_list", cate_list);
+			String cate_list = prodao.getCategoryList(new Category());
+			String sup_list = prodao.getSupplierList(new Supplier_Do());
+			String prod_list = prodao.getProductList(new Product());
+			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
-			m.addAttribute("prod_list",prod_list);
-			
+			m.addAttribute("prod_list", prod_list);
+
 			return "admin";
 		}
 
@@ -73,70 +70,69 @@ public class ProductController {
 		}
 
 	}
-	
-	
-	@RequestMapping(value="/delete",method=RequestMethod.GET)
-	public String deleteRequest(@RequestParam("pid")String pid,Model m){
-		
-		if(prodao.deleteProduct(pid)){
 
-		m.addAttribute("prod", new Product());
-		m.addAttribute("edit", true);
-		m.addAttribute("productrequest", true);
-		String cate_list=prodao.getCategoryList(new Category());
-		String sup_list=prodao.getSupplierList(new Supplier_Do());
-		String prod_list=prodao.getProductList(new Product());
-        m.addAttribute("cate_list", cate_list);
-		m.addAttribute("sup_list", sup_list);
-		m.addAttribute("prod_list",prod_list);
-		return "admin";
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String deleteRequest(@RequestParam("pid") String pid, Model m) {
 
-		}
-		else{
+		if (prodao.deleteProduct(pid)) {
+
 			m.addAttribute("prod", new Product());
 			m.addAttribute("edit", true);
 			m.addAttribute("productrequest", true);
-			String cate_list=prodao.getCategoryList(new Category());
-			String sup_list=prodao.getSupplierList(new Supplier_Do());
-			String prod_list=prodao.getProductList(new Product());
-	        m.addAttribute("cate_list", cate_list);
+			String cate_list = prodao.getCategoryList(new Category());
+			String sup_list = prodao.getSupplierList(new Supplier_Do());
+			String prod_list = prodao.getProductList(new Product());
+			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
-			m.addAttribute("prod_list",prod_list);
-		return "admin";
+			m.addAttribute("prod_list", prod_list);
+			return "admin";
+
+		} else {
+			m.addAttribute("prod", new Product());
+			m.addAttribute("edit", true);
+			m.addAttribute("productrequest", true);
+			String cate_list = prodao.getCategoryList(new Category());
+			String sup_list = prodao.getSupplierList(new Supplier_Do());
+			String prod_list = prodao.getProductList(new Product());
+			m.addAttribute("cate_list", cate_list);
+			m.addAttribute("sup_list", sup_list);
+			m.addAttribute("prod_list", prod_list);
+			return "admin";
 		}
-		
+
 	}
-	@RequestMapping(value="/update",method=RequestMethod.GET)
-	public String updateRequest(@RequestParam("pid")String pid,Model m){
-		
-        Product pro=prodao.getProduct(pid);
+
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String updateRequest(@RequestParam("pid") String pid, Model m) {
+
+		Product pro = prodao.getProduct(pid);
 		m.addAttribute("prod", pro);
-         m.addAttribute("udate",true);
+		m.addAttribute("udate", true);
 		m.addAttribute("productrequest", true);
-		String cate_list=prodao.getCategoryList(new Category());
-		String sup_list=prodao.getSupplierList(new Supplier_Do());
-		String prod_list=prodao.getProductList(new Product());
-        m.addAttribute("cate_list", cate_list);
+		String cate_list = prodao.getCategoryList(new Category());
+		String sup_list = prodao.getSupplierList(new Supplier_Do());
+		String prod_list = prodao.getProductList(new Product());
+		m.addAttribute("cate_list", cate_list);
 		m.addAttribute("sup_list", sup_list);
-		m.addAttribute("prod_list",prod_list);
+		m.addAttribute("prod_list", prod_list);
 		return "admin";
 
-}
-	
+	}
+
 	@RequestMapping(value = "/updaterequestpost", method = RequestMethod.POST)
 	public String udateProductData(@ModelAttribute("prod") Product prod, ModelMap m) {
-	
+
 		if (prodao.updateProduct(prod)) {
 			m.addAttribute("message", "Update Successfully");
 			m.addAttribute("productrequest", true);
 			m.addAttribute("edit", true);
-			String cate_list=prodao.getCategoryList(new Category());
-			String sup_list=prodao.getSupplierList(new Supplier_Do());
-			String prod_list=prodao.getProductList(new Product());
-	        m.addAttribute("cate_list", cate_list);
+			String cate_list = prodao.getCategoryList(new Category());
+			String sup_list = prodao.getSupplierList(new Supplier_Do());
+			String prod_list = prodao.getProductList(new Product());
+			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
-			m.addAttribute("prod_list",prod_list);
-			
+			m.addAttribute("prod_list", prod_list);
+
 			return "admin";
 		}
 
@@ -149,6 +145,5 @@ public class ProductController {
 
 		}
 
-	
-}
+	}
 }
