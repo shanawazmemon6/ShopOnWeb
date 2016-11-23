@@ -34,6 +34,7 @@ public class MainController {
 		session.setAttribute("SignIn", list.getSignin());
 		 cate_list=cate_dao.getCategoryList(cate);
 		session.setAttribute("cate_list", cate_list);
+		m.addAttribute("prolist","fuck");
 		
 		
 		return "index";

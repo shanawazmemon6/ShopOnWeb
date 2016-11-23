@@ -1,18 +1,13 @@
 
+<%@page import="org.apache.taglibs.standard.tag.common.xml.ForEachTag"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 
 
 <head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	
 	
 
 <style>
@@ -32,12 +27,18 @@
 		$('.hello').slideDown();
 
 	});
+	
+
+
+	
 </script>
 
 </head>
-<body>
-				  	<jsp:include page="header.jsp"></jsp:include>
-			
+<body  >
+
+
+
+				  	<jsp:include page="header.jsp"></jsp:include>			
 	<c:choose>
 	
 	<c:when test="${ProductUserRequest==true}">

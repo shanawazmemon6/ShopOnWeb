@@ -1,5 +1,7 @@
 package com.niit.shoponweb.dao;
 
+import java.util.List;
+
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Supplier_Do;
@@ -15,7 +17,7 @@ public interface ProductDao {
 	public String   getProductList(Product prod);
 	public Product  getProduct(String p_id);
 	public boolean  deleteProduct(String d_p_id);
-	public String userProductList(String pro_id);
+	public List<Product> userProductList(String pro_id);
 
 
 

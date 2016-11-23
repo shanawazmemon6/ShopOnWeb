@@ -4,8 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-	
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 	
 <link rel="stylesheet" href="css/navstyle.css" />
 <style>
@@ -84,22 +91,22 @@ $(function() {
 
 
 });
+
 var cat=<%=session.getAttribute("cate_list")%>;
+	 angular.module('LoadModule',[]).controller('LoadController',function($scope){
+			
+           $scope.category=cat;
+           
+	 });
 
-
-angular.module('LoadModule',[]).controller('LoadController',function($scope){
-	
-	                   $scope.category=cat;
-	     
-
-});
 
 
 </script>
 
-</head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50"  ng-app="LoadModule" ng-controller="LoadController">
 
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50"  >
+     <div  >
 	<div class="container-fluid" style="background-color: #072f52;">
 		<a class="brand"><img src="images/insta.gif"></a>
 
@@ -120,7 +127,7 @@ angular.module('LoadModule',[]).controller('LoadController',function($scope){
 
 			</div>
 			<!-- nav-header -->
-			<div class="collapse navbar-collapse" id="myNavbar">
+			<div class="collapse navbar-collapse" id="myNavbar" ng-app="LoadModule" ng-controller="LoadController">
 				<ul class="nav navbar-nav navbar-left">
 					<li style="display: none;" class="list_category"><a  href="launchrequest"><b>Home</b></a></li>
 					<li style="display: none;" ng-repeat="cate in category" value="{{cate.cate_id}}" class="list_category"><a  href="userproduct?proid={{cate.cate_id}}"><b>{{cate.cate_name}}</b></a></li>
@@ -150,5 +157,6 @@ angular.module('LoadModule',[]).controller('LoadController',function($scope){
          
 		</div>
 		<!-- container -->
+		</div>
 
 	</nav>
