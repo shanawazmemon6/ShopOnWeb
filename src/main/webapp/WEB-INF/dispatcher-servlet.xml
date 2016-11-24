@@ -19,8 +19,12 @@
     <value>.jsp</value>
  </property>
  </bean>
- <mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"></mvc:resources>
+ <bean id="multipartResolver" 
+ class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
+ </bean>
+ <mvc:resources location="/WEB-INF/resources/images/site/" mapping="/images/**"></mvc:resources>
+  <mvc:resources location="/WEB-INF/resources/images/product/" mapping="/pro_images/**"></mvc:resources>
+ 
   <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"></mvc:resources>
-  <mvc:resources location="/WEB-INF/resources/lib/" mapping="/lib/**"></mvc:resources>
  <mvc:annotation-driven/>
 </beans>

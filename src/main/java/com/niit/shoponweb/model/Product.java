@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table
@@ -28,6 +30,16 @@ public class Product {
 	private String pro_desc;
 	@Column
 	private String pro_stock;
+	@Transient
+	private MultipartFile pro_image;
+
+	public MultipartFile getPro_image() {
+		return pro_image;
+	}
+
+	public void setPro_image(MultipartFile pro_image) {
+		this.pro_image = pro_image;
+	}
 
 	// @ManyToOne
 	// @JoinColumn(name="pro_cate_id",updatable=false,insertable=false,nullable=false)

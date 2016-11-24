@@ -5,12 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.niit.shoponweb.dao.ProductDao;
+import com.niit.shoponweb.image.Image_Upload;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Supplier_Do;
@@ -20,8 +21,8 @@ public class ProductController {
 	// injects Product DAO
 	@Autowired
 	ProductDao prodao;
-
-	// map the view to return String execute if method is get
+    String path="E:\\Workspace\\ShopOnWeb\\src\\main\\webapp\\WEB-INF\\resources\\images\\product";
+ 	// map the view to return String execute if method is get
 	@RequestMapping(value = "/productrequest", method = RequestMethod.GET)
 	public String getProductView(ModelMap m) {
 		// return the Login Product object
@@ -46,6 +47,8 @@ public class ProductController {
 	public String setProductData(@ModelAttribute("prod") Product prod, ModelMap m) {
 		// validating if save execute successful then returning message &
 		// true(validated in admin.jsp)
+		 MultipartFile part=prod.getPro_image();
+		 
 		if (prodao.saveProduct(prod)) {
 			m.addAttribute("message", "Update Successfully");
 			m.addAttribute("productrequest", true);
@@ -56,7 +59,7 @@ public class ProductController {
 			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
 			m.addAttribute("prod_list", prod_list);
-
+            Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
 			return "admin";
 		}
 
@@ -106,6 +109,7 @@ public class ProductController {
 	public String updateRequest(@RequestParam("pid") String pid, Model m) {
 
 		Product pro = prodao.getProduct(pid);
+
 		m.addAttribute("prod", pro);
 		m.addAttribute("udate", true);
 		m.addAttribute("productrequest", true);
@@ -115,12 +119,15 @@ public class ProductController {
 		m.addAttribute("cate_list", cate_list);
 		m.addAttribute("sup_list", sup_list);
 		m.addAttribute("prod_list", prod_list);
+
 		return "admin";
 
 	}
 
 	@RequestMapping(value = "/updaterequestpost", method = RequestMethod.POST)
 	public String udateProductData(@ModelAttribute("prod") Product prod, ModelMap m) {
+		
+		MultipartFile part=prod.getPro_image();
 
 		if (prodao.updateProduct(prod)) {
 			m.addAttribute("message", "Update Successfully");
@@ -132,6 +139,8 @@ public class ProductController {
 			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
 			m.addAttribute("prod_list", prod_list);
+	        Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
+
 
 			return "admin";
 		}

@@ -24,6 +24,13 @@ angular.module('product_app',[]).controller('product_ctrl',function($scope){
 
 	
 });
+$(document).on('click', '.browse', function(){
+	  var file = $(this).parent().parent().parent().find('.file');
+	  file.trigger('click');
+	});
+	$(document).on('change', '.file', function(){
+	  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+	});
 
 
 </script>
@@ -72,7 +79,10 @@ padding:5px;
  top:10px;
  left:5px;
 }
-
+.file {
+  visibility: hidden;
+  position: absolute;
+}
 
 </style>
 </head>
@@ -84,7 +94,7 @@ padding:5px;
 			<h1>Product</h1>
 			${message}
 			<a:form action="productrequestpost" method="post"
-				modelAttribute="prod">
+				modelAttribute="prod" enctype="multipart/form-data">
 				<a:input path="pro_id" placeholder="Product Id"
 					class="form-control " style="margin-top:10px"/>
 				<a:input path="pro_name" placeholder="Product Name"
@@ -104,6 +114,19 @@ padding:5px;
 					class="form-control " />
 				<a:input path="pro_stock" placeholder="Product Stock"
 					class="form-control " style="margin-top:10px"/>
+					
+					 <div class="form-group" style="margin-top:10px;">
+              <a:input path="pro_image" placeholder="Product Image"
+					type="file" class="file" style="margin-top:10px"/>	    
+					<div class="input-group">
+      <input type="text" class="form-control "  placeholder="Upload Image">
+      <span class="input-group-btn">
+        <button class="browse btn btn-defualt " type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+      </span>
+    </div>
+  </div>
+					
+					
 				<a:button type="submit" class="btn btn-success btn-block button">Save</a:button>
 				<a class="btn btn-warning btn-block" href="productrequest">Clear</a>
 			</a:form>
@@ -114,7 +137,7 @@ padding:5px;
 			<h1>Product</h1>
 			${message}
 			<a:form action="updaterequestpost" method="post"
-				modelAttribute="prod">
+				modelAttribute="prod" enctype="multipart/form-data">
 				<a:input path="pro_id" placeholder="Product Id"
 					class="form-control " style="margin-top:10px"/>
 				<a:input path="pro_name" placeholder="Product Name"
@@ -131,9 +154,19 @@ padding:5px;
 									</a:select>
 				
 				<a:input path="pro_desc" placeholder="Product Description" style="margin-top:10px"
-					class="form-control " />
+					class="form-control"/>
 				<a:input path="pro_stock" placeholder="Product Stock"
 					class="form-control " style="margin-top:10px"/>
+					 <div class="form-group" style="margin-top:10px;">
+              <a:input path="pro_image" placeholder="Product Image"
+					type="file" class="file" style="margin-top:10px"/>	    
+					<div class="input-group">
+      <input type="text" class="form-control "  placeholder="Upload Image">
+      <span class="input-group-btn">
+        <button class="browse btn btn-defualt " type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+      </span>
+    </div>
+  </div>
 				<a:button type="submit" class="btn btn-success btn-block button">Update</a:button>
 				<a class="btn btn-warning btn-block" href="productrequest">Clear</a>
 			</a:form>
@@ -160,10 +193,18 @@ padding:5px;
    
   
    </div>
+   
    <div id={{prod.pro_id}} class="panel-collapse collapse ">
     <div class="panel-body">
+    <div class="col-sm-6">
+<!-- <div align="center"> -->
+<img width="150px" height="150px"  class="img-responsive" alt="img" src="pro_images/{{prod.pro_id}}.jpg">
+<!-- </div>
+ --></div>
+            <div class="col-sm-6">
     
     <ul class="list-group">
+   
   <li class="list-group-item"><span><b>Product Id:</b></span>&nbsp;&nbsp;{{prod.pro_id}}</li>
   <li class="list-group-item"><b>Product Price:</b>&nbsp;&nbsp;{{prod.pro_price}}</li>
   <li class="list-group-item"><b>Product Category Id:</b>&nbsp;&nbsp;{{prod.pro_cate_id}}</li>
@@ -173,6 +214,9 @@ padding:5px;
     <li class="list-group-item"><b>Product Stock:</b>&nbsp;&nbsp;{{prod.pro_stock}}</li>
   
 </ul>
+
+  </div>
+
    </div>
    </div>
    </div>

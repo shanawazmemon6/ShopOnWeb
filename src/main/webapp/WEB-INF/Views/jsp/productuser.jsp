@@ -25,6 +25,14 @@ margin-top:5px;
 #butt_group{
 padding:10px;
 }
+
+
+#panel_body {
+  position: relative;
+  overflow: hidden;
+     height: 220px;
+  
+}
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -33,24 +41,19 @@ padding:10px;
   padding: 0;
 }
 
-.panel-body {
-  position: relative;
-  
-  overflow: hidden;
-}
- img {
-  max-width: 100%;
-  
+ #pro_img {
+   max-width: 100%;
+ 
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.panel-body > a>img:hover{
+#panel_body > a>img:hover{
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-/*     -webkit-filter: blur(2px);
- */    -webkit-filter: grayscale(40%);
+/*      -webkit-filter: blur(2px);
+ */    -webkit-filter: grayscale(40%); 
   
 }
 
@@ -61,8 +64,8 @@ padding:10px;
 <div class="container-fluid" >
 <h:forEach  items="${prolist }" var="pro">
 <div class="col-sm-2">
-<div class="panel panel-default" >
-  <div class="panel-body"><a href="#"><img class="img-responsive" alt="img" src="http://static4.shop.indiatimes.com/images/products/additional/original/B3423710_View_1/fashion/shirts/top-notch-black-men-shirts-rcdsh-a.jpg"></a></div>
+<div class="panel panel-default" id="panel" >
+  <div class="panel-body" id="panel_body"><a href="#"><img id="pro_img" class="img-responsive" alt="img" src="pro_images/${pro.pro_id}.jpg"></a></div>
   <div class="panel-footer text-center" ><b>${pro.pro_name}</b><br>
   <div style="margin-top:5px;"> <b style="color:red;">Rs.${pro.pro_price}</b></div>
     <div style="margin-top:5px;"><a class="btn btn-danger btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  </div>
