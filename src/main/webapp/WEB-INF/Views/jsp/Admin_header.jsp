@@ -103,10 +103,13 @@
 			<!-- nav-header -->
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="launchrequest"><b>HOME</b></a></li>
-					<li><a href="categoryrequest"><b>CATEGORY</b></a></li>
-					<li><a href="supplierrequest"><b>SUPPLIER</b></a></li>
-					<li><a href="productrequest"><b>PRODUCT</b></a></li>
+					<li><a href="launchrequest"><b>Home</b></a></li>
+					<li><a href="categoryrequest"><b>Category</b></a></li>
+				   <li><a href="subcategoryrequest"><b>Sub Category</b></a></li>
+					<li><a href="supplierrequest"><b>Supplier</b></a></li>
+					<li><a href="productrequest"><b>Product</b></a></li>
+					
+					
 				</ul>
 				<!-- nav -->
 				<ul class="nav navbar-nav navbar-right">

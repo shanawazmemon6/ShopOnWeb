@@ -7,9 +7,9 @@
 <title>Product</title>
 
 <style>
-.panel{
+#panel{
 	box-shadow: 2px 2px 5px #000;
-	margin-top:50px;
+	margin-top:10px;
 	
 
 }
@@ -30,7 +30,8 @@ padding:10px;
 #panel_body {
   position: relative;
   overflow: hidden;
-     height: 220px;
+     height: 200px;
+     
   
 }
 * {
@@ -56,16 +57,36 @@ padding:10px;
  */    -webkit-filter: grayscale(40%); 
   
 }
+.body_panel{
+margin-top: 10px;
+}
+.filter_panel{
+margin-top: 10px;
 
+}
 </style>
 
 </head>
 <body >
 <div class="container-fluid" >
-<h:forEach  items="${prolist }" var="pro">
+
 <div class="col-sm-2">
+<div class="panel panel-default filter_panel">
+<div class="panel-header text-center">
+<h3>Filter</h3>
+</div> <!-- filter_header -->
+</div> <!-- filter_panel -->
+</div>
+<div class="col-sm-10">
+<div class="panel panel-default body_panel">
+<div class="panel-header text-center">
+<h3>Mens</h3>
+</div>
+<div class="panel-body">
+<h:forEach  items="${prolist}" var="pro">
+<div class="col-sm-3">
 <div class="panel panel-default" id="panel" >
-  <div class="panel-body" id="panel_body"><a href="#"><img id="pro_img" class="img-responsive" alt="img" src="pro_images/${pro.pro_id}.jpg"></a></div>
+  <div class="panel-body" id="panel_body"><a href="product_display?product_id=${pro.pro_id}"><img id="pro_img" class="img-responsive" alt="img" src="pro_images/${pro.pro_id}.jpg"></a></div>
   <div class="panel-footer text-center" ><b>${pro.pro_name}</b><br>
   <div style="margin-top:5px;"> <b style="color:red;">Rs.${pro.pro_price}</b></div>
     <div style="margin-top:5px;"><a class="btn btn-danger btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  </div>
@@ -76,6 +97,9 @@ padding:10px;
 </div>
 </div>
 </h:forEach>
+</div> <!-- body panel -->
+</div> <!-- body_panel -->
 </div>
+</div> <!-- col-sm -->
 </body>
 </html>

@@ -46,6 +46,12 @@
 			<jsp:include page="productuser.jsp"></jsp:include>
 
 		</c:when>
+		<c:when test="${ProductRequestDisplay==true}">
+	
+			<jsp:include page="productDisplay.jsp"></jsp:include>
+
+		</c:when>
+		
 		
 		<c:when test="${LoginRequest==true}">
 			<div class="container">

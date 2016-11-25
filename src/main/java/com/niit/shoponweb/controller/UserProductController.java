@@ -23,4 +23,22 @@ public class UserProductController {
 	m.addAttribute("prolist", pro_userlist);
 		return "index";
 }
+	
+	@RequestMapping(value="/product_display",method=RequestMethod.GET)
+	
+	public String getUserProductDisplay(@RequestParam("product_id")String Product_id,ModelMap m){
+		
+		 m.addAttribute("ProductRequestDisplay",true);
+		 
+		List<Product> one_product=prodao.userProductList(Product_id);
+		m.addAttribute("one_product", one_product);
+		System.out.println(one_product);
+		
+		return "index";
+		
+		
+	}
+	
+	
+	
 }

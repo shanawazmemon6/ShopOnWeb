@@ -106,7 +106,7 @@ var cat=<%=session.getAttribute("cate_list")%>;
 
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50"  >
-     <div  >
+     <div >
 	<div class="container-fluid" style="background-color: #072f52;">
 		<a class="brand"><img src="images/insta.gif"></a>
 
@@ -115,7 +115,7 @@ var cat=<%=session.getAttribute("cate_list")%>;
 
 	<nav class="navbar navbar-default navbar-custom" data-spy="affix"
 		data-offset-top="197" role="navigation">
-
+		
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -151,12 +151,14 @@ var cat=<%=session.getAttribute("cate_list")%>;
 						</ul> <!-- dropdown menu --></li>
 					<!-- drop down -->
 				</ul>
+				
 				<!-- nav -->
 			</div>
 			<!-- collapse nav-bar -->
          
 		</div>
 		<!-- container -->
+</nav>
 		</div>
 
-	</nav>
+	

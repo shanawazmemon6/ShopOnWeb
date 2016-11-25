@@ -34,6 +34,9 @@
 		<c:when test="${categoryrequest==true}">
 			<jsp:include page="category.jsp"></jsp:include>
 		</c:when>
+		<c:when test="${subcategoryrequest==true}">
+			<jsp:include page="subcategory.jsp"></jsp:include>
+		</c:when>
 		<c:when test="${supplierrequest==true}">
 			<jsp:include page="supplier.jsp"></jsp:include>
 		</c:when>
