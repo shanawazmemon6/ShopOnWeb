@@ -14,6 +14,7 @@ import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.image.Image_Upload;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
+import com.niit.shoponweb.model.SubCategory;
 import com.niit.shoponweb.model.Supplier_Do;
 
 @Controller
@@ -34,6 +35,8 @@ public class ProductController {
 		String cate_list = prodao.getCategoryList(new Category());
 		String sup_list = prodao.getSupplierList(new Supplier_Do());
 		String prod_list = prodao.getProductList(new Product());
+		String subcate_list=prodao.getSubCategoryList(new SubCategory());
+		m.addAttribute("subcate_list",subcate_list);
 		m.addAttribute("cate_list", cate_list);
 		m.addAttribute("sup_list", sup_list);
 		m.addAttribute("prod_list", prod_list);
@@ -56,6 +59,8 @@ public class ProductController {
 			String cate_list = prodao.getCategoryList(new Category());
 			String sup_list = prodao.getSupplierList(new Supplier_Do());
 			String prod_list = prodao.getProductList(new Product());
+			String subcate_list=prodao.getSubCategoryList(new SubCategory());
+			m.addAttribute("subcate_list",subcate_list);
 			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
 			m.addAttribute("prod_list", prod_list);
@@ -85,6 +90,8 @@ public class ProductController {
 			String cate_list = prodao.getCategoryList(new Category());
 			String sup_list = prodao.getSupplierList(new Supplier_Do());
 			String prod_list = prodao.getProductList(new Product());
+			String subcate_list=prodao.getSubCategoryList(new SubCategory());
+			m.addAttribute("subcate_list",subcate_list);
 			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
 			m.addAttribute("prod_list", prod_list);
@@ -97,6 +104,8 @@ public class ProductController {
 			String cate_list = prodao.getCategoryList(new Category());
 			String sup_list = prodao.getSupplierList(new Supplier_Do());
 			String prod_list = prodao.getProductList(new Product());
+			String subcate_list=prodao.getSubCategoryList(new SubCategory());
+			m.addAttribute("subcate_list",subcate_list);
 			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
 			m.addAttribute("prod_list", prod_list);
@@ -116,6 +125,8 @@ public class ProductController {
 		String cate_list = prodao.getCategoryList(new Category());
 		String sup_list = prodao.getSupplierList(new Supplier_Do());
 		String prod_list = prodao.getProductList(new Product());
+		String subcate_list=prodao.getSubCategoryList(new SubCategory());
+		m.addAttribute("subcate_list",subcate_list);
 		m.addAttribute("cate_list", cate_list);
 		m.addAttribute("sup_list", sup_list);
 		m.addAttribute("prod_list", prod_list);
@@ -136,6 +147,8 @@ public class ProductController {
 			String cate_list = prodao.getCategoryList(new Category());
 			String sup_list = prodao.getSupplierList(new Supplier_Do());
 			String prod_list = prodao.getProductList(new Product());
+			String subcate_list=prodao.getSubCategoryList(new SubCategory());
+			m.addAttribute("subcate_list",subcate_list);
 			m.addAttribute("cate_list", cate_list);
 			m.addAttribute("sup_list", sup_list);
 			m.addAttribute("prod_list", prod_list);

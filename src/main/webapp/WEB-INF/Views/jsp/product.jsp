@@ -14,12 +14,14 @@
 var cate_list=${cate_list};
 var sup_list=${sup_list};
 var prod_list=${prod_list};
+var subcate_list=${subcate_list};
 
 
 angular.module('product_app',[]).controller('product_ctrl',function($scope){
 	$scope.category=cate_list;
 	$scope.suplier=sup_list;
 	$scope.product=prod_list;
+	$scope.subcategory=subcate_list;
 
 
 	
@@ -105,6 +107,10 @@ padding:5px;
 				<a:option value="-1">Select Category Name</a:option>
 					<a:option ng-repeat="cat in category" value="{{cat.cate_id}}">{{cat.cate_name}}</a:option>
 									</a:select>
+									<a:select path="pro_sub_cate_id" class="form-control" style="margin-top:10px"> 
+				<a:option value="-1">Select Sub Category Name</a:option>
+					<a:option ng-repeat="sub in subcategory" value="{{sub.sub_cate_id}}">{{sub.sub_cate_name}}</a:option>
+									</a:select>
 			<a:select path="pro_sup_id" class="form-control" style="margin-top:10px"> 
 				<a:option value="-1">Select Supplier Name</a:option>
 					<a:option ng-repeat="sup in suplier" value="{{sup.sup_id}}">{{sup.sup_name}}</a:option>
@@ -147,6 +153,10 @@ padding:5px;
 				<a:select path="pro_cate_id" class="form-control" style="margin-top:10px"> 
 				<a:option value="-1">Select Category Name</a:option>
 					<a:option ng-repeat="cat in category" value="{{cat.cate_id}}">{{cat.cate_name}}</a:option>
+									</a:select>
+									<a:select path="pro_sub_cate_id" class="form-control" style="margin-top:10px"> 
+				<a:option value="-1">Select Sub Category Name</a:option>
+					<a:option ng-repeat="sub in subcategory" value="{{sub.sub_cate_id}}">{{sub.sub_cate_name}}</a:option>
 									</a:select>
 			<a:select path="pro_sup_id" class="form-control" style="margin-top:10px"> 
 				<a:option value="-1">Select Supplier Name</a:option>
@@ -208,6 +218,8 @@ padding:5px;
   <li class="list-group-item"><span><b>Product Id:</b></span>&nbsp;&nbsp;{{prod.pro_id}}</li>
   <li class="list-group-item"><b>Product Price:</b>&nbsp;&nbsp;{{prod.pro_price}}</li>
   <li class="list-group-item"><b>Product Category Id:</b>&nbsp;&nbsp;{{prod.pro_cate_id}}</li>
+    <li class="list-group-item"><b>Product Sub Category Id:</b>&nbsp;&nbsp;{{prod.pro_sub_cate_id}}</li>
+  
     <li class="list-group-item"><b>Product Supplier Id:</b>&nbsp;&nbsp;{{prod.pro_sup_id}}</li>
   
     <li class="list-group-item"><b>Product Description:</b>&nbsp;&nbsp;{{prod.pro_desc}}</li>

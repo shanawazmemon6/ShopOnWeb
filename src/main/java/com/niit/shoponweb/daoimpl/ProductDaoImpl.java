@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
+import com.niit.shoponweb.model.SubCategory;
 import com.niit.shoponweb.model.Supplier_Do;
 
 @Repository("ProductDao")
@@ -119,12 +120,57 @@ public class ProductDaoImpl implements ProductDao {
 		     
 		String productListQuery="from Product where pro_cate_id ='"+pro_id+"'";
 		Query query_pro=SessionFactory.getCurrentSession().createQuery(productListQuery);
+		@SuppressWarnings("unchecked")
 		List<Product> prod_list=query_pro.list();
 		
 		
 		
 		return prod_list;
 	}
+
+	@Transactional
+	public String getSubCategoryList(SubCategory subcate) {
+		 
+		@SuppressWarnings("unchecked")
+		List<SubCategory> subcate_list= (List<SubCategory>) SessionFactory.getCurrentSession().createCriteria(SubCategory.class).list();
+		Gson gson_sub=new Gson();
+		String subcate_json=gson_sub.toJson(subcate_list);
+		
+		return subcate_json;
+	}
+
+	@Transactional
+	public List<Category> getCategoryListArray(String cat_id) {
+		
+	     
+			String categoryListQuery="from Category where cate_id ='"+cat_id+"'";
+			Query query_pro=SessionFactory.getCurrentSession().createQuery(categoryListQuery);
+			@SuppressWarnings("unchecked")
+			List<Category> cate_list=query_pro.list();		
+			
+			return cate_list;
+	}
+
+	@Transactional
+	public List<SubCategory> getSubCategoryListArray(String sub_id) {
+		String subCategoryListQuery="from SubCategory where subcate_cate ='"+sub_id+"'";
+		Query query_pro=SessionFactory.getCurrentSession().createQuery(subCategoryListQuery);
+		@SuppressWarnings("unchecked")
+		List<SubCategory> subcate_list=query_pro.list();
+
+		return subcate_list;
+	}
+
+	@Transactional
+	public List<Product> getProductwithSubCate(String sub_id) {
+		String prowithsubcategory="from Product where pro_sub_cate_id ='"+sub_id+"'";
+		Query query_pro=SessionFactory.getCurrentSession().createQuery(prowithsubcategory);
+		@SuppressWarnings("unchecked")
+		List<Product> subcate_list=query_pro.list();
+		
+		return subcate_list;
+	}
+
 
 	
 

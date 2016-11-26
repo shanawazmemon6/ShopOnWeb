@@ -25,6 +25,10 @@ public class Product {
 	@Column
 	private String pro_cate_id;
 	@Column
+	private String pro_sub_cate_id;     
+	
+
+	@Column
 	private String pro_sup_id;
 	@Column
 	private String pro_desc;
@@ -49,6 +53,13 @@ public class Product {
 	// @JoinColumn(name="pro_sup_id",updatable=false,insertable=false,nullable=false)
 	// private String supplier;
 	//
+	public String getPro_sub_cate_id() {
+		return pro_sub_cate_id;
+	}
+
+	public void setPro_sub_cate_id(String pro_sub_cate_id) {
+		this.pro_sub_cate_id = pro_sub_cate_id;
+	}
 	public String getPro_id() {
 		return pro_id;
 	}

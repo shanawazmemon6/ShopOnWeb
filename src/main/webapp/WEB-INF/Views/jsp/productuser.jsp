@@ -4,17 +4,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
+
 <title>Product</title>
 
 <style>
 #panel{
 	box-shadow: 2px 2px 5px #000;
 	margin-top:10px;
-	
-
-}
-
-
+	}
 
 #stock{
 
@@ -64,23 +61,46 @@ margin-top: 10px;
 margin-top: 10px;
 
 }
+
+
+
+
+
 </style>
 
 </head>
 <body >
 <div class="container-fluid" >
-
 <div class="col-sm-2">
 <div class="panel panel-default filter_panel">
-<div class="panel-header text-center">
-<h3>Filter</h3>
+<div class="panel-header">
+ <h3 style="margin-left:10px;" >Category</h3>
 </div> <!-- filter_header -->
+<div class="panel-body">
+
+<ul class="nav nav-pills nav-stacked " id="nav_hover" >
+ <h:forEach items="${catelist}" var="cate">
+  <li style="background-color:#337ab7;border-radius:5px;"  ><a href="userproduct?proid=${cate.cate_id}">All</a></li>
+   </h:forEach>
+  
+    <h:forEach items="${subcatelist}" var="subcate">
+   <li style="background-color:#337ab7;border-radius:5px;" ><a href="product_filter?sub_id=${subcate.sub_cate_id}&proid=${subcate.subcate_cate}">${subcate.sub_cate_name}</a></li>
+      </h:forEach>
+  
+  </ul>
+  
+</div> <!-- filter-body -->
+
 </div> <!-- filter_panel -->
+
 </div>
 <div class="col-sm-10">
 <div class="panel panel-default body_panel">
-<div class="panel-header text-center">
-<h3>Mens</h3>
+<div class="panel-header">
+<h:forEach items="${catelist}" var="cate">
+<h3 style="margin-left:10px;" >${cate.cate_name}</h3>
+<div style="margin-left:10px;">${cate.cate_name}<span style="color:red"><b> ></b></span> </div>
+</h:forEach>
 </div>
 <div class="panel-body">
 <h:forEach  items="${prolist}" var="pro">
