@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.image.Image_Upload;
+import com.niit.shoponweb.image.Multiple_Image_Upload;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.SubCategory;
@@ -51,31 +52,47 @@ public class ProductController {
 		// validating if save execute successful then returning message &
 		// true(validated in admin.jsp)
 		 MultipartFile part=prod.getPro_image();
-		 
-		if (prodao.saveProduct(prod)) {
-			m.addAttribute("message", "Update Successfully");
-			m.addAttribute("productrequest", true);
-			m.addAttribute("edit", true);
-			String cate_list = prodao.getCategoryList(new Category());
-			String sup_list = prodao.getSupplierList(new Supplier_Do());
-			String prod_list = prodao.getProductList(new Product());
-			String subcate_list=prodao.getSubCategoryList(new SubCategory());
-			m.addAttribute("subcate_list",subcate_list);
-			m.addAttribute("cate_list", cate_list);
-			m.addAttribute("sup_list", sup_list);
-			m.addAttribute("prod_list", prod_list);
-            Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
-			return "admin";
-		}
+         if(Multiple_Image_Upload.uploadMultipleImage(path, prod.getMultipleImage(), prod.getPro_id()))
+         {
 
-		else {
-			m.addAttribute("productrequest", true);
-			m.addAttribute("edit", true);
-			m.addAttribute("message", "Something Went Wrong");
+		 prod.setImage_one( prod.getPro_id()+"s1"+".jpg");
+			prod.setImage_two( prod.getPro_id()+"s2"+".jpg");
+			prod.setImage_three( prod.getPro_id()+"s3"+".jpg");
+			prod.setImage_four( prod.getPro_id()+"s4"+".jpg");
+			if (prodao.saveProduct(prod)) {
+				m.addAttribute("message", "Update Successfully");
+				m.addAttribute("productrequest", true);
+				m.addAttribute("edit", true);
+				String cate_list = prodao.getCategoryList(new Category());
+				String sup_list = prodao.getSupplierList(new Supplier_Do());
+				String prod_list = prodao.getProductList(new Product());
+				String subcate_list=prodao.getSubCategoryList(new SubCategory());
+				m.addAttribute("subcate_list",subcate_list);
+				m.addAttribute("cate_list", cate_list);
+				m.addAttribute("sup_list", sup_list);
+				m.addAttribute("prod_list", prod_list);
+	            Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
 
-			return "admin";
+				return "admin";
+			}
 
-		}
+			else {
+				m.addAttribute("productrequest", true);
+				m.addAttribute("edit", true);
+				m.addAttribute("message", "Something Went Wrong");
+
+				return "admin";
+
+			}
+         }
+         else{
+        	 m.addAttribute("productrequest", true);
+				m.addAttribute("edit", true);
+				m.addAttribute("message", "Something Went Wrong");
+
+				return "admin";
+         }
+	
 
 	}
 
@@ -139,33 +156,56 @@ public class ProductController {
 	public String udateProductData(@ModelAttribute("prod") Product prod, ModelMap m) {
 		
 		MultipartFile part=prod.getPro_image();
+        
+		 if(Multiple_Image_Upload.uploadMultipleImage(path, prod.getMultipleImage(), prod.getPro_id()))
+         {
 
-		if (prodao.updateProduct(prod)) {
-			m.addAttribute("message", "Update Successfully");
-			m.addAttribute("productrequest", true);
-			m.addAttribute("edit", true);
-			String cate_list = prodao.getCategoryList(new Category());
-			String sup_list = prodao.getSupplierList(new Supplier_Do());
-			String prod_list = prodao.getProductList(new Product());
-			String subcate_list=prodao.getSubCategoryList(new SubCategory());
-			m.addAttribute("subcate_list",subcate_list);
-			m.addAttribute("cate_list", cate_list);
-			m.addAttribute("sup_list", sup_list);
-			m.addAttribute("prod_list", prod_list);
-	        Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
+		    prod.setImage_one( prod.getPro_id()+"s1"+".jpg");
+			prod.setImage_two( prod.getPro_id()+"s2"+".jpg");
+			prod.setImage_three( prod.getPro_id()+"s3"+".jpg");
+			prod.setImage_four( prod.getPro_id()+"s4"+".jpg");
+		     
+			if (prodao.updateProduct(prod)) {
+				m.addAttribute("message", "Update Successfully");
+				m.addAttribute("productrequest", true);
+				m.addAttribute("edit", true);
+				String cate_list = prodao.getCategoryList(new Category());
+				String sup_list = prodao.getSupplierList(new Supplier_Do());
+				String prod_list = prodao.getProductList(new Product());
+				String subcate_list=prodao.getSubCategoryList(new SubCategory());
+				m.addAttribute("subcate_list",subcate_list);
+				m.addAttribute("cate_list", cate_list);
+				m.addAttribute("sup_list", sup_list);
+				m.addAttribute("prod_list", prod_list);
+				
+		        Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
 
 
-			return "admin";
-		}
 
-		else {
-			m.addAttribute("productrequest", true);
-			m.addAttribute("edit", true);
-			m.addAttribute("message", "Something Went Wrong");
 
-			return "admin";
+				return "admin";
+			}
 
-		}
+			else {
+				m.addAttribute("productrequest", true);
+				m.addAttribute("edit", true);
+				m.addAttribute("message", "Something Went Wrong");
+
+				return "admin";
+
+			}
+         }
+		 else{
+			 m.addAttribute("productrequest", true);
+				m.addAttribute("edit", true);
+				m.addAttribute("message", "Something Went Wrong");
+				return "admin";
+
+		 }
+
+
+		
+       
 
 	}
 }

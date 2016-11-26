@@ -172,6 +172,14 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 
-	
+	@Transactional
+	public List<SubCategory> getSubCategoryClickArray(String sub_id) {
+		String subCategoryListQuery="from SubCategory where sub_cate_id ='"+sub_id+"'";
+		Query query_pro=SessionFactory.getCurrentSession().createQuery(subCategoryListQuery);
+		@SuppressWarnings("unchecked")
+		List<SubCategory> subcate_list=query_pro.list();
+
+		return subcate_list;
+	}
 
 }

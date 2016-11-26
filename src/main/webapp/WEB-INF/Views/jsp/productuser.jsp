@@ -99,7 +99,9 @@ margin-top: 10px;
 <div class="panel-header">
 <h:forEach items="${catelist}" var="cate">
 <h3 style="margin-left:10px;" >${cate.cate_name}</h3>
-<div style="margin-left:10px;">${cate.cate_name}<span style="color:red"><b> ></b></span> </div>
+<h:forEach items="${clickedsubcat}" var="clicked">
+<div style="margin-left:10px;">${cate.cate_name}<span style="color:red"><b> ></b></span>${clicked.sub_cate_name}</div>
+</h:forEach>
 </h:forEach>
 </div>
 <div class="panel-body">

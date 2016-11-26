@@ -123,7 +123,7 @@ padding:5px;
 					
 					 <div class="form-group" style="margin-top:10px;">
               <a:input path="pro_image" placeholder="Product Image"
-					type="file" class="file" style="margin-top:10px"/>	    
+					type="file" class="file"  style="margin-top:10px"/>	    
 					<div class="input-group">
       <input type="text" class="form-control "  placeholder="Upload Image">
       <span class="input-group-btn">
@@ -131,6 +131,7 @@ padding:5px;
       </span>
     </div>
   </div>
+      <a:input path="multipleImage" type="file" multiple="multiple"/>
 					
 					
 				<a:button type="submit" class="btn btn-success btn-block button">Save</a:button>
@@ -177,6 +178,8 @@ padding:5px;
       </span>
     </div>
   </div>
+        <a:input path="multipleImage" type="file" multiple="multiple"/>
+  
 				<a:button type="submit" class="btn btn-success btn-block button">Update</a:button>
 				<a class="btn btn-warning btn-block" href="productrequest">Clear</a>
 			</a:form>

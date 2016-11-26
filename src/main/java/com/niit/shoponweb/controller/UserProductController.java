@@ -43,8 +43,9 @@ public class UserProductController {
 		List<Product> prod_with_sub=prodao.getProductwithSubCate(sub_id);
 		List<SubCategory> pro_sub_cate=prodao.getSubCategoryListArray(pro);
 		List<Category> pro_cate=prodao.getCategoryListArray(pro);
-
-
+        List<SubCategory> clickedsubcat=prodao.getSubCategoryClickArray(sub_id);
+        m.addAttribute("clickedsubcat",clickedsubcat);
+      
 	    m.addAttribute("catelist",pro_cate);
 		m.addAttribute("subcatelist",pro_sub_cate);
 		m.addAttribute("prolist", prod_with_sub);

@@ -1,5 +1,7 @@
 package com.niit.shoponweb.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,8 +28,6 @@ public class Product {
 	private String pro_cate_id;
 	@Column
 	private String pro_sub_cate_id;     
-	
-
 	@Column
 	private String pro_sup_id;
 	@Column
@@ -36,6 +36,55 @@ public class Product {
 	private String pro_stock;
 	@Transient
 	private MultipartFile pro_image;
+	@Transient
+	private List<MultipartFile> multipleImage;
+	@Column
+	private String image_one;
+	@Column
+	private String image_two;
+     @Column
+ 	private String image_three;
+      @Column
+  	private String image_four;
+  	public String getImage_one() {
+		return image_one;
+	}
+
+	public void setImage_one(String image_one) {
+		this.image_one = image_one;
+	}
+
+	public String getImage_two() {
+		return image_two;
+	}
+
+	public void setImage_two(String image_two) {
+		this.image_two = image_two;
+	}
+
+	public String getImage_three() {
+		return image_three;
+	}
+
+	public void setImage_three(String image_three) {
+		this.image_three = image_three;
+	}
+
+	public String getImage_four() {
+		return image_four;
+	}
+
+	public void setImage_four(String image_four) {
+		this.image_four = image_four;
+	}
+
+	public List<MultipartFile> getMultipleImage() {
+		return multipleImage;
+	}
+
+	public void setMultipleImage(List<MultipartFile> multipleImage) {
+		this.multipleImage = multipleImage;
+	}
 
 	public MultipartFile getPro_image() {
 		return pro_image;
