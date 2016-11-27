@@ -55,6 +55,16 @@ public class UserProductController {
 		
 		
 	}
+	@RequestMapping(value="/product_display",method=RequestMethod.GET)
+	public String getParticularProductDisplay(@RequestParam("product_id")String proid,ModelMap m){
+		
+	     m.addAttribute("ProductRequestDisplay",true);
+	    List<Product> pro_part_list=prodao.getParticularProduct(proid);
+	     m.addAttribute("pro_part_list",pro_part_list);
+	    
+		    
+		return "index";
+	}
 	
 	
 	

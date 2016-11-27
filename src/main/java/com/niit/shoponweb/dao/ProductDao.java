@@ -24,6 +24,6 @@ public interface ProductDao {
 	public List<SubCategory>  getSubCategoryListArray(String sub_id);//get list of particular subcategory 
 	public List<Product>   getProductwithSubCate(String sub_id);//get list of product of subcategory
 	public List<SubCategory> getSubCategoryClickArray(String sub_id);//get list of particular subcategory 
-
+    public List<Product>     getParticularProduct(String pro_id);
 
 }

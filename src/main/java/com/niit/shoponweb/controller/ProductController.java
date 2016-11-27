@@ -79,6 +79,7 @@ public class ProductController {
 			else {
 				m.addAttribute("productrequest", true);
 				m.addAttribute("edit", true);
+				
 				m.addAttribute("message", "Something Went Wrong");
 
 				return "admin";
@@ -88,7 +89,16 @@ public class ProductController {
          else{
         	 m.addAttribute("productrequest", true);
 				m.addAttribute("edit", true);
-				m.addAttribute("message", "Something Went Wrong");
+				String cate_list = prodao.getCategoryList(new Category());
+				String sup_list = prodao.getSupplierList(new Supplier_Do());
+				String prod_list = prodao.getProductList(new Product());
+				String subcate_list=prodao.getSubCategoryList(new SubCategory());
+				m.addAttribute("subcate_list",subcate_list);
+				m.addAttribute("cate_list", cate_list);
+				m.addAttribute("sup_list", sup_list);
+				m.addAttribute("prod_list", prod_list);
+				
+				m.addAttribute("message", "Must upload 4 images");
 
 				return "admin";
          }
@@ -188,7 +198,7 @@ public class ProductController {
 
 			else {
 				m.addAttribute("productrequest", true);
-				m.addAttribute("edit", true);
+				m.addAttribute("udate", true);
 				m.addAttribute("message", "Something Went Wrong");
 
 				return "admin";
@@ -197,8 +207,17 @@ public class ProductController {
          }
 		 else{
 			 m.addAttribute("productrequest", true);
-				m.addAttribute("edit", true);
-				m.addAttribute("message", "Something Went Wrong");
+				m.addAttribute("udate", true);
+				String cate_list = prodao.getCategoryList(new Category());
+				String sup_list = prodao.getSupplierList(new Supplier_Do());
+				String prod_list = prodao.getProductList(new Product());
+				String subcate_list=prodao.getSubCategoryList(new SubCategory());
+				m.addAttribute("subcate_list",subcate_list);
+				m.addAttribute("cate_list", cate_list);
+				m.addAttribute("sup_list", sup_list);
+				m.addAttribute("prod_list", prod_list);
+				
+				m.addAttribute("message", "Must upload 4 images");
 				return "admin";
 
 		 }

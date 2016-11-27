@@ -181,5 +181,15 @@ public class ProductDaoImpl implements ProductDao {
 
 		return subcate_list;
 	}
+      @Transactional
+	public List<Product> getParticularProduct(String pro_id) {
+    	  
+    	  String particularproduct="from Product where pro_id='"+pro_id+"'";
+    	  
+    	  Query query_pro=SessionFactory.getCurrentSession().createQuery(particularproduct);
+  		@SuppressWarnings("unchecked")
+  		List<Product> prod_particular_list=query_pro.list();
+		return prod_particular_list;
+	}
 
 }

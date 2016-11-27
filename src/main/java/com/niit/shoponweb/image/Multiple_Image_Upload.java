@@ -16,8 +16,12 @@ public class Multiple_Image_Upload {
 
 	public static boolean uploadMultipleImage(String path,List<MultipartFile>  file,String file_name){
 		
+		
+		
 		if(!file.isEmpty())
 		{
+			if(file.size()==4){
+				
 			int i=1;
 
 				try {
@@ -46,7 +50,6 @@ public class Multiple_Image_Upload {
 						
 			}
 			
-			return true;	
 
 			
 		}
@@ -56,6 +59,11 @@ public class Multiple_Image_Upload {
 			e.printStackTrace();
 			return false;
 		}
+				return true;
+		}
+			else{
+				return false;
+			}
 
 		}
 		else{
