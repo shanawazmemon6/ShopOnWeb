@@ -25,6 +25,7 @@ margin-top:10px;
 #display_body{
 position: relative;
   overflow: hidden;
+  
 }
 
 .row>.panel-body>a>img:hover{
@@ -35,6 +36,7 @@ padding:2px;
 
 max-width:150px;
 min-height:80px;
+
 
 
 }
@@ -74,22 +76,30 @@ $(document).ready(function(){
 </head>
 <body>
 <div class="container-fluid">
+<div class="panel panel-default" id="display_panel">
+<d:forEach items="${pro_part_list}" var="pro_part">
+<div class="panel-heading"><b style="font-size: 18px">${pro_part.pro_name}</b>
+<div class="pull-right"><b style="color:red; font-size: 18px">Rs.${pro_part.pro_price}</b></div>
+
+</div>
+</d:forEach>
+<div class="panel-body ">
 <div class="col-sm-6">
 <div class="panel panel-default" id="display_panel">
 
 <div class="panel-body text-center" id="display_body">
 <div  class="col-sm-2">
 <d:forEach items="${pro_part_list}" var="pro_part">
-<div class="row">
-<div class="panel-body"  style="padding:0px;"><a href="#"><img  id="image"  alt="product" class="img-responsive" src="pro_images/${pro_part.pro_id}.jpg" width="30px" height="30px"></a></div>
 
-<div class="panel-body" style="padding:0px;"><a href="#"><img  id="image1"   class="img-responsive " alt="product1" src="pro_images/${pro_part.image_one}" width="30px" height="30px"></a></div>
-<div class="panel-body" style="padding:0px;"><a href="#"><img id="image2" class="img-responsive " alt="product2" src="pro_images/${pro_part.image_two}" width="30px" height="30px"></a></div>
-<div class="panel-body" style="padding:0px;"><a href="#"><img id="image3" class="img-responsive " alt="product3" src="pro_images/${pro_part.image_three}" width="30px" height="30px"></a></div>
-<div class="panel-body" style="padding:0px;"><a href="#"><img id="image4"  class="img-responsive " alt="product4" src="pro_images/${pro_part.image_four}" width="30px" height="30px"></a></div>
-</div>
+<a href="#"><img  id="image"  alt="product" class="img-responsive" src="pro_images/${pro_part.pro_id}.jpg" width="30px" height="30px"></a>
+<a href="#"><img  id="image1"   class="img-responsive " alt="product1" src="pro_images/${pro_part.image_one}" width="30px" height="30px"></a>
+<a href="#"><img id="image2" class="img-responsive " alt="product2" src="pro_images/${pro_part.image_two}" width="30px" height="30px"></a>
+<a href="#"><img id="image3" class="img-responsive " alt="product3" src="pro_images/${pro_part.image_three}" width="30px" height="30px"></a>
+<a href="#"><img id="image4"  class="img-responsive " alt="product4" src="pro_images/${pro_part.image_four}" width="30px" height="30px"></a>
+
 </d:forEach>
 </div>
+
 <d:forEach items="${pro_part_list}" var="pro_part">
 <div  class="col-sm-10">
 <div class="panel-body" id="single_image">
@@ -100,16 +110,54 @@ $(document).ready(function(){
 </div>
 
 </div>
-
+<div class="col-sm-6 ">
+<a class="btn btn-danger  btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  
 </div>
+<div class="col-sm-6 ">
+<a class="btn btn-success  btn-block"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a>
+</div>
+</div>
+
+
 <div class="col-sm-6">
+
+
 <d:forEach items="${pro_part_list}" var="pro_part">
-<h3>${pro_part.pro_name}</h3>
-<h2>Rs.${pro_part.pro_price}</h2>
-<p>${pro_part.pro_desc}</p>
-</d:forEach>
+<h2></h2>
+<p><b>${pro_part.pro_desc}</b></p>
+<pre>
+Fabric: Cotton
+Slim Fit, Roll-up Sleeve
+Collar Type: REGULAR
+Pattern: Solid
+Set of 1
+</pre>
+<div class="panel panel-default">
+<div class="panel-heading">
+Specification
+</div>
+<pre>
+
+Pack of      1
+Model Name   Shirt
+Style Code   HLSH008839 EPIC KHAKI
+Fit          Slim
+Fabric       Cotton
+Sleeve       Roll-up Sleeve
+Pattern      Solid
+Reversible   No 
+Collar       REGULAR
+Fabric Care  Gentle Machine Wash in Lukewarm Water, Do Not Bleach
+Suitable For Western Wear
+
+</pre>
 </div>
 
+</d:forEach>
+
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
