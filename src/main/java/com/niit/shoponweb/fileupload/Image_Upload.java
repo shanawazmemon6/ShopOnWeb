@@ -1,10 +1,11 @@
-package com.niit.shoponweb.image;
+package com.niit.shoponweb.fileupload;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Image_Upload {

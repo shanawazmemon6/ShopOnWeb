@@ -28,10 +28,11 @@ position: relative;
   
 }
 
-.row>.panel-body>a>img:hover{
+.hover_effect>a>img:hover{
 border:2px solid #f2613c;
 padding:2px;
 }
+
 #display{
 
 max-width:150px;
@@ -90,13 +91,13 @@ $(document).ready(function(){
 <div class="panel-body text-center" id="display_body">
 <div  class="col-sm-2">
 <d:forEach items="${pro_part_list}" var="pro_part">
-
+<div class="hover_effect">
 <a href="#"><img  id="image"  alt="product" class="img-responsive" src="pro_images/${pro_part.pro_id}.jpg" width="30px" height="30px"></a>
 <a href="#"><img  id="image1"   class="img-responsive " alt="product1" src="pro_images/${pro_part.image_one}" width="30px" height="30px"></a>
 <a href="#"><img id="image2" class="img-responsive " alt="product2" src="pro_images/${pro_part.image_two}" width="30px" height="30px"></a>
 <a href="#"><img id="image3" class="img-responsive " alt="product3" src="pro_images/${pro_part.image_three}" width="30px" height="30px"></a>
 <a href="#"><img id="image4"  class="img-responsive " alt="product4" src="pro_images/${pro_part.image_four}" width="30px" height="30px"></a>
-
+</div>
 </d:forEach>
 </div>
 

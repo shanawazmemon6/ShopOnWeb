@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.niit.shoponweb.dao.ProductDao;
-import com.niit.shoponweb.image.Image_Upload;
-import com.niit.shoponweb.image.Multiple_Image_Upload;
+import com.niit.shoponweb.fileupload.Image_Upload;
+import com.niit.shoponweb.fileupload.Multiple_Image_Upload;
+import com.niit.shoponweb.fileupload.TextDocument;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.SubCategory;
@@ -52,9 +53,10 @@ public class ProductController {
 		// validating if save execute successful then returning message &
 		// true(validated in admin.jsp)
 		 MultipartFile part=prod.getPro_image();
+		 MultipartFile text_document=prod.getPro_text();
          if(Multiple_Image_Upload.uploadMultipleImage(path, prod.getMultipleImage(), prod.getPro_id()))
          {
-
+            
 		 prod.setImage_one( prod.getPro_id()+"s1"+".jpg");
 			prod.setImage_two( prod.getPro_id()+"s2"+".jpg");
 			prod.setImage_three( prod.getPro_id()+"s3"+".jpg");
@@ -72,6 +74,7 @@ public class ProductController {
 				m.addAttribute("sup_list", sup_list);
 				m.addAttribute("prod_list", prod_list);
 	            Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
+	            TextDocument.UploadText(path, text_document,prod.getPro_id()+".txt" );
 
 				return "admin";
 			}
@@ -166,6 +169,8 @@ public class ProductController {
 	public String udateProductData(@ModelAttribute("prod") Product prod, ModelMap m) {
 		
 		MultipartFile part=prod.getPro_image();
+		 MultipartFile text_document=prod.getPro_text();
+
         
 		 if(Multiple_Image_Upload.uploadMultipleImage(path, prod.getMultipleImage(), prod.getPro_id()))
          {
@@ -189,6 +194,8 @@ public class ProductController {
 				m.addAttribute("prod_list", prod_list);
 				
 		        Image_Upload.UploadMethod(path, part, prod.getPro_id()+".jpg");
+	            TextDocument.UploadText(path, text_document,prod.getPro_id()+".txt" );
+
 
 
 

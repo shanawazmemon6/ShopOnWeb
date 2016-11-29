@@ -1,4 +1,4 @@
-package com.niit.shoponweb.image;
+package com.niit.shoponweb.fileupload;
 
 import java.io.BufferedOutputStream;
 import java.io.File;

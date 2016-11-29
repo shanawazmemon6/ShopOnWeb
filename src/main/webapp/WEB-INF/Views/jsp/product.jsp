@@ -131,6 +131,16 @@ padding:5px;
       </span>
     </div>
   </div>
+   <div class="form-group" style="margin-top:10px;">
+              <a:input path="pro_text" placeholder="Product Image"
+					type="file" class="file"  style="margin-top:10px"/>	    
+					<div class="input-group">
+      <input type="text" class="form-control "  placeholder="Upload Full Description">
+      <span class="input-group-btn">
+        <button class="browse btn btn-defualt " type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+      </span>
+    </div>
+  </div>
       <a:input path="multipleImage" type="file" multiple="multiple"/>
 					
 					
@@ -173,6 +183,16 @@ padding:5px;
 					type="file" class="file" style="margin-top:10px"/>	    
 					<div class="input-group">
       <input type="text" class="form-control "  placeholder="Upload Image">
+      <span class="input-group-btn">
+        <button class="browse btn btn-defualt " type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+      </span>
+    </div>
+  </div>
+  <div class="form-group" style="margin-top:10px;">
+              <a:input path="pro_text" placeholder="Product Image"
+					type="file" class="file"  style="margin-top:10px"/>	    
+					<div class="input-group">
+      <input type="text" class="form-control "  placeholder="Upload Full Description">
       <span class="input-group-btn">
         <button class="browse btn btn-defualt " type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
       </span>

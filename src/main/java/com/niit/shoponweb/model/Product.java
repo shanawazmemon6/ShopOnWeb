@@ -46,7 +46,19 @@ public class Product {
  	private String image_three;
       @Column
   	private String image_four;
-  	public String getImage_one() {
+      @Transient
+      private MultipartFile pro_text;
+  	
+
+	public MultipartFile getPro_text() {
+		return pro_text;
+	}
+
+	public void setPro_text(MultipartFile pro_text) {
+		this.pro_text = pro_text;
+	}
+
+	public String getImage_one() {
 		return image_one;
 	}
 
