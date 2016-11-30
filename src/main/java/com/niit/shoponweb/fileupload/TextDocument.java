@@ -1,9 +1,13 @@
 package com.niit.shoponweb.fileupload;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,5 +42,40 @@ public class TextDocument {
 		
 		return false;
 	}
+public static BufferedReader ReadText( String file_name) {
+
+		 
+    String path="E:\\Workspace\\ShopOnWeb\\src\\main\\webapp\\WEB-INF\\resources\\images\\product";
+
+	
+
+			File dir=new File(path);
+			
+			File  uploading_text=new File(dir.getAbsolutePath()+File.separator+file_name);  
+			if(uploading_text.exists()){
+				System.out.println("exists");
+			}
+			else{
+				System.out.println("not exists");
+
+			}
+			@SuppressWarnings("resource")
+			BufferedReader br = null;
+			try {
+				br = new BufferedReader(new FileReader(uploading_text));
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+
+			   			   
+			
+return br;
+		
+		
+	}
+
+	
 
 }

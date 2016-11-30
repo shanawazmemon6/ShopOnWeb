@@ -1,5 +1,9 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="com.niit.shoponweb.fileupload.TextDocument"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="m"%>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,7 +19,7 @@ margin-top:10px;
 #display_panel{
 
 
-margin-top:10px;
+margin-top:20px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -79,14 +83,13 @@ $(document).ready(function(){
 <div class="container-fluid">
 <div class="panel panel-default" id="display_panel">
 <d:forEach items="${pro_part_list}" var="pro_part">
-<div class="panel-heading"><b style="font-size: 18px">${pro_part.pro_name}</b>
-<div class="pull-right"><b style="color:red; font-size: 18px">Rs.${pro_part.pro_price}</b></div>
+<div class="panel-heading"><b style="font-size: 18px">${pro_part.pro_desc}</b>
 
 </div>
 </d:forEach>
 <div class="panel-body ">
 <div class="col-sm-6">
-<div class="panel panel-default" id="display_panel">
+<div class="panel panel-default" id="display_panel"  width="1000px" height="300px" >
 
 <div class="panel-body text-center" id="display_body">
 <div  class="col-sm-2">
@@ -125,35 +128,18 @@ $(document).ready(function(){
 
 <d:forEach items="${pro_part_list}" var="pro_part">
 <h2></h2>
-<p><b>${pro_part.pro_desc}</b></p>
-<pre>
-Fabric: Cotton
-Slim Fit, Roll-up Sleeve
-Collar Type: REGULAR
-Pattern: Solid
-Set of 1
-</pre>
+
+
 <div class="panel panel-default">
 <div class="panel-heading">
-Specification
+<div class="panel-heading"><b style="font-size: 18px">${pro_part.pro_name}</b>
+<div class="pull-right"><b style="color:red; font-size: 18px">Rs.${pro_part.pro_price}</b></div>
 </div>
-<pre>
-
-Pack of      1
-Model Name   Shirt
-Style Code   HLSH008839 EPIC KHAKI
-Fit          Slim
-Fabric       Cotton
-Sleeve       Roll-up Sleeve
-Pattern      Solid
-Reversible   No 
-Collar       REGULAR
-Fabric Care  Gentle Machine Wash in Lukewarm Water, Do Not Bleach
-Suitable For Western Wear
-
-</pre>
 </div>
-
+<div>
+<pre style=" background-color: #ffffff; border:0px;" ><b>${line}</b></pre>
+</div>
+</div>
 </d:forEach>
 
 </div>
