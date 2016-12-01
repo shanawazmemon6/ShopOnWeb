@@ -2,10 +2,7 @@ package com.niit.shoponweb.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,15 +10,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.fileupload.TextDocument;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.SubCategory;
-import com.niit.shoponweb.model.Supplier_Do;
 
 @Controller
 public class UserProductController {
@@ -67,6 +61,7 @@ public class UserProductController {
 		
 	     m.addAttribute("ProductRequestDisplay",true);
 	     BufferedReader br=TextDocument.ReadText(proid+".txt");
+	     if(br!=null){
 	     StringBuilder builder = new StringBuilder();
 	     String line;
 	     try {
@@ -75,13 +70,17 @@ public class UserProductController {
 				builder.append(line+"\n");
 				 
 				}
-				System.out.println(builder);
 				m.addAttribute("line",builder);
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	     }
+	     else{
+				m.addAttribute("line","Specification will be added soon..");
+
+	     }
            List<Product> pro_part_list=prodao.getParticularProduct(proid);
 	     m.addAttribute("pro_part_list",pro_part_list);
 	    

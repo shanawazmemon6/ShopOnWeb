@@ -43,7 +43,6 @@ public class Multiple_Image_Upload {
 						bos.close();
 						
 						i++;
-						System.out.println("upload");
 
 
 						

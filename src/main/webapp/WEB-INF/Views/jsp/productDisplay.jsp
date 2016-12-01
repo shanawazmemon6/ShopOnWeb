@@ -1,6 +1,4 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.io.BufferedReader"%>
-<%@page import="com.niit.shoponweb.fileupload.TextDocument"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="m"%>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -45,6 +43,9 @@ min-height:80px;
 
 
 }
+.btn-mar{
+margin-bottom: 10px;
+}
 
 </style>
 <script >
@@ -82,11 +83,23 @@ $(document).ready(function(){
 <body>
 <div class="container-fluid">
 <div class="panel panel-default" id="display_panel">
+<div class="container-fluid " style="background-color:#eeeeee;">
 <d:forEach items="${pro_part_list}" var="pro_part">
-<div class="panel-heading"><b style="font-size: 18px">${pro_part.pro_desc}</b>
-
+<div class="panel-heading">
+<div class="col-sm-6">
+<div class="panel-title"><b style="font-size: 18px">${pro_part.pro_desc}</b></div>
 </div>
+<div class="col-sm-2 col-sm-offset-2">
+<a class="btn btn-danger  btn-block btn-mar"><i class="fa fa-money" aria-hidden="true"></i> BUY</a> 
+</div>
+<div class="col-sm-2 ">
+<a class="btn btn-success  btn-block btn-mar"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a>
+</div>
+</div>
+
 </d:forEach>
+</div>
+
 <div class="panel-body ">
 <div class="col-sm-6">
 <div class="panel panel-default" id="display_panel"  width="1000px" height="300px" >
@@ -114,12 +127,7 @@ $(document).ready(function(){
 </div>
 
 </div>
-<div class="col-sm-6 ">
-<a class="btn btn-danger  btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  
-</div>
-<div class="col-sm-6 ">
-<a class="btn btn-success  btn-block"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a>
-</div>
+
 </div>
 
 

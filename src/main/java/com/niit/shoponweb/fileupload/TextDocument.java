@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -53,13 +52,7 @@ public static BufferedReader ReadText( String file_name) {
 			
 			File  uploading_text=new File(dir.getAbsolutePath()+File.separator+file_name);  
 			if(uploading_text.exists()){
-				System.out.println("exists");
-			}
-			else{
-				System.out.println("not exists");
-
-			}
-			@SuppressWarnings("resource")
+			
 			BufferedReader br = null;
 			try {
 				br = new BufferedReader(new FileReader(uploading_text));
@@ -67,11 +60,15 @@ public static BufferedReader ReadText( String file_name) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+			return br;
 
+			}
+			else{
+				return null;
+
+			}
 			   			   
 			
-return br;
 		
 		
 	}
