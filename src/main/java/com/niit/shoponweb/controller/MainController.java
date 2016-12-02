@@ -9,7 +9,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.niit.shoponweb.dao.CategoryDao;
+import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.model.Category;
+import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Sign_list;
 
 @Controller
@@ -19,7 +21,12 @@ public class MainController {
 	CategoryDao cate_dao;
 	
 	@Autowired
+	ProductDao prodao;
+	
+	@Autowired
 	Category cate;
+	@Autowired
+	Product prod;
 	
 	String cate_list;
 	// mapping index.jsp
@@ -33,6 +40,8 @@ public class MainController {
 		session.setAttribute("SignUp", list.getSignup());
 		session.setAttribute("SignIn", list.getSignin());
 		 cate_list=cate_dao.getCategoryList(cate);
+		 String prod_list=prodao.getProductList(prod);
+		 session.setAttribute("prod_list", prod_list);
 		session.setAttribute("cate_list", cate_list);
 		
 		

@@ -40,7 +40,8 @@
 
 
 
-				  	<jsp:include page="header.jsp"></jsp:include>			
+   <jsp:include page="header.jsp"></jsp:include>	
+   		
 	<c:choose>
 	
 	<c:when test="${ProductUserRequest==true}">
@@ -135,6 +136,10 @@
 		</c:otherwise>
 
 	</c:choose>
+	<div style="background-color: #fff; width:550px; top:220px; border:rounded; left:450px;  position:absolute; display: none;"    class="list-group dropitdown">
+				<a ng-repeat="pro in product|filter:search" href="product_display?product_id={{pro.pro_id}}" class="list-group-item"><img width="30px" height="60px" src="pro_images/{{pro.pro_id}}.jpg"><span style="margin-left: 50px;"><b>{{pro.pro_name}}</b></span></a>
+				
+				</div>
 	<br>
 	<br>
  	<jsp:include page="footer.jsp"></jsp:include> 

@@ -28,7 +28,10 @@ public class TextDocument {
 			   byte[] bytes = file.getBytes();
 
 			   while ((read = in.read(bytes)) != -1) {
+
 			    outputStream.write(bytes, 0, read);
+
+			    
 			   }
 			
 			

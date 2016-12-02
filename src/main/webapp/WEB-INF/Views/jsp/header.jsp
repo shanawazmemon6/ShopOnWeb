@@ -93,19 +93,47 @@ $(function() {
 });
 
 var cat=<%=session.getAttribute("cate_list")%>;
+var pro=<%=session.getAttribute("prod_list")%>;
+
+
 	 angular.module('LoadModule',[]).controller('LoadController',function($scope){
 			
            $scope.category=cat;
+           $scope.product=pro;
+
+           
            
 	 });
-
-
+	 $(function() {
+		 
+		 $(".event_check").on('keyup', function() {
+		     if (this.value.length > 2) {
+		    	 
+		    	 $('.dropitdown').slideDown();
+		     }
+		       
+		    });
+		 $(".event_check").on('keyup', function() {
+		     if (this.value.length < 3) {
+		    	 
+		    	 $('.dropitdown').slideUp();
+		     }
+		       
+		    });
+		 $(".event_check").blur(function(){
+			 $('.dropitdown').slideUp();
+		       
+		    });
+			
+	    });
+ 
+	 
 
 </script>
 
 
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50"  >
+<body data-spy="scroll" data-target=".navbar" data-offset="50" ng-app="LoadModule" ng-controller="LoadController" >
      <div >
 	<div class="container-fluid" style="background-color: #072f52;">
 		<a class="brand"><img src="images/insta.gif"></a>
@@ -126,12 +154,22 @@ var cat=<%=session.getAttribute("cate_list")%>;
 				<a class="navbar-brand visible-xs" href="#" style="color: #ffffff;">ShopOnWeb</a>
 
 			</div>
+			<div>
 			<!-- nav-header -->
-			<div class="collapse navbar-collapse" id="myNavbar" ng-app="LoadModule" ng-controller="LoadController">
+			<div class="collapse navbar-collapse" id="myNavbar" >
 				<ul class="nav navbar-nav navbar-left">
 					<li style="display: none;" class="list_category"><a  href="launchrequest"><b>Home</b></a></li>
 					<li style="display: none;" ng-repeat="cate in category" value="{{cate.cate_id}}" class="list_category"><a  href="userproduct?proid={{cate.cate_id}}"><b>{{cate.cate_name}}</b></a></li>
+				   <li  class="slideit" style="margin-top:10px; margin-left:150px;"><input ng-model="search" class="form-control event_check" placeholder="Search For Products" type="text" style="width:550px;"/>
+				   
+				 
+				   
+				   </li>
+				   
+				
 				</ul>
+			
+				
 				<!-- nav -->
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -155,6 +193,7 @@ var cat=<%=session.getAttribute("cate_list")%>;
 				<!-- nav -->
 			</div>
 			<!-- collapse nav-bar -->
+				
          
 		</div>
 		<!-- container -->
