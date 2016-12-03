@@ -93,7 +93,7 @@ $(document).ready(function(){
 <a class="btn btn-danger  btn-block btn-mar"><i class="fa fa-money" aria-hidden="true"></i> BUY</a> 
 </div>
 <div class="col-sm-2 ">
-<a class="btn btn-success  btn-block btn-mar"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a>
+<a href="cart?pro_id=${pro_part.pro_id}" class="btn btn-success  btn-block btn-mar"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a>
 </div>
 </div>
 

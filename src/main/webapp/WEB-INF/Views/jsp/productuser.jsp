@@ -72,6 +72,7 @@ margin-top: 10px;
 <body >
 <div class="container-fluid" >
 <div class="col-sm-2">
+${message_add}
 <div class="panel panel-default filter_panel">
 <div class="panel-header">
  <h3 style="margin-left:10px;" >Category</h3>

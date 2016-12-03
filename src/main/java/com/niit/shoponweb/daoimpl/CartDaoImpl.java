@@ -22,15 +22,12 @@ public class CartDaoImpl implements CartDao {
 	@Transactional
 	public boolean save_cart(Cart car) {
 		
-		String cart_id=car.getCart_id();
-		String pro_id=car.getPro_id();
-		double cart_price=car.getPrice();
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(car);
 
-String insert_query="insert into cart(cart_id,pro_id,price)select('"+cart_id+"','"+pro_id+"',"+cart_price+")";
+
 	
-System.out.println(insert_query);
 
-sessionFactory.getCurrentSession().createQuery(insert_query);
 		
 		
 		return false;

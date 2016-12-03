@@ -1,6 +1,7 @@
 package com.niit.shoponweb.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +18,11 @@ public class Cart {
 	@Column
 	private String pro_id;
 	@Column
-	private int quantity;
+	private int quantity=1;
 	@Column
 	private double price;
 	@Column
-	private Date  date_cart;
+	private String  date_cart;
 	
 	
 
@@ -51,10 +52,10 @@ public class Cart {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Date getDate_cart() {
+	public String getDate_cart() {
 		return date_cart;
 	}
-	public void setDate_cart(Date date_cart) {
+	public void setDate_cart(String date_cart) {
 		this.date_cart = date_cart;
 	}
 	

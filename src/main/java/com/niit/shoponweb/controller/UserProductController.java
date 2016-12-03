@@ -2,7 +2,10 @@ package com.niit.shoponweb.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,15 +28,18 @@ public class UserProductController {
 	ProductDao prodao;
 	
 	@Autowired
-	Product pro;
+	Product prod;
 	
 	@Autowired
 	Cart cart;
 	@Autowired
 	CartDao cartdao;
 	
+	String insteproid;
+	
 	@RequestMapping(value="/userproduct",method=RequestMethod.GET)
 	public String getUserProduct(@RequestParam("proid")String pro,ModelMap m){
+		this.insteproid=pro;
    m.addAttribute("ProductUserRequest",true);
 	List<Product> pro_userlist=prodao.userProductList(pro);
 	List<Category> pro_cate=prodao.getCategoryListArray(pro);
@@ -95,22 +101,40 @@ public class UserProductController {
            
           m.addAttribute("pro_part_list",pro_part_list);
 	    
-         Product pro= prodao.getProduct(proid); 
+         Product prod= prodao.getProduct(proid); 
 		return "index";
 	}
 	
 	@RequestMapping(value="/cart",method=RequestMethod.GET)
 	public String addToCart(@RequestParam("pro_id")String proid,ModelMap m){
 		
-	 pro= prodao.getProduct(proid);
-     m.addAttribute("cart",true);
+	 prod= prodao.getProduct(proid);
+	 String random_id=UUID.randomUUID().toString();
+	 m.addAttribute("ProductUserRequest",true);
 
-	 if(pro!=null){
-	 cart.setCart_id(pro.getPro_id());
-	 cart.setPro_id(pro.getPro_id());
-	 cart.setPrice(pro.getPro_price());
-	 
+     Date date=new  Date();
+     
+     SimpleDateFormat date_format=new  SimpleDateFormat("yyyy/MM/dd");
+    String date_car= date_format.format(date);
+    
+    m.addAttribute("ProductUserRequest",true);
+
+	List<Product> pro_userlist=prodao.userProductList(insteproid);
+   	List<Category> pro_cate=prodao.getCategoryListArray(insteproid);
+   	List<SubCategory> pro_sub_cate=prodao.getSubCategoryListArray(insteproid);
+   	
+       m.addAttribute("catelist",pro_cate);
+   	m.addAttribute("prolist", pro_userlist);
+   	m.addAttribute("subcatelist",pro_sub_cate);
+
+	 if(prod!=null){
+	 cart.setCart_id(random_id);
+	 cart.setPro_id(prod.getPro_id());
+	 cart.setPrice(prod.getPro_price());
+	 cart.setDate_cart(date_car);
 	 cartdao.save_cart(cart);
+     m.addAttribute("message_add","Added to cart");
+
 	 
 	 }
 	  
