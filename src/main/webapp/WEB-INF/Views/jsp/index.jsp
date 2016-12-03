@@ -49,6 +49,16 @@
 			<jsp:include page="productuser.jsp"></jsp:include>
 
 		</c:when>
+		<c:when test="${cart==true}">
+	
+			<jsp:include page="cart.jsp"></jsp:include>
+
+		</c:when>
+			<c:when test="${error==true}">
+	
+			<jsp:include page="error.jsp"></jsp:include>
+
+		</c:when>
 		<c:when test="${ProductRequestDisplay==true}">
 	
 			<jsp:include page="productDisplay.jsp"></jsp:include>

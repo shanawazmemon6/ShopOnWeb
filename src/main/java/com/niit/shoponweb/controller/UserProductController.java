@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.niit.shoponweb.dao.CartDao;
 import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.fileupload.TextDocument;
+import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.SubCategory;
@@ -21,6 +23,14 @@ import com.niit.shoponweb.model.SubCategory;
 public class UserProductController {
 	@Autowired
 	ProductDao prodao;
+	
+	@Autowired
+	Product pro;
+	
+	@Autowired
+	Cart cart;
+	@Autowired
+	CartDao cartdao;
 	
 	@RequestMapping(value="/userproduct",method=RequestMethod.GET)
 	public String getUserProduct(@RequestParam("proid")String pro,ModelMap m){
@@ -82,12 +92,30 @@ public class UserProductController {
 
 	     }
            List<Product> pro_part_list=prodao.getParticularProduct(proid);
-	     m.addAttribute("pro_part_list",pro_part_list);
+           
+          m.addAttribute("pro_part_list",pro_part_list);
 	    
-		    
+         Product pro= prodao.getProduct(proid); 
 		return "index";
 	}
 	
+	@RequestMapping(value="/cart",method=RequestMethod.GET)
+	public String addToCart(@RequestParam("pro_id")String proid,ModelMap m){
+		
+	 pro= prodao.getProduct(proid);
+     m.addAttribute("cart",true);
+
+	 if(pro!=null){
+	 cart.setCart_id(pro.getPro_id());
+	 cart.setPro_id(pro.getPro_id());
+	 cart.setPrice(pro.getPro_price());
+	 
+	 cartdao.save_cart(cart);
+	 
+	 }
+	  
+	return "index";
+	}
 	
 	
 }

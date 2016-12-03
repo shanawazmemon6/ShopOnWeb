@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Register;
@@ -64,6 +65,7 @@ public class WebAppConfiguration {
 		session.addAnnotatedClass(Supplier_Do.class);
 		session.addAnnotatedClass(SubCategory.class);
 		session.addAnnotatedClass(Product.class);
+		session.addAnnotatedClass(Cart.class);
 		System.out.println("session");
 		return session.buildSessionFactory();
 

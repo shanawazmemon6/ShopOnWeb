@@ -112,7 +112,7 @@ margin-top: 10px;
   <div class="panel-footer text-center" ><b>${pro.pro_name}</b><br>
   <div style="margin-top:5px;"> <b style="color:red;">Rs.${pro.pro_price}</b></div>
     <div style="margin-top:5px;"><a class="btn btn-danger btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  </div>
-    <div style="margin-top:5px;"><a class="btn btn-success btn-block"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a></div>
+    <div style="margin-top:5px;"><a href="cart?pro_id=${pro.pro_id}" class="btn btn-success btn-block"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a></div>
   
   
   </div>

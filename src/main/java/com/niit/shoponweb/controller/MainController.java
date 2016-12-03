@@ -1,5 +1,7 @@
 package com.niit.shoponweb.controller;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +30,13 @@ public class MainController {
 	@Autowired
 	Product prod;
 	
+	
+	
 	String cate_list;
 	// mapping index.jsp
 	@RequestMapping("/")
-	public String indexView(Model m,HttpSession session) {
+	public String indexView(Model m,HttpSession session,HttpServletRequest req) {
+		
 		Sign_list list = new Sign_list();
 		list.setLogin("Login");
 		list.setSignin("SignIn");
@@ -43,6 +48,9 @@ public class MainController {
 		 String prod_list=prodao.getProductList(prod);
 		 session.setAttribute("prod_list", prod_list);
 		session.setAttribute("cate_list", cate_list);
+		
+		
+		
 		
 		
 		return "index";
