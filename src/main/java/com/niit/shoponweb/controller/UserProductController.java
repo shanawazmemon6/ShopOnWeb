@@ -42,6 +42,8 @@ public class UserProductController {
 	@Autowired
 	Sign_list list;
 	
+	
+	
 	String insteproid;
 	
 	@RequestMapping(value="/userproduct",method=RequestMethod.GET)
@@ -142,9 +144,11 @@ String email=(String) session.getAttribute("email");
 	 cart.setDate_cart(date_car);
 	 cart.setEmai_id(email);
 	 cartdao.save_cart(cart);
-     m.addAttribute("message_add","Added to cart");
+    List<Cart> cart=cartdao.getCartWithUserId(email);
+    int cart_size=cartdao.cart_size();
+     session.setAttribute("cart_value",cart);	
+     session.setAttribute("cart_size",cart_size);	 
 
-	 
 	 }
 	  
 	return "index";
@@ -161,6 +165,22 @@ String email=(String) session.getAttribute("email");
 		}
 	}
 	
+	@RequestMapping("/cartdisplay")
+	public String cart_display(ModelMap m,HttpSession session){
+		
+		String email=(String) session.getAttribute("email");
+        List<Cart> cart_list=cartdao.getCartWithUserId(email);
+        
+		m.addAttribute("cart_list", cart_list);
+		m.addAttribute("cartdisplay",true);
+
+		
+		
+		
+		return "index";
+		
+		
+	}
 	
 	
 }

@@ -1,5 +1,7 @@
 package com.niit.shoponweb.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.niit.shoponweb.dao.CartDao;
 import com.niit.shoponweb.dao.RegisterDao;
+import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Login;
 import com.niit.shoponweb.model.Sign_list;
 
@@ -20,6 +24,10 @@ public class LoginController {
 	// injects Register DAO
 	@Autowired
 	RegisterDao regdao;
+	
+	@Autowired
+	CartDao cartdao;
+	
 
 	// map the view to return String execute if method is get
 	@RequestMapping(method = RequestMethod.GET)
@@ -37,6 +45,10 @@ public class LoginController {
 		session.setAttribute("Login", list.getLogin());
 		session.setAttribute("SignUp", list.getSignup());
 		session.setAttribute("SignIn", list.getSignin());
+		session.setAttribute("cart_value", "null");
+		session.setAttribute("cart_size", 0);
+
+
 
 		return "index";
 
@@ -64,13 +76,20 @@ public class LoginController {
 			session.setAttribute("SignUp", list.getSignup());
 			session.setAttribute("SignIn", list.getSignin());
 			session.setAttribute("email", regdao.Email());
+            List<Cart> cart=cartdao.getCartWithUserId(regdao.Email());
+            int cart_size=cartdao.cart_size();
+			session.setAttribute("cart_value", cart);
+			session.setAttribute("cart_size", cart_size);
+
+
+
 			return "index";
 		} else if (valid && regdao.validrole().equals("admin")) {
 			m.addAttribute("loggedin", true);
 
 			m.addAttribute("role", regdao.Username());
-
-
+			
+                 
 			return "admin";
 		} else {
 			m.addAttribute("LoginRequest", true);

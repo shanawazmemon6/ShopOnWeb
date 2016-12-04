@@ -48,6 +48,8 @@ public class MainController {
 		 String prod_list=prodao.getProductList(prod);
 		 session.setAttribute("prod_list", prod_list);
 		session.setAttribute("cate_list", cate_list);
+		session.setAttribute("cart_value", null);
+		session.setAttribute("cart_size", 0);
 		
 		
 		

@@ -25,30 +25,36 @@
 <script>
 
 	$(function() {
-
+         var cart="<%=session.getAttribute("cart_value")%>";
 		$('.hello').slideDown();
-		if($('.addto').hover){
-$('.cart_img').attr('style','position: fixed; top:-100px; left:1200px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000;')
-		}
-		
+		 
+		if(cart=="null" || cart=="[]"){
+			$('.cart_img').attr('style','position: fixed; top:-100px; left:1250px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000;')
+			$('.cart_span').attr('style','position: fixed; top:-100px; left:1250px;')
 
-		
-	});
-	$(function(){
+			
 		$('.addto').hover(function(){
-			var st=$('.cart_img').animate({top:"60px"});
+			$('.cart_img').animate({top:"60px"});
+			$('.cart_span').animate({top:"60px"});
+
 		},function(){
-			var st=$('.cart_img').animate({top:"-100px"});
+			$('.cart_img').animate({top:"-100px"});
+			$('.cart_span').animate({top:"-100px"});
+
 
 		});
 		
-		if($('.addto').click){
-			$('.cart_img').attr('style','position: fixed; top:60px; left:1200px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000;')
-					}
-			
-	});
-	
+		}
+		else{
+			$('.cart_img').attr('style','position: fixed; top:60px; left:1250px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000;')
+			$('.cart_span').attr('style','position: fixed; top:60px; left:1250px;')
 
+		} 
+		 
+		 
+		 
+	
+	});
 
 	
 </script>
@@ -67,7 +73,8 @@ $('.cart_img').attr('style','position: fixed; top:-100px; left:1200px; backgroun
 			<jsp:include page="productuser.jsp"></jsp:include>
 
 		</c:when>
-		<c:when test="${cart==true}">
+		
+		<c:when test="${cartdisplay==true}">
 	
 			<jsp:include page="cart.jsp"></jsp:include>
 
@@ -145,6 +152,7 @@ $('.cart_img').attr('style','position: fixed; top:-100px; left:1200px; backgroun
 						<div class="alert hello text-center">
 							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 							<strong>${role}</strong>
+					
 						</div>
 						<!-- alert -->
 					</div>
@@ -169,8 +177,8 @@ $('.cart_img').attr('style','position: fixed; top:-100px; left:1200px; backgroun
 				
 				</div>
 	<br>
-	<br>
-	<a href="#" ><img width="80px" height="80px" class="img-circle cart_img" alt="cart" src="images/cart.png"></a>
+	<br>,
+	<a href="cartdisplay" ><img width="70px" height="70px" class="img-circle cart_img" alt="cart" src="images/cart.png"><span  class="badge  cart_span"><%=session.getAttribute("cart_size")%></span></a>
  	<jsp:include page="footer.jsp"></jsp:include> 
  
 
