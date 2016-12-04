@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +21,9 @@ import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.fileupload.TextDocument;
 import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Category;
+import com.niit.shoponweb.model.Login;
 import com.niit.shoponweb.model.Product;
+import com.niit.shoponweb.model.Sign_list;
 import com.niit.shoponweb.model.SubCategory;
 
 @Controller
@@ -34,6 +38,9 @@ public class UserProductController {
 	Cart cart;
 	@Autowired
 	CartDao cartdao;
+	
+	@Autowired
+	Sign_list list;
 	
 	String insteproid;
 	
@@ -106,8 +113,8 @@ public class UserProductController {
 	}
 	
 	@RequestMapping(value="/cart",method=RequestMethod.GET)
-	public String addToCart(@RequestParam("pro_id")String proid,ModelMap m){
-		
+	public String addToCart(@RequestParam("pro_id")String proid,ModelMap m,HttpSession session){
+		if(!session.getAttribute("SignIn").equals("SignIn")){
 	 prod= prodao.getProduct(proid);
 	 String random_id=UUID.randomUUID().toString();
 	 m.addAttribute("ProductUserRequest",true);
@@ -126,12 +133,14 @@ public class UserProductController {
        m.addAttribute("catelist",pro_cate);
    	m.addAttribute("prolist", pro_userlist);
    	m.addAttribute("subcatelist",pro_sub_cate);
-
+String user=(String) session.getAttribute("SignIn");
+String email=(String) session.getAttribute("email");
 	 if(prod!=null){
 	 cart.setCart_id(random_id);
 	 cart.setPro_id(prod.getPro_id());
 	 cart.setPrice(prod.getPro_price());
 	 cart.setDate_cart(date_car);
+	 cart.setEmai_id(email);
 	 cartdao.save_cart(cart);
      m.addAttribute("message_add","Added to cart");
 
@@ -140,6 +149,18 @@ public class UserProductController {
 	  
 	return "index";
 	}
+		
+		else{
+ m.addAttribute("LoginRequest",true);
+	m.addAttribute("login", new Login());
+	m.addAttribute("entry", true);
+	m.addAttribute("message", "Must Login");
+
+			return "index";
+
+		}
+	}
+	
 	
 	
 }

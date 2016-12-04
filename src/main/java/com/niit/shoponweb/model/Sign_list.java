@@ -1,5 +1,8 @@
 package com.niit.shoponweb.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Sign_list {
 	
 	String login;

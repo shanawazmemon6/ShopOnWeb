@@ -63,6 +63,7 @@ public class LoginController {
 			session.setAttribute("Login", list.getLogin());
 			session.setAttribute("SignUp", list.getSignup());
 			session.setAttribute("SignIn", list.getSignin());
+			session.setAttribute("email", regdao.Email());
 			return "index";
 		} else if (valid && regdao.validrole().equals("admin")) {
 			m.addAttribute("loggedin", true);

@@ -24,13 +24,19 @@ public class CartDaoImpl implements CartDao {
 		
 		
 		sessionFactory.getCurrentSession().saveOrUpdate(car);
-
-
-	
-
-		
-		
 		return false;
+	}
+
+	@Override
+	public String getCartList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCartWithUserId(String user_id) {
+		
+		return null;
 	}
 
 }

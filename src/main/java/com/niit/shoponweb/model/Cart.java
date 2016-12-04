@@ -23,9 +23,18 @@ public class Cart {
 	private double price;
 	@Column
 	private String  date_cart;
+	@Column 
+	private String emai_id;
 	
 	
 
+
+	public String getEmai_id() {
+		return emai_id;
+	}
+	public void setEmai_id(String emai_id) {
+		this.emai_id = emai_id;
+	}
 	public String getCart_id() {
 		return cart_id;
 	}

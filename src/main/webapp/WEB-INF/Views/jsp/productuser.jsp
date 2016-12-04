@@ -61,15 +61,25 @@ margin-top: 10px;
 margin-top: 10px;
 
 }
-
-
-
-
-
 </style>
+
+<script >
+
+
+
+/* $(function(){
+	$('.addto').click(function(){
+		 $('.cart_img').attr('style','position: fixed; top:60px; left:1200px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000');
+	});
+	
+	
+		
+}); */
+</script>
 
 </head>
 <body >
+
 <div class="container-fluid" >
 <div class="col-sm-2">
 ${message_add}
@@ -113,7 +123,7 @@ ${message_add}
   <div class="panel-footer text-center" ><b>${pro.pro_name}</b><br>
   <div style="margin-top:5px;"> <b style="color:red;">Rs.${pro.pro_price}</b></div>
     <div style="margin-top:5px;"><a class="btn btn-danger btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  </div>
-    <div style="margin-top:5px;"><a href="cart?pro_id=${pro.pro_id}" class="btn btn-success btn-block"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a></div>
+    <div style="margin-top:5px;"><a href="cart?pro_id=${pro.pro_id}" class="btn btn-success btn-block addto"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a></div>
   
   
   </div>

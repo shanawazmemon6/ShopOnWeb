@@ -172,6 +172,8 @@ var pro=<%=session.getAttribute("prod_list")%>;
 				
 				<!-- nav -->
 				<ul class="nav navbar-nav navbar-right">
+				
+				     
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"
 						style="background-color: #072f52; color: #ffffff;"> <b><%=session.getAttribute("SignIn") %></b> <b class="caret"></b>

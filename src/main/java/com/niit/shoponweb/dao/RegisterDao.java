@@ -18,5 +18,6 @@ public interface RegisterDao {
 
 	// returns the valid user name
 	public String Username();
-
+    
+	public String Email();
 }

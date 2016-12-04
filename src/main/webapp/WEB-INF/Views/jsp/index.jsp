@@ -27,7 +27,25 @@
 	$(function() {
 
 		$('.hello').slideDown();
+		if($('.addto').hover){
+$('.cart_img').attr('style','position: fixed; top:-100px; left:1200px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000;')
+		}
+		
 
+		
+	});
+	$(function(){
+		$('.addto').hover(function(){
+			var st=$('.cart_img').animate({top:"60px"});
+		},function(){
+			var st=$('.cart_img').animate({top:"-100px"});
+
+		});
+		
+		if($('.addto').click){
+			$('.cart_img').attr('style','position: fixed; top:60px; left:1200px; background-color:#ffffff;	box-shadow: 5px 5px 15px #000;')
+					}
+			
 	});
 	
 
@@ -152,6 +170,7 @@
 				</div>
 	<br>
 	<br>
+	<a href="#" ><img width="80px" height="80px" class="img-circle cart_img" alt="cart" src="images/cart.png"></a>
  	<jsp:include page="footer.jsp"></jsp:include> 
  
 

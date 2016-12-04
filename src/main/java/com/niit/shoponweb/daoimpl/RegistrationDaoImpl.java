@@ -22,6 +22,7 @@ public class RegistrationDaoImpl implements RegisterDao {
 
 	String Role;
 	String name;
+	String email;
 	// Constructor
 
 	public RegistrationDaoImpl(SessionFactory session) {
@@ -64,7 +65,7 @@ public class RegistrationDaoImpl implements RegisterDao {
 			for (Register register : list) {
 				Role = register.getRole();
 				name = register.getName();
-
+                email=register.getEmail();
 			}
 			return true;
 		} else {
@@ -84,5 +85,11 @@ public class RegistrationDaoImpl implements RegisterDao {
 
 		return name;
 	}
+
+	@Override
+	public String Email() {
+		return email;
+	}
+	
 
 }
