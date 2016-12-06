@@ -10,7 +10,8 @@ public interface CartDao {
 	public  String getCartList();
 	public List<Cart> getCartWithUserId(String user_id);
 	public  int cart_size();
-		
+    public boolean delete_cart(String cat_id);
+    public boolean update_cart(String cat_id,int quantity);
 	
 	
 }

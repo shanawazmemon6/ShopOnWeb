@@ -181,5 +181,37 @@ public class UserProductController {
 		return "index";
 
 	}
+	@RequestMapping("/delete_cart")
+
+	public String cart_Delete(@RequestParam("cart_id")String cat_id,ModelMap m,HttpSession session){
+		 
+		if(cartdao.delete_cart(cat_id)){
+		String email = (String) session.getAttribute("email");
+		List<Cart> cart_list = cartdao.getCartWithUserId(email);
+        m.addAttribute("cart_list", cart_list);
+        int cart_size = cartdao.cart_size();
+      
+    		session.setAttribute("cart_value", cart_list);
+
+      
+		session.setAttribute("cart_size", cart_size);
+
+		m.addAttribute("cartdisplay", true);
+		return "index";
+
+		}
+		else{
+			String email = (String) session.getAttribute("email");
+
+			List<Cart> cart_list = cartdao.getCartWithUserId(email);
+
+	        m.addAttribute("cart_list", cart_list);
+			m.addAttribute("cartdisplay", true);
+			return "index";
+
+		}
+		
+		
+	}
 
 }

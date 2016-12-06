@@ -2,6 +2,7 @@ package com.niit.shoponweb.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,51 @@ public class CartDaoImpl implements CartDao {
 		
 	}
 
+	
+	
+	
 	@Override
 	public int cart_size() {
 		return cart_size;
 	}
 
+	@Transactional
+	public boolean delete_cart(String cat_id) {
+		
+		try {
+			Cart cat=(Cart) sessionFactory.getCurrentSession().get(Cart.class,cat_id);
+			sessionFactory.getCurrentSession().delete(cat);
+			
+			return true;
+
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Transactional
+	public boolean update_cart(String cat_id,int quantity) {
+
+		try {
+			Cart cat=(Cart) sessionFactory.getCurrentSession().get(Cart.class,cat_id);
+			cat.setQuantity(quantity);
+			sessionFactory.getCurrentSession().update(cat);
+			
+			return true;
+
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	
+		
+	}
+	
+
+	
+
 }
+

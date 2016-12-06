@@ -77,7 +77,9 @@
 		<c:when test="${cartdisplay==true}">
 	
 			<jsp:include page="cart.jsp"></jsp:include>
-
+               <br>
+               <br>
+               
 		</c:when>
 			<c:when test="${error==true}">
 	
