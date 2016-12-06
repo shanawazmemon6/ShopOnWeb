@@ -178,7 +178,7 @@
 				</div>
 	<br>
 	<br>,
-	<a href="cartdisplay" ><img width="70px" height="70px" class="img-circle cart_img" alt="cart" src="images/cart.png"><span  class="badge  cart_span"><%=session.getAttribute("cart_size")%></span></a>
+	<a href="cartdisplay" ><img width="70px" height="70px" class="img-circle cart_img" alt="cart" src="images/cart.png"><span  class="badge cart_span" ><%=session.getAttribute("cart_size")%></span></a>
  	<jsp:include page="footer.jsp"></jsp:include> 
  
 

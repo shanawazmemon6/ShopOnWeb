@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-
+${message}
 <table class="table table-hover" >
  <thead>
       <tr>
@@ -26,7 +26,9 @@
    
     <tbody>
       <tr>
-        <td><img width="80px" height="140px" src="pro_images/${car.pro_id}.jpg"></td>
+        
+        <td><img width="40px" height="80px" src="pro_images/${car.pro_id}.jpg"><span style="margin-left: 50px; margin-bottom: ">
+        <b >${car.pro_name}</b></span></td>
         <td>${car.quantity}</td>
         <td>${car.date_cart}</td>
                 <td>${car.price}</td>

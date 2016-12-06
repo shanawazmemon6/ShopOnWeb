@@ -25,10 +25,17 @@ public class Cart {
 	private String  date_cart;
 	@Column 
 	private String emai_id;
-	
+	@Column 
+	private String pro_name;
 	
 
 
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
 	public String getEmai_id() {
 		return emai_id;
 	}

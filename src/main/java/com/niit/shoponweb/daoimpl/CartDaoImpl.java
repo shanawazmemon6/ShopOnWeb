@@ -26,10 +26,19 @@ public class CartDaoImpl implements CartDao {
 
 	@Transactional
 	public boolean save_cart(Cart car) {
-		
-		
-		sessionFactory.getCurrentSession().saveOrUpdate(car);
-		return false;
+		String pro_id=car.getPro_id();
+		String hql="from Cart where pro_id ='"+pro_id+"'";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Cart> cart_list=query.list();
+           if(cart_list.isEmpty()){
+        	   sessionFactory.getCurrentSession().saveOrUpdate(car);
+       		return true;
+
+           }
+           else{
+        	   return false;
+           }
 	}
 
 	@Override
