@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.gson.Gson;
 import com.niit.shoponweb.dao.CartDao;
 import com.niit.shoponweb.model.Cart;
+import com.niit.shoponweb.model.Product;
 
 @Repository("CartDao")
 public class CartDaoImpl implements CartDao {
@@ -26,9 +27,9 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	@Transactional
-	public boolean save_cart(Cart car) {
+	public boolean save_cart(Cart car,String email) {
 		String pro_id=car.getPro_id();
-		String hql="from Cart where pro_id ='"+pro_id+"'";
+		String hql="from Cart where pro_id ='"+pro_id+"' and emai_id='"+email+"'";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		@SuppressWarnings("unchecked")
 		List<Cart> cart_list=query.list();
@@ -88,12 +89,15 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	@Transactional
-	public boolean update_cart(String cat_id,int quantity) {
+	public boolean update_cart(String cat_id,int quantity,String pro_id) {
 
 		try {
 			Cart cat=(Cart) sessionFactory.getCurrentSession().get(Cart.class,cat_id);
+			Product pro=(Product) sessionFactory.getCurrentSession().get(Product.class, pro_id);
 			cat.setQuantity(quantity);
+			cat.setPrice(quantity*pro.getPro_price());
 			sessionFactory.getCurrentSession().update(cat);
+			
 			
 			return true;
 

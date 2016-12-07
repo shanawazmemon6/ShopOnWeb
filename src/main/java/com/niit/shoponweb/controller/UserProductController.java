@@ -139,7 +139,7 @@ public class UserProductController {
 				cart.setPrice(prod.getPro_price());
 				cart.setDate_cart(date_car);
 				cart.setEmai_id(email);
-				if (cartdao.save_cart(cart)) {
+				if (cartdao.save_cart(cart,email)) {
 					m.addAttribute("ProductUserRequest", true);
 
 					List<Cart> cart = cartdao.getCartWithUserId(email);
@@ -213,5 +213,28 @@ public class UserProductController {
 		
 		
 	}
+	@RequestMapping("/cart_quantity")
+	public String cart_update(@RequestParam("udate_quantity")int q_id,@RequestParam("cart_id")String c_id,@RequestParam("pro_id")String p_id,ModelMap m,HttpSession session){
+		String email = (String) session.getAttribute("email");
+		
+		if(cartdao.update_cart(c_id, q_id,p_id)){
+			
+		
+		List<Cart> cart_list = cartdao.getCartWithUserId(email);
+        m.addAttribute("cart_list", cart_list);
+		m.addAttribute("cartdisplay", true);
+		m.addAttribute("updated",true);
+		return "index";
+		
+	}
+		else{
+			List<Cart> cart_list = cartdao.getCartWithUserId(email);
+	        m.addAttribute("cart_list", cart_list);
+			m.addAttribute("cartdisplay", true);
+			m.addAttribute("notupdated",true);
 
+			return "index";
+
+		}
+	}
 }

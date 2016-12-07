@@ -4,7 +4,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cart</title>
+<script>
 
+$(function(){
+	
+	 $("#quan").on({
+		    click: function(){
+		    	 $('#up').show();
+		    }, 
+		    blur: function(){
+		    	$('#up').show();
+		    }, 
+		    focus: function(){
+		    	$('#up').show();
+
+		    } 
+		});
+
+	
+});
+
+
+
+</script>
 </head>
 <body>
 <div class="container">
@@ -36,12 +58,18 @@
         
         <td class="text-center"><img width="30px" height="60px" src="pro_images/${car.pro_id}.jpg"><span style="margin-left: 50px;">
         <b >${car.pro_name}</b></span></td>
-        <td class="text-center"> <div class="col-sm-4 col-sm-offset-4 " style="margin-top:20px;">
-        <form action="quantity" method="get">
-         <input type="number" min="1"  value="${car.quantity}" class="form-control disable text-center"/>
-         <a class="btn btn-warning" style="margin-top:5px;" type="submit">Update</a>
+        <td class="text-center"> 
+        <form action="cart_quantity" method="get">
+         <div class="col-sm-4 col-sm-offset-4 " style="margin-top:20px;">
+          <input type="number" min="1" id="quan" value="${car.quantity}" name="udate_quantity" class="form-control  text-center"/> 
+         <input type="hidden"   value="${car.cart_id}" name="cart_id" class="form-control  text-center" />  
+                  <input type="hidden"   value="${car.pro_id}" name="pro_id" class="form-control  text-center" />     
+             </div>
+             <div class="col-sm-4" id="up" style="display: none; margin-top:15px;">
+         <button  class="btn btn-warning" style="margin-top:5px;" type="submit">Update</button>
+   </div>
         </form>
-        </div></td>
+        </td>
         <td class="text-center"><div style="margin-top:20px;">${car.date_cart}</div></td>
            <td class="text-center"><div style="margin-top:20px;">${car.price}</div></td>
            <td class="text-center"><a href="delete_cart?cart_id=${car.cart_id}"  class="btn btn-danger" style="margin-top:20px;" type="submit">Delete</a></td>
