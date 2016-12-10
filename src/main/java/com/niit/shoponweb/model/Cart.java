@@ -1,7 +1,7 @@
 package com.niit.shoponweb.model;
 
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +11,10 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Cart {
+public class Cart implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	private String cart_id;
 	@Column

@@ -7,7 +7,6 @@
 <script>
 
 $(function(){
-	
 	 $("#quan").on({
 		    click: function(){
 		    	 $('#up').show();
@@ -50,9 +49,9 @@ $(function(){
         
       </tr>
     </thead>
-<m:forEach items="${cart_list}" var="car">
+
   
-   
+  <m:forEach items="${cart_list}" var="car"> 
     <tbody>
       <tr>
         
@@ -65,7 +64,7 @@ $(function(){
          <input type="hidden"   value="${car.cart_id}" name="cart_id" class="form-control  text-center" />  
                   <input type="hidden"   value="${car.pro_id}" name="pro_id" class="form-control  text-center" />     
              </div>
-             <div class="col-sm-4" id="up" style="display: none; margin-top:15px;">
+             <div class="col-sm-4" id="up" style=" margin-top:15px;">
          <button  class="btn btn-warning" style="margin-top:5px;" type="submit">Update</button>
    </div>
         </form>
@@ -76,8 +75,7 @@ $(function(){
       </tr>
      
     </tbody>
-    </m:forEach>
-    
+ </m:forEach>
   </table>
   </div>
   
