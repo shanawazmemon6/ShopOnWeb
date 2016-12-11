@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,23 @@ public class Orders implements Serializable {
 	@Id
 	private String order_id;
 	private String email_id;
+	
+	private String ship_address;
+	
+	private String bill_address;
+	
+	public String getBill_address() {
+		return bill_address;
+	}
+	public void setBill_address(String bill_address) {
+		this.bill_address = bill_address;
+	}
+	public String getShip_address() {
+		return ship_address;
+	}
+	public void setShip_address(String ship_address) {
+		this.ship_address = ship_address;
+	}
 	private  long total;
 	public String getOrder_id() {
 		return order_id;

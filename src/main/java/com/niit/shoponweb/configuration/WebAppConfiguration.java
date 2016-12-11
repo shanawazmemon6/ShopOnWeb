@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Category;
+import com.niit.shoponweb.model.Orders;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Register;
 import com.niit.shoponweb.model.SubCategory;
@@ -66,6 +67,7 @@ public class WebAppConfiguration {
 		session.addAnnotatedClass(SubCategory.class);
 		session.addAnnotatedClass(Product.class);
 		session.addAnnotatedClass(Cart.class);
+		session.addAnnotatedClass(Orders.class);
 		System.out.println("session");
 		return session.buildSessionFactory();
 

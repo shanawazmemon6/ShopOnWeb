@@ -5,10 +5,34 @@
                http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 
-<var name="cart"  class="com.niit.shoponweb.model.Cart"/>              
-<on-start>
-	  <evaluate expression="buyFlow.startFlow()" result="flowScope.cart"/>
-	</on-start>
-<view-state id="flowExecutor" view="cart" model="cart"></view-state>
+<var name="cart"  class="com.niit.shoponweb.model.Cart"/>  
+<var name="order"  class="com.niit.shoponweb.model.Orders"  /> 
+<var name="shipping" class="com.niit.shoponweb.model.Shipping"  /> 
+<var name="billing" class="com.niit.shoponweb.model.Billing"  /> 
 
+      
+<on-start>
+	  <evaluate expression="buyFlow.startFlow()" result="flowScope.order"/>
+	</on-start>
+<view-state id="flowExecutor" view="shippingaddress" model="shipping">
+<transition on="submitShipping" to="shippingAction"/>   
+</view-state>
+<action-state id="shippingAction">
+<evaluate expression="buyFlow.addShipping(flowScope.order,shipping)"></evaluate>
+<transition on="success" to="billDetais" />
+</action-state>
+<view-state id="billDetais" view="billingaddress" model="billing">
+<transition on="submitBill"  to="billAction"/>
+</view-state>
+<action-state id="billAction">
+<evaluate expression="buyFlow.addBilling(flowScope.order,billing)"></evaluate>
+<transition on="success" to="orderDetais" />
+</action-state>
+<view-state id="orderDetais" view="order" model="flowScope.order">
+<transition on="submitOrder"  to="confirmOrder"/>
+</view-state>
+<action-state id="confirmOrder">
+<evaluate expression="buyFlow.addOrder(flowScope.order)"></evaluate>
+<transition on="success"  />
+</action-state>
 </flow>
