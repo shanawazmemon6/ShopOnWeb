@@ -49,10 +49,10 @@ public class RegistrationDaoImpl implements RegisterDao {
 
 	// checks whether the user is valid user
 	@Transactional
-	public boolean isvalidUser(Login log) {
+	public boolean isvalidUser(String email,String password) {
 
-		String email_id = log.getEmail_id();
-		String password_form = log.getPassword_login();
+		String email_id = email;
+		String password_form = password;
 		Query query = sessionFactory.getCurrentSession()
 				.createQuery("from Register where  email =:email and password=:password");
 		query.setParameter("email", email_id);

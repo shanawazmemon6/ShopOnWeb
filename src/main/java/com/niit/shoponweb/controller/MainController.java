@@ -35,7 +35,7 @@ public class MainController {
 	String cate_list;
 	// mapping index.jsp
 	@RequestMapping("/")
-	public String indexView(Model m,HttpSession session,HttpServletRequest req) {
+	public String indexView(ModelMap m,HttpSession session) {
 		
 		Sign_list list = new Sign_list();
 		list.setLogin("Login");
@@ -69,7 +69,6 @@ public class MainController {
 	@RequestMapping("/launchrequest")
 	public String launchView(Model m) {
 		m.addAttribute("LaunchRequest", true);
-		Sign_list list = new Sign_list();
 		
 		return "index";
 	}

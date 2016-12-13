@@ -1,5 +1,4 @@
 
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="g"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -32,16 +31,16 @@ body {
 
 						<img src="images/bag.png" class="logo" class="img-responsive">
 
-						<g:form action="loginrequest" method="POST" modelAttribute="login">
-							<g:input path="email_id" type="email" class="form-control input1"
-								placeholder="Email Id" required="true"></g:input>
-							<g:input path="password_login" type="password"
+						<form action="loginsuccess" method="POST" >
+							<input name="email" type="email" class="form-control input1"
+								placeholder="Email Id" required="true"></input>
+							<input name="password" type="password"
 								class="form-control input2" required="true"
-								placeholder="Password"></g:input>
-							<g:checkbox path="" value="Remember Me" label="Remember Me" />
-							<g:button type="submit"
-								class="btn btn-lg btn-success btn-block button">Login</g:button>
-						</g:form>
+								placeholder="Password"></input>
+							<checkbox path="" value="Remember Me" label="Remember Me" />
+							<button type="submit"
+								class="btn btn-lg btn-success btn-block button">Login</button>
+						</form>
 
 					</div>
 					<!-- form-group -->

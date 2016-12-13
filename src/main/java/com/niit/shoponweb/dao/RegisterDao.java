@@ -11,7 +11,7 @@ public interface RegisterDao {
 	public boolean saveRegister(Register reg);
 
 	// Checks the user is valid or not
-	public boolean isvalidUser(Login log);
+	public boolean isvalidUser(String email,String password);
 
 	// returns the valid user role
 	public String validrole();
