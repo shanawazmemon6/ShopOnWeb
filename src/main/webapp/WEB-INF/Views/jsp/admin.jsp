@@ -43,6 +43,9 @@
 		<c:when test="${productrequest==true}">
 			<jsp:include page="product.jsp"></jsp:include>
 		</c:when>
+		<c:when test="${adminhome==true}">
+		<jsp:include page="admin_home.jsp"></jsp:include>
+		</c:when>
 		<c:otherwise>
 			<br>
 			<br>

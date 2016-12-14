@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 import com.niit.shoponweb.dao.CartDao;
+import com.niit.shoponweb.dao.CategoryDao;
 import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.fileupload.TextDocument;
 import com.niit.shoponweb.model.Cart;
@@ -42,21 +44,43 @@ public class UserProductController {
 
 	@Autowired
 	Sign_list list;
+	@Autowired
+	CategoryDao cate_dao;
+
+	
+	@Autowired
+	Category cate;
+	
 
 	String insteproid;
-
+        String cate_list;
 	@RequestMapping(value = "/userproduct", method = RequestMethod.GET)
-	public String getUserProduct(@RequestParam("proid") String pro, ModelMap m) {
+	public String getUserProduct(@RequestParam("proid") String pro, ModelMap m,HttpSession session) {
 		this.insteproid = pro;
 		m.addAttribute("ProductUserRequest", true);
 		List<Product> pro_userlist = prodao.userProductList(pro);
 		List<Category> pro_cate = prodao.getCategoryListArray(pro);
 		List<SubCategory> pro_sub_cate = prodao.getSubCategoryListArray(pro);
-
-		m.addAttribute("catelist", pro_cate);
-		m.addAttribute("prolist", pro_userlist);
-		m.addAttribute("subcatelist", pro_sub_cate);
+		String userid= SecurityContextHolder.getContext().getAuthentication().getName();
+		 m.addAttribute("catelist", pro_cate);
+			m.addAttribute("prolist", pro_userlist);
+			m.addAttribute("subcatelist", pro_sub_cate);
+		if(userid.isEmpty()){
+		Sign_list list = new Sign_list();
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		session.setAttribute("Login", list.getLogin());
+		session.setAttribute("SignUp", list.getSignup());
+		session.setAttribute("SignIn", list.getSignin());
+		 cate_list=cate_dao.getCategoryList(cate);
+		 String prod_list=prodao.getProductList(prod);
+		 session.setAttribute("prod_list", prod_list);
+		session.setAttribute("cate_list", cate_list);
+        
+		}
 		return "index";
+
 	}
 
 	@RequestMapping(value = "/product_filter", method = RequestMethod.GET)
@@ -81,9 +105,10 @@ public class UserProductController {
 	}
 
 	@RequestMapping(value = "/product_display", method = RequestMethod.GET)
-	public String getParticularProductDisplay(@RequestParam("product_id") String proid, ModelMap m) {
+	public String getParticularProductDisplay(@RequestParam("product_id") String proid, ModelMap m,HttpSession session) {
 
 		m.addAttribute("ProductRequestDisplay", true);
+		session.setAttribute("productid", proid);
 		BufferedReader br = TextDocument.ReadText(proid + ".txt");
 		if (br != null) {
 			StringBuilder builder = new StringBuilder();
@@ -107,6 +132,8 @@ public class UserProductController {
 		List<Product> pro_part_list = prodao.getParticularProduct(proid);
 
 		m.addAttribute("pro_part_list", pro_part_list);
+		m.addAttribute("product", proid);
+
 
 		return "index";
 	}

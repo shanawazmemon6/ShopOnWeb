@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -44,6 +45,10 @@ margin-top: 100px;
 					class="form-control inputone" />
 				<f:input path="zipcode" placeholder="Zipcode"
 					class="form-control inputone" />
+					<c:set var="pro_id" value="${product}"></c:set>
+				<f:input path="productid" type="hidden"
+				 value='<%= session.getAttribute("productid") %>'  class="form-control inputone" />
+				
 				
 				<f:button type="submit" name="_eventId_submitShipping" class="btn btn-success btn-block button">Submit</f:button>
 				

@@ -74,7 +74,10 @@ public class LoginController {
 				session.setAttribute("Login", list.getLogin());
 				session.setAttribute("SignUp", list.getSignup());
 				session.setAttribute("SignIn", list.getSignin());
+				session.setAttribute("role", null);
+
 				session.setAttribute("cart_value", null);
+				
 				session.setAttribute("cart_size", 0);
 				String cate_list=cate_dao.getCategoryList(cate);
 				 String prod_list=prodao.getProductList(prod);
@@ -83,6 +86,21 @@ public class LoginController {
 			}
 		else{
 			m.addAttribute("LoginRequest", true);
+			Sign_list list = new Sign_list();
+			list.setLogin("Login");
+			list.setSignin("SignIn");
+			list.setSignup("SignUp");
+			session.setAttribute("Login", list.getLogin());
+			session.setAttribute("SignUp", list.getSignup());
+			session.setAttribute("SignIn", list.getSignin());
+			session.setAttribute("cart_value", null);
+			session.setAttribute("cart_size", 0);
+			session.setAttribute("role", null);
+
+			String cate_list=cate_dao.getCategoryList(cate);
+			 String prod_list=prodao.getProductList(prod);
+			 session.setAttribute("prod_list", prod_list);
+			session.setAttribute("cate_list", cate_list);
 			
 		}
 	
@@ -130,7 +148,7 @@ public class LoginController {
     
 			m.addAttribute("LaunchRequest", true);
 			m.addAttribute("loggedin", true);
-			m.addAttribute("role", regdao.Username());
+			session.setAttribute("role", regdao.Username());
 			Sign_list list = new Sign_list();
 			list.setLogin("Logout");
 			list.setSignin(regdao.Username());
@@ -149,8 +167,20 @@ public class LoginController {
 			return "index";
 		} else if (authority.getAuthority().equals("ROLE_ADMIN")) {
 			m.addAttribute("loggedin", true);
-
+			m.addAttribute("loggedin", true);
 			m.addAttribute("role", regdao.Username());
+			Sign_list list = new Sign_list();
+			list.setLogin("Logout");
+			list.setSignin(regdao.Username());
+			list.setSignup("SignUp");
+			session.setAttribute("Login", list.getLogin());
+			session.setAttribute("SignUp", list.getSignup());
+			session.setAttribute("SignIn", list.getSignin());
+			session.setAttribute("email", userid);
+            List<Cart> cart=cartdao.getCartWithUserId(userid);
+            int cart_size=cartdao.cart_size();
+			session.setAttribute("cart_value", cart);
+			session.setAttribute("cart_size", cart_size);
 			
                  
 			return "admin";

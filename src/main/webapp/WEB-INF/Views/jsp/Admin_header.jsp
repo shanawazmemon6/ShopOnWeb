@@ -103,7 +103,7 @@
 			<!-- nav-header -->
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="launchrequest"><b>Home</b></a></li>
+					<li><a href="adminrequest"><b>Home</b></a></li>
 					<li><a href="categoryrequest"><b>Category</b></a></li>
 				   <li><a href="subcategoryrequest"><b>Sub Category</b></a></li>
 					<li><a href="supplierrequest"><b>Supplier</b></a></li>
@@ -112,20 +112,23 @@
 					
 				</ul>
 				<!-- nav -->
+					
+				<!-- nav -->
 				<ul class="nav navbar-nav navbar-right">
+				
+				     
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"
-						style="background-color: #072f52; color: #ffffff;"> <b>Admin
-						</b> <b class="caret"></b>
+						style="background-color: #072f52; color: #ffffff;"> <b><%=session.getAttribute("SignIn") %></b> <b class="caret"></b>
 
 					</a> <!-- dropdown-toggle -->
 						<ul class="dropdown-menu" style="background-color: #072f52;">
-							<li><a href="registerrequest" style="color: #ffffff;"><span
-									class="glyphicon glyphicon-user"></span> <b>SignUp</b></a></li>
+							<li><a href="loginrequest" style="color: #ffffff;"><span
+									class=" glyphicon glyphicon-log-in"></span> <b><%=session.getAttribute("Login") %></b></a></li>
 							<!-- register request -->
 							<br>
-							<li><a href="loginrequest" style="color: #ffffff;"><span
-									class="glyphicon glyphicon-log-in"></span> <b>Login</b></a></li>
+							<li><a href="registerrequest" style="color: #ffffff;"><span
+									class="glyphicon glyphicon-user"></span> <b><%=session.getAttribute("SignUp") %></b></a></li>
 							<!-- login request -->
 
 						</ul> <!-- dropdown menu --></li>

@@ -91,7 +91,7 @@ $(document).ready(function(){
 <div class="panel-title"><b style="font-size: 18px">${pro_part.pro_desc}</b></div>
 </div>
 <div class="col-sm-2 col-sm-offset-2">
-<a class="btn btn-danger  btn-block btn-mar"><i class="fa fa-money" aria-hidden="true"></i> BUY</a> 
+<a href="buy" class="btn btn-danger  btn-block btn-mar"><i class="fa fa-money" aria-hidden="true"></i> BUY</a> 
 </div>
 <div class="col-sm-2 ">
 <a href="cart?pro_id=${pro_part.pro_id}" class="btn btn-success  btn-block btn-mar addto"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a>

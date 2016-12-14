@@ -61,7 +61,7 @@ public class MainController {
 	// mapping admin.jsp
 	@RequestMapping("/adminrequest")
 	public String adminView(ModelMap m) {
-
+      m.addAttribute("adminhome",true);
 		return "admin";
 	}
 

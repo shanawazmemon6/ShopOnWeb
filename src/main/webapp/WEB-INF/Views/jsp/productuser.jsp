@@ -122,9 +122,10 @@ ${message_add}
   <div class="panel-body" id="panel_body"><a href="product_display?product_id=${pro.pro_id}"><img id="pro_img" class="img-responsive" alt="img" src="pro_images/${pro.pro_id}.jpg"></a></div>
   <div class="panel-footer text-center" ><b>${pro.pro_name}</b><br>
   <div style="margin-top:5px;"> <b style="color:red;">Rs.${pro.pro_price}</b></div>
-    <div style="margin-top:5px;"><a href="buy" class="btn btn-danger btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  </div>
-    <div style="margin-top:5px;"><a href="cart?pro_id=${pro.pro_id}" class="btn btn-success btn-block addto"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a></div>
-  
+<!--     <div style="margin-top:5px;"><a href="buy"  class="btn btn-danger btn-block"><i class="fa fa-money" aria-hidden="true"></i> BUY</a>  </div>
+ -->    <div style="margin-top:5px;"><a href="cart?pro_id=${pro.pro_id}" class="btn btn-success btn-block addto"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> ADD TO CART</a></div>
+  <h:set var="product" scope="session" value="${pro.pro_id}">
+  </h:set>
   
   </div>
 </div>
