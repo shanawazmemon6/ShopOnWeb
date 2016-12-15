@@ -43,9 +43,7 @@ public class BuyFlow {
 	
 	@Autowired
 	CartDao cartdao;
-	
-	
-	
+	HttpSession  session;
 	
 	public Orders startFlow(){
 		
@@ -57,6 +55,8 @@ public class BuyFlow {
 	}
 	
 	public String addShipping(Orders order,Shipping ship,RequestContext context){
+		 
+
 		double total = 0;
 		Gson gson=new Gson();
 		String random_id = UUID.randomUUID().toString();
@@ -64,10 +64,9 @@ public class BuyFlow {
 	    String id= ship.getProductid();
 		product=prodao.getProduct(id);
 		String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
-		
+		if(id.equals("null")){
 		List<Cart> carts=cartdao.getCartWithUserId(userid);
-		 
-		for(Cart cartvalue:carts){
+		 for(Cart cartvalue:carts){
 			
 			double price=cartvalue.getPrice();
 			total=total+price;
@@ -78,21 +77,39 @@ public class BuyFlow {
 		 order.setOrder_id(random_id);
 		 order.setPro_id(id);
 		 order.setTotal(total);
-		 HttpSession session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
-         session.setAttribute("carted_list",carts);
-         session.setAttribute("total",total);
 
-		return "success";
+			
+			   session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+         session.setAttribute("carted_list",carts);
+         session.setAttribute("user", userid);
+         session.setAttribute("total",total);
+         session.setAttribute("ship",ship);
+         return "multi";
+		}
+		else{
+             List<Product> oneprod =prodao.getParticularProduct(id);
+             total=product.getPro_price();
+			 HttpSession  session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+        
+             session.setAttribute("onepro",oneprod);
+             session.setAttribute("user", userid);
+             session.setAttribute("total",total);
+             session.setAttribute("ship",ship);
+             return "one";
+		}
+		
 		
 		
 	}
+		
 	public String addBilling(Orders order,Billing bill){
 		
 		Gson gson=new Gson();
 		String bill_json= gson.toJson(bill);
 		 order.setBill_address(bill_json);
-		 
-		 
+
+         session.setAttribute("bill",bill);
+
 		return "success";
 		
 		

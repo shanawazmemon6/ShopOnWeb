@@ -86,24 +86,26 @@ ${bill.country}
     </thead>
 
 
-  <m:forEach items='<%=session.getAttribute("carted_list")%>' var="car"> 
+  <m:set value='<%=session.getAttribute("onepro")%>' var="pro"> 
 <tbody>
+
       <tr>
         
-        <td class="text-center"><img width="30px" height="60px" src="pro_images/${car.pro_id}.jpg"><span style="margin-left: 50px;">
-        <b >${car.pro_name}</b></span></td>
+        <td class="text-center"><img width="30px" height="60px" src="pro_images/${pro.pro_id}.jpg"><span style="margin-left: 50px;">
+        <b >${pro.pro_name}</b></span></td>
         <td class="text-center"> 
-       ${car.quantity}
+       1
         </td>
-        <td class="text-center"><div style="margin-top:20px;">${car.date_cart}</div></td>
-           <td class="text-center"><div style="margin-top:20px;">${car.price}</div></td>
+<%--         <td class="text-center"><div style="margin-top:20px;">${car.date_cart}</div></td>
+ --%>           <td class="text-center"><div style="margin-top:20px;">${pro.pro_price}</div></td>
           
       </tr>
       
     </tbody>
    
- </m:forEach>
+ </m:set>
  
+   
  
   </table>
   <b style="font-size: 20px; color: red;" class="pull-right">Total:    <%=session.getAttribute("total")%></b>

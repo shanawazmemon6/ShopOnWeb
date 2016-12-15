@@ -194,6 +194,7 @@ public class UserProductController {
 
 	@RequestMapping("/cartdisplay")
 	public String cart_display(ModelMap m, HttpSession session) {
+		session.setAttribute("productid","null");
 
 		String email = (String) session.getAttribute("email");
 		List<Cart> cart_list = cartdao.getCartWithUserId(email);

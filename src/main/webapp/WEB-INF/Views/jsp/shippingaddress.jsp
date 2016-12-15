@@ -35,14 +35,16 @@ margin-top: 100px;
 			${message}
 			<f:form  method="post" 	modelAttribute="shipping">
 
-				<f:input path="shippingid" placeholder="Shipping Id"
-					class="form-control inputone" />
+				
 				<f:input path="street" placeholder="Street"
 					class="form-control inputone" />
 				<f:input path="city" placeholder="City"
 					class="form-control  inputtwo" />
-					<f:input path="country" placeholder="Country"
+				<f:input path="state" placeholder="state"
 					class="form-control inputone" />
+			    <f:input path="country" placeholder="Country"
+					class="form-control inputone" />
+					
 				<f:input path="zipcode" placeholder="Zipcode"
 					class="form-control inputone" />
 					<c:set var="pro_id" value="${product}"></c:set>

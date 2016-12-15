@@ -83,7 +83,7 @@ $(function(){
   
  <h6>@ShopOnWeb</h6>
 
-<div class="pull-right" style="position:relative; top:-30px;"> <a  class="btn btn-success ">Proceed</a></div>
+<div class="pull-right" style="position:relative; top:-30px;"> <a href="buy" class="btn btn-success ">Proceed</a></div>
 
 <div class="pull-left" style="position:relative; top:-30px; "> <a  class="btn btn-danger ">Continue Shopping</a></div>
 

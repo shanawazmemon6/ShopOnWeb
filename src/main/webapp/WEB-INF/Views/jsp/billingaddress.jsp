@@ -34,12 +34,13 @@ margin-top: 100px;
 			${message}
 			<f:form  method="post" 	modelAttribute="billing">
 
-				<f:input path="billingid" placeholder="Billing Id"
-					class="form-control inputone" />
+				
 				<f:input path="street" placeholder="Street"
 					class="form-control inputone" />
 				<f:input path="city" placeholder="City"
 					class="form-control  inputtwo" />
+					<f:input path="state" placeholder="state"
+					class="form-control inputone" />
 					<f:input path="country" placeholder="Country"
 					class="form-control inputone" />
 				<f:input path="zipcode" placeholder="Zipcode"
