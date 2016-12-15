@@ -18,7 +18,7 @@
 <transition on="submitShipping" to="shippingAction"/>   
 </view-state>
 <action-state id="shippingAction">
-<evaluate expression="buyFlow.addShipping(flowScope.order,shipping)"></evaluate>
+<evaluate expression="buyFlow.addShipping(flowScope.order,shipping,flowRequestContext)"></evaluate>
 <transition on="success" to="billDetais" />
 </action-state>
 <view-state id="billDetais" view="billingaddress" model="billing">

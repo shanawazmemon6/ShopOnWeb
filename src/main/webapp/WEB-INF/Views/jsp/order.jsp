@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="m"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,36 +20,66 @@
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <link rel="stylesheet" href="css/category.css"/>
 
-<style >
-#orderp{
-margin-top: 150px;
-	padding: 40px;
-	box-shadow: 5px 5px 15px #000;
-}
 
-</style>
 </head>
 <body>
-<div class="container">
-<div class="col-sm-4 col-sm-offset-4 text-center " id="orderp">
-			<h1>Order</h1>
-			${message}
-			<f:form  method="post" 	modelAttribute="order">
 
-				<f:input path="order_id" placeholder="Order Id"
-					class="form-control inputone" />
-				<f:input path="email_id" placeholder="Email Id"
-					class="form-control inputone" />
-				<f:input path="total" placeholder="Total"
-					class="form-control  inputtwo" />
-					
-				
-				<f:button type="submit" name="_eventId_submitOrder" class="btn btn-success btn-block button">Submit</f:button>
-				
-			</f:form>
-			
-		</div>
-		<!-- col-sm -->
-		</div>
+<div class="container">
+<div class="panel panel-default" style="margin-top:40px;">
+<div class="panel-heading">
+<h4>Order</h4>
+</div>
+<div class="panel-body">
+<table class="table table-bordered table-hover" >
+ <thead>
+ 
+      <tr >
+        <th class="text-center" style="padding:20px">Product</th>
+        <th class="text-center" style="padding:20px">Quantity</th>
+          <th class="text-center" style="padding:20px">Date</th>
+            <th class="text-center" style="padding:20px" >Price</th>
+            
+         
+         
+        
+      </tr>
+    </thead>
+
+
+  <m:forEach items='<%=session.getAttribute("carted_list")%>' var="car"> 
+    <tbody>
+      <tr>
+        
+        <td class="text-center"><img width="30px" height="60px" src="pro_images/${car.pro_id}.jpg"><span style="margin-left: 50px;">
+        <b >${car.pro_name}</b></span></td>
+        <td class="text-center"> 
+       ${car.quantity}
+        </td>
+        <td class="text-center"><div style="margin-top:20px;">${car.date_cart}</div></td>
+           <td class="text-center"><div style="margin-top:20px;">${car.price}</div></td>
+          
+      </tr>
+      
+    </tbody>
+ </m:forEach>
+ 
+       <td colspan="5"><b style="font-size: 20px;" class="pull-right">Total:    <%=session.getAttribute("total")%></b></td>
+ 
+  </table>
+  </div>
+ 
+<div class="panel-footer">
+  
+ <h6>@ShopOnWeb</h6>
+
+<div class="pull-right" style="position:relative; top:-30px;"> <a  class="btn btn-success ">Proceed</a></div>
+
+<div class="pull-left" style="position:relative; top:-30px; "> <a  class="btn btn-danger ">Continue Shopping</a></div>
+
+
+
+</div>
+ </div>
+</div>
 </body>
 </html>

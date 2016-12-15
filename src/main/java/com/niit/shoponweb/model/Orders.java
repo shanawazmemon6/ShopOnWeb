@@ -25,7 +25,22 @@ public class Orders implements Serializable {
 	private String ship_address;
 	
 	private String bill_address;
+	 
+	private String pro_id;
+	private  double total;
 	
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+	}
+	public String getPro_id() {
+		return pro_id;
+	}
+	public void setPro_id(String pro_id) {
+		this.pro_id = pro_id;
+	}
 	public String getBill_address() {
 		return bill_address;
 	}
@@ -38,7 +53,7 @@ public class Orders implements Serializable {
 	public void setShip_address(String ship_address) {
 		this.ship_address = ship_address;
 	}
-	private  long total;
+	
 	public String getOrder_id() {
 		return order_id;
 	}
@@ -51,12 +66,7 @@ public class Orders implements Serializable {
 	public void setEmail_id(String email_id) {
 		this.email_id = email_id;
 	}
-	public long getTotal() {
-		return total;
-	}
-	public void setTotal(long total) {
-		this.total = total;
-	}
+	
 	
 	
 	

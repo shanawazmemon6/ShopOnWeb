@@ -47,38 +47,31 @@ public class UserProductController {
 	@Autowired
 	CategoryDao cate_dao;
 
-	
 	@Autowired
 	Category cate;
-	
+	@Autowired
+	MainController maincl;
 
 	String insteproid;
-        String cate_list;
+	String cate_list;
+
 	@RequestMapping(value = "/userproduct", method = RequestMethod.GET)
-	public String getUserProduct(@RequestParam("proid") String pro, ModelMap m,HttpSession session) {
+	public String getUserProduct(@RequestParam("proid") String pro, ModelMap m, HttpSession session) {
 		this.insteproid = pro;
 		m.addAttribute("ProductUserRequest", true);
 		List<Product> pro_userlist = prodao.userProductList(pro);
 		List<Category> pro_cate = prodao.getCategoryListArray(pro);
 		List<SubCategory> pro_sub_cate = prodao.getSubCategoryListArray(pro);
-		String userid= SecurityContextHolder.getContext().getAuthentication().getName();
-		 m.addAttribute("catelist", pro_cate);
-			m.addAttribute("prolist", pro_userlist);
-			m.addAttribute("subcatelist", pro_sub_cate);
-		if(userid.isEmpty()){
-		Sign_list list = new Sign_list();
-		list.setLogin("Login");
-		list.setSignin("SignIn");
-		list.setSignup("SignUp");
-		session.setAttribute("Login", list.getLogin());
-		session.setAttribute("SignUp", list.getSignup());
-		session.setAttribute("SignIn", list.getSignin());
-		 cate_list=cate_dao.getCategoryList(cate);
-		 String prod_list=prodao.getProductList(prod);
-		 session.setAttribute("prod_list", prod_list);
-		session.setAttribute("cate_list", cate_list);
-        
+		
+		m.addAttribute("catelist", pro_cate);
+		m.addAttribute("prolist", pro_userlist);
+		m.addAttribute("subcatelist", pro_sub_cate);
+	
+		String userid = SecurityContextHolder.getContext().getAuthentication().getName();
+		if (userid.equals("anonymousUser") ) {
+			maincl.dynamicSession(session);
 		}
+		
 		return "index";
 
 	}
@@ -86,7 +79,7 @@ public class UserProductController {
 	@RequestMapping(value = "/product_filter", method = RequestMethod.GET)
 
 	public String getUserProductfilter(@RequestParam("sub_id") String sub_id, @RequestParam("proid") String pro,
-			ModelMap m) {
+			ModelMap m,HttpSession session) {
 
 		m.addAttribute("ProductUserRequest", true);
 
@@ -99,13 +92,17 @@ public class UserProductController {
 		m.addAttribute("catelist", pro_cate);
 		m.addAttribute("subcatelist", pro_sub_cate);
 		m.addAttribute("prolist", prod_with_sub);
-
+		String userid = SecurityContextHolder.getContext().getAuthentication().getName();
+		if (userid.equals("anonymousUser") ) {
+			maincl.dynamicSession(session);
+		}
 		return "index";
 
 	}
 
 	@RequestMapping(value = "/product_display", method = RequestMethod.GET)
-	public String getParticularProductDisplay(@RequestParam("product_id") String proid, ModelMap m,HttpSession session) {
+	public String getParticularProductDisplay(@RequestParam("product_id") String proid, ModelMap m,
+			HttpSession session) {
 
 		m.addAttribute("ProductRequestDisplay", true);
 		session.setAttribute("productid", proid);
@@ -133,7 +130,6 @@ public class UserProductController {
 
 		m.addAttribute("pro_part_list", pro_part_list);
 		m.addAttribute("product", proid);
-
 
 		return "index";
 	}
@@ -166,7 +162,7 @@ public class UserProductController {
 				cart.setPrice(prod.getPro_price());
 				cart.setDate_cart(date_car);
 				cart.setEmai_id(email);
-				if (cartdao.save_cart(cart,email)) {
+				if (cartdao.save_cart(cart, email)) {
 					m.addAttribute("ProductUserRequest", true);
 
 					List<Cart> cart = cartdao.getCartWithUserId(email);
@@ -208,57 +204,55 @@ public class UserProductController {
 		return "index";
 
 	}
+
 	@RequestMapping("/delete_cart")
 
-	public String cart_Delete(@RequestParam("cart_id")String cat_id,ModelMap m,HttpSession session){
-		 
-		if(cartdao.delete_cart(cat_id)){
-		String email = (String) session.getAttribute("email");
-		List<Cart> cart_list = cartdao.getCartWithUserId(email);
-        m.addAttribute("cart_list", cart_list);
-        int cart_size = cartdao.cart_size();
-      
-    		session.setAttribute("cart_value", cart_list);
+	public String cart_Delete(@RequestParam("cart_id") String cat_id, ModelMap m, HttpSession session) {
 
-      
-		session.setAttribute("cart_size", cart_size);
+		if (cartdao.delete_cart(cat_id)) {
+			String email = (String) session.getAttribute("email");
+			List<Cart> cart_list = cartdao.getCartWithUserId(email);
+			m.addAttribute("cart_list", cart_list);
+			int cart_size = cartdao.cart_size();
 
-		m.addAttribute("cartdisplay", true);
-		return "index";
+			session.setAttribute("cart_value", cart_list);
 
-		}
-		else{
+			session.setAttribute("cart_size", cart_size);
+
+			m.addAttribute("cartdisplay", true);
+			return "index";
+
+		} else {
 			String email = (String) session.getAttribute("email");
 
 			List<Cart> cart_list = cartdao.getCartWithUserId(email);
 
-	        m.addAttribute("cart_list", cart_list);
+			m.addAttribute("cart_list", cart_list);
 			m.addAttribute("cartdisplay", true);
 			return "index";
 
 		}
-		
-		
+
 	}
+
 	@RequestMapping("/cart_quantity")
-	public String cart_update(@RequestParam("udate_quantity")int q_id,@RequestParam("cart_id")String c_id,@RequestParam("pro_id")String p_id,ModelMap m,HttpSession session){
+	public String cart_update(@RequestParam("udate_quantity") int q_id, @RequestParam("cart_id") String c_id,
+			@RequestParam("pro_id") String p_id, ModelMap m, HttpSession session) {
 		String email = (String) session.getAttribute("email");
-		
-		if(cartdao.update_cart(c_id, q_id,p_id)){
-			
-		
-		List<Cart> cart_list = cartdao.getCartWithUserId(email);
-        m.addAttribute("cart_list", cart_list);
-		m.addAttribute("cartdisplay", true);
-		m.addAttribute("updated",true);
-		return "index";
-		
-	}
-		else{
+
+		if (cartdao.update_cart(c_id, q_id, p_id)) {
+
 			List<Cart> cart_list = cartdao.getCartWithUserId(email);
-	        m.addAttribute("cart_list", cart_list);
+			m.addAttribute("cart_list", cart_list);
 			m.addAttribute("cartdisplay", true);
-			m.addAttribute("notupdated",true);
+			m.addAttribute("updated", true);
+			return "index";
+
+		} else {
+			List<Cart> cart_list = cartdao.getCartWithUserId(email);
+			m.addAttribute("cart_list", cart_list);
+			m.addAttribute("cartdisplay", true);
+			m.addAttribute("notupdated", true);
 
 			return "index";
 

@@ -89,4 +89,19 @@ public class MainController {
 		return "index";
 
 	}
+	public void dynamicSession(HttpSession session){
+		
+		Sign_list list = new Sign_list();
+		list.setLogin("Login");
+		list.setSignin("SignIn");
+		list.setSignup("SignUp");
+		session.setAttribute("Login", list.getLogin());
+		session.setAttribute("SignUp", list.getSignup());
+		session.setAttribute("SignIn", list.getSignin());
+		cate_list = cate_dao.getCategoryList(cate);
+		String prod_list = prodao.getProductList(prod);
+		session.setAttribute("prod_list", prod_list);
+		session.setAttribute("cate_list", cate_list);
+		session.setAttribute("cart_size", 0);
+	}
 }
