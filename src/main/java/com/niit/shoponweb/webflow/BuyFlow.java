@@ -1,5 +1,7 @@
 package com.niit.shoponweb.webflow;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -56,61 +58,70 @@ public class BuyFlow {
 	
 	public String addShipping(Orders order,Shipping ship,RequestContext context){
 		 
-
-		double total = 0;
+ 
+		
 		Gson gson=new Gson();
-		String random_id = UUID.randomUUID().toString();
 		String ship_json= gson.toJson(ship);
-	    String id= ship.getProductid();
-		product=prodao.getProduct(id);
-		String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
-		if(id.equals("null")){
-		List<Cart> carts=cartdao.getCartWithUserId(userid);
-		 for(Cart cartvalue:carts){
-			
-			double price=cartvalue.getPrice();
-			total=total+price;
-			
-		}
-		order.setEmail_id(userid);
-		 order.setShip_address(ship_json);
-		 order.setOrder_id(random_id);
-		 order.setPro_id(id);
-		 order.setTotal(total);
-
-			
-			   session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
-         session.setAttribute("carted_list",carts);
-         session.setAttribute("user", userid);
-         session.setAttribute("total",total);
-         session.setAttribute("ship",ship);
-         return "multi";
-		}
-		else{
-             List<Product> oneprod =prodao.getParticularProduct(id);
-             total=product.getPro_price();
-			 HttpSession  session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
-        
-             session.setAttribute("onepro",oneprod);
-             session.setAttribute("user", userid);
-             session.setAttribute("total",total);
-             session.setAttribute("ship",ship);
-             return "one";
-		}
-		
-		
+		order.setShip_address(ship_json);
+		   session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+		   session.setAttribute("ship",ship);
+		 return "success";
 		
 	}
 		
-	public String addBilling(Orders order,Billing bill){
+	public String addBilling(Orders order,Billing bill,RequestContext context){
 		
 		Gson gson=new Gson();
 		String bill_json= gson.toJson(bill);
 		 order.setBill_address(bill_json);
+		 double total = 0;
+			String random_id = UUID.randomUUID().toString();
+		    String id= bill.getProductid();
+			product=prodao.getProduct(id);
+			String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
+			if(id.equals("null")){
+			List<Cart> carts=cartdao.getCartWithUserId(userid);
+			 for(Cart cartvalue:carts){
+				
+				double price=cartvalue.getPrice();
+				total=total+price;
+				
+			}
+			order.setEmail_id(userid);
+			 
+			 order.setOrder_id(random_id);
+			 order.setPro_id(id);
+			 order.setTotal(total);
 
-         session.setAttribute("bill",bill);
+				
+				   session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+	         session.setAttribute("carted_list",carts);
+	         session.setAttribute("user", userid);
+	         session.setAttribute("total",total);
+	         session.setAttribute("bill",bill);
 
-		return "success";
+	        
+	         return "multi";
+			}
+			else{
+	             total=product.getPro_price();
+	             Date date = new Date();
+
+	 			SimpleDateFormat date_format = new SimpleDateFormat("yyyy/MM/dd");
+	 			String date_car = date_format.format(date);
+				 HttpSession  session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+	        
+	             session.setAttribute("onepro",product);
+	             session.setAttribute("user", userid);
+	             session.setAttribute("total",total);
+		         session.setAttribute("bill",bill);
+		         session.setAttribute("date", date_car);
+		         
+		 		return "one";
+
+			}
+			
+        
 		
 		
 	}

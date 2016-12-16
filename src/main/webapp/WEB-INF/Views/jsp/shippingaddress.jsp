@@ -48,8 +48,7 @@ margin-top: 100px;
 				<f:input path="zipcode" placeholder="Zipcode"
 					class="form-control inputone" />
 					<c:set var="pro_id" value="${product}"></c:set>
-				<f:input path="productid" type="hidden"
-				 value='<%= session.getAttribute("productid") %>'  class="form-control inputone" />
+				
 				
 				
 				<f:button type="submit" name="_eventId_submitShipping" class="btn btn-success btn-block button">Submit</f:button>

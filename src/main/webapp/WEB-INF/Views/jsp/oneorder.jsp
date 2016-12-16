@@ -86,7 +86,7 @@ ${bill.country}
     </thead>
 
 
-  <m:set value='<%=session.getAttribute("onepro")%>' var="pro"> 
+<m:set var="pro" value='<%=session.getAttribute("onepro")%>' ></m:set>
 <tbody>
 
       <tr>
@@ -96,15 +96,14 @@ ${bill.country}
         <td class="text-center"> 
        1
         </td>
-<%--         <td class="text-center"><div style="margin-top:20px;">${car.date_cart}</div></td>
- --%>           <td class="text-center"><div style="margin-top:20px;">${pro.pro_price}</div></td>
+        <td class="text-center"><div style="margin-top:20px;"><%=session.getAttribute("date")%></div></td>
+           <td class="text-center"><div style="margin-top:20px;">${pro.pro_price}</div></td>
           
       </tr>
       
     </tbody>
    
- </m:set>
- 
+  
    
  
   </table>

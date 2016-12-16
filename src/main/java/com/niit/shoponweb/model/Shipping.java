@@ -19,14 +19,7 @@ private String city;
 private String state;
 private String country;
 private String zipcode;
-@Transient
-private String productid;
-public String getProductid() {
-	return productid;
-}
-public void setProductid(String productid) {
-	this.productid = productid;
-}
+
 public String getShippingid() {
 	return shippingid;
 }

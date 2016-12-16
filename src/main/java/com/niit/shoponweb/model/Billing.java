@@ -2,6 +2,8 @@ package com.niit.shoponweb.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Transient;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,6 +16,14 @@ public class Billing implements Serializable {
 	private String state;
 	private String country;
 	private String zipcode;
+	@Transient
+	private String productid;
+	public String getProductid() {
+		return productid;
+	}
+	public void setProductid(String productid) {
+		this.productid = productid;
+	}
 	
 	public String getBillingid() {
 		return billingid;
