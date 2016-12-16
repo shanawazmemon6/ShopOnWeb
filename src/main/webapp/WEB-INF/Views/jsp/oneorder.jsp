@@ -113,10 +113,10 @@ ${bill.country}
 <div class="panel-footer">
   
  <h6>@ShopOnWeb</h6>
-
-<div class="pull-right" style="position:relative; top:-30px;"> <a  class="btn btn-success ">Confirm Order</a></div>
-
-<div class="pull-left" style="position:relative; top:-30px; "> <a  class="btn btn-danger ">Cancel Order</a></div>
+<f:form modelAttribute="order">
+<div class="pull-right" style="position:relative; top:-30px;"> <f:button type="submit" name="_eventId_submitOrder" value="confirm order" class="btn btn-success ">Confirm Order One</f:button></div>
+</f:form>
+<div class="pull-left" style="position:relative; top:-30px; "><input type="submit" name="_eventId_cancel" value="cancel order" class="btn btn-success "></input></div>
 
 
 

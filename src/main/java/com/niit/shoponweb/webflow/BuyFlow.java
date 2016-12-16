@@ -2,6 +2,7 @@ package com.niit.shoponweb.webflow;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -78,23 +79,28 @@ public class BuyFlow {
 			String random_id = UUID.randomUUID().toString();
 		    String id= bill.getProductid();
 			product=prodao.getProduct(id);
+			
 			String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
+			StringBuilder pro=new StringBuilder(); 
 			if(id.equals("null")){
 			List<Cart> carts=cartdao.getCartWithUserId(userid);
 			 for(Cart cartvalue:carts){
 				
 				double price=cartvalue.getPrice();
 				total=total+price;
+				String pr=cartvalue.getPro_id();
+				pro.append(pr).append(",");
 				
 			}
-			order.setEmail_id(userid);
 			 
+			 order.setPro_id(pro.toString());
+			 order.setEmail_id(userid);
 			 order.setOrder_id(random_id);
-			 order.setPro_id(id);
+
 			 order.setTotal(total);
 
 				
-				   session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+		     session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
 	         session.setAttribute("carted_list",carts);
 	         session.setAttribute("user", userid);
 	         session.setAttribute("total",total);
@@ -106,7 +112,10 @@ public class BuyFlow {
 			else{
 	             total=product.getPro_price();
 	             Date date = new Date();
-
+				 order.setTotal(total);
+				 order.setEmail_id(userid);
+				 order.setOrder_id(random_id);
+				 order.setPro_id(id);
 	 			SimpleDateFormat date_format = new SimpleDateFormat("yyyy/MM/dd");
 	 			String date_car = date_format.format(date);
 				 HttpSession  session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();

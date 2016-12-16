@@ -52,6 +52,7 @@ margin-top: 100px;
 				
 				
 				<f:button type="submit" name="_eventId_submitShipping" class="btn btn-success btn-block button">Submit</f:button>
+			   <f:button type="submit" name="_eventId_cancel" class="btn btn-danger btn-block" style="margin-top:10px;">Cancel</f:button>
 				
 			</f:form>
 			

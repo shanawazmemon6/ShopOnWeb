@@ -26,7 +26,7 @@
 </view-state>
 <action-state id="billAction">
 <evaluate expression="buyFlow.addBilling(flowScope.order,billing,flowRequestContext)"></evaluate>
-<transition on="multi" to="multiorderDetais" />
+<transition on="multi" to="multiorderDetais" ></transition>
 <transition on="one" to="orderDetais"></transition>
 </action-state>
 <view-state id="multiorderDetais" view="order" model="flowScope.order">
@@ -37,6 +37,9 @@
 </view-state>
 <action-state id="confirmOrder">
 <evaluate expression="buyFlow.addOrder(flowScope.order)"></evaluate>
-<transition on="success"  />
+<transition on="success" to="end" />
 </action-state>
+
+<end-state id="end" view="thank"></end-state>
+
 </flow>
