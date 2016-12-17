@@ -73,6 +73,12 @@
 			<jsp:include page="productuser.jsp"></jsp:include>
 
 		</c:when>
+			<c:when test="${myorder==true}">
+	
+			<jsp:include page="myorder.jsp"></jsp:include>
+
+		</c:when>
+		
 		
 		<c:when test="${cartdisplay==true}">
 	

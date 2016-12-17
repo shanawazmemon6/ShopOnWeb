@@ -47,6 +47,7 @@ public class BuyFlow {
 	@Autowired
 	CartDao cartdao;
 	HttpSession  session;
+	String validdelete;
 	
 	public Orders startFlow(){
 		
@@ -83,7 +84,7 @@ public class BuyFlow {
 			String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
 			StringBuilder pro=new StringBuilder(); 
 			if(id.equals("null")){
-			List<Cart> carts=cartdao.getCartWithUserId(userid);
+				List<Cart>  carts=cartdao.getCartWithUserId(userid);
 			 for(Cart cartvalue:carts){
 				
 				double price=cartvalue.getPrice();
@@ -105,7 +106,7 @@ public class BuyFlow {
 	         session.setAttribute("user", userid);
 	         session.setAttribute("total",total);
 	         session.setAttribute("bill",bill);
-
+              validdelete="multi";
 	        
 	         return "multi";
 			}
@@ -125,7 +126,7 @@ public class BuyFlow {
 	             session.setAttribute("total",total);
 		         session.setAttribute("bill",bill);
 		         session.setAttribute("date", date_car);
-		         
+		         validdelete="one";
 		 		return "one";
 
 			}
@@ -138,12 +139,34 @@ public class BuyFlow {
 	public String addOrder(Orders order){
 		
 		
-		orderdao.save_Order(order);
+		if( validdelete.equals("one")){
+			orderdao.save_Order(order);
+	        return "success";
+
+
+		}
+		else if( validdelete.equals("multi")){
+			if(orderdao.save_Order(order)){
+				String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
+                 List<Cart>  carts=cartdao.getCartWithUserId(userid);
+                   
+				 for(Cart cartvalue:carts){
+						String cat_id=cartvalue.getCart_id();
+						cartdao.delete_cart(cat_id);
+						
+					}
+				 
+				
+			}
 			
 
-       		
-		return "success";
-		
+			return "success";
+		}
+		else{
+			
+			return "fail";
+		}
+       
 		
 	}
 	

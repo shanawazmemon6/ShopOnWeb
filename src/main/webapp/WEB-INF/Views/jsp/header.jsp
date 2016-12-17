@@ -184,6 +184,10 @@ var pro=<%=session.getAttribute("prod_list")%>;
 									class=" glyphicon glyphicon-log-in"></span> <b><%=session.getAttribute("Login") %></b></a></li>
 							<!-- register request -->
 							<br>
+							<li><a href="myord" style="color: #ffffff;"><span
+									class="glyphicon glyphicon-shopping-cart"></span> <b>My Orders</b> <span class="badge"><%=session.getAttribute("myorsi")%></span></a></li>
+							
+							<br>
 							<li><a href="registerrequest" style="color: #ffffff;"><span
 									class="glyphicon glyphicon-user"></span> <b><%=session.getAttribute("SignUp") %></b></a></li>
 							<!-- login request -->

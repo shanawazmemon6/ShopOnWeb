@@ -22,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.shoponweb.dao.CartDao;
 import com.niit.shoponweb.dao.CategoryDao;
+import com.niit.shoponweb.dao.OrderDao;
 import com.niit.shoponweb.dao.ProductDao;
 import com.niit.shoponweb.dao.RegisterDao;
 import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Category;
 import com.niit.shoponweb.model.Login;
+import com.niit.shoponweb.model.Orders;
 import com.niit.shoponweb.model.Product;
 import com.niit.shoponweb.model.Sign_list;
 
@@ -51,6 +53,8 @@ public class LoginController {
 	Category cate;
 	@Autowired
 	Product prod;
+	@Autowired
+	OrderDao order;
 	
 	// map the view to return String execute if method is get
 	@RequestMapping(value = "/loginrequest",method = RequestMethod.GET)
@@ -79,6 +83,8 @@ public class LoginController {
 				session.setAttribute("cart_value", null);
 				
 				session.setAttribute("cart_size", 0);
+		        session.setAttribute("myorsi", 0);
+
 				String cate_list=cate_dao.getCategoryList(cate);
 				 String prod_list=prodao.getProductList(prod);
 				 session.setAttribute("prod_list", prod_list);
@@ -96,6 +102,8 @@ public class LoginController {
 			session.setAttribute("cart_value", null);
 			session.setAttribute("cart_size", 0);
 			session.setAttribute("role", null);
+	        session.setAttribute("myorsi", 0);
+
 
 			String cate_list=cate_dao.getCategoryList(cate);
 			 String prod_list=prodao.getProductList(prod);
@@ -161,7 +169,9 @@ public class LoginController {
             int cart_size=cartdao.cart_size();
 			session.setAttribute("cart_value", cart);
 			session.setAttribute("cart_size", cart_size);
-
+			List<Orders> myd=order.getOrderWithUserId(userid);
+			int size=myd.size();
+	        session.setAttribute("myorsi", size);
 
 
 			return "index";

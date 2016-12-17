@@ -1,21 +1,29 @@
 package com.niit.shoponweb.controller;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.webflow.execution.RequestContext;
 
+import com.google.gson.Gson;
+import com.niit.shoponweb.dao.CartDao;
 import com.niit.shoponweb.dao.CategoryDao;
+import com.niit.shoponweb.dao.OrderDao;
 import com.niit.shoponweb.dao.ProductDao;
+import com.niit.shoponweb.model.Billing;
+import com.niit.shoponweb.model.Cart;
 import com.niit.shoponweb.model.Category;
+import com.niit.shoponweb.model.Orders;
 import com.niit.shoponweb.model.Product;
+import com.niit.shoponweb.model.Shipping;
 import com.niit.shoponweb.model.Sign_list;
 
 @Controller
@@ -32,7 +40,15 @@ public class MainController {
 	@Autowired
 	Product prod;
 	
+	@Autowired
+	CartDao cart;
 	
+	@Autowired
+	OrderDao order;
+	@Autowired
+	Shipping ship;
+	@Autowired
+	Billing bill;
 	
 	String cate_list;
 	// mapping index.jsp
@@ -52,7 +68,8 @@ public class MainController {
 		session.setAttribute("cate_list", cate_list);
 		session.setAttribute("cart_value", null);
 		session.setAttribute("cart_size", 0);
-		
+        session.setAttribute("myorsi", 0);
+
 		
 		
 		
@@ -74,9 +91,16 @@ public class MainController {
 		return "index";
 	}
 	@RequestMapping("/orderrequest")
-	public String launchOrderView(Model m,@RequestParam("order")String status) {
+	public String launchOrderView(Model m,@RequestParam("order")String status,HttpSession session) {
 		m.addAttribute("LaunchRequest", true);
 		if(status.equals("confirmed")){
+			String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
+
+            List<Cart>  carts=cart.getCartWithUserId(userid);
+           int size=carts.size();
+			session.setAttribute("cart_value", carts);
+			session.setAttribute("cart_size",size);
+
 			m.addAttribute("confirm",true);
 		}
 		return "index";
@@ -120,5 +144,34 @@ public class MainController {
 		session.setAttribute("prod_list", prod_list);
 		session.setAttribute("cate_list", cate_list);
 		session.setAttribute("cart_size", 0);
+        session.setAttribute("myorsi", 0);
+
+	}
+	@RequestMapping("/myord")
+	public String myOrder(ModelMap m,HttpSession session){
+		ArrayList< Shipping> shiplist = new ArrayList<Shipping>();
+		ArrayList< Billing> billlist = new ArrayList<Billing>();
+
+		String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
+		List<Orders> myd=order.getOrderWithUserId(userid);
+		int size=myd.size();
+		Gson gson=new Gson();
+		for(Orders od:myd){
+			String shipstr=od.getShip_address();
+			String billstr=od.getBill_address();
+			ship=gson.fromJson(shipstr, Shipping.class);
+			bill=gson.fromJson(billstr, Billing.class);
+			shiplist.add(ship);
+			billlist.add(bill);
+			
+		}
+		m.addAttribute("orderslist",myd);
+		m.addAttribute("shiplist", shiplist);
+		m.addAttribute("billlist", billlist);
+        session.setAttribute("myorsi", size);
+		
+		m.addAttribute("myorder", true);
+		return "index";
+		
 	}
 }
