@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.webflow.execution.RequestContext;
 
 import com.niit.shoponweb.dao.CategoryDao;
 import com.niit.shoponweb.dao.ProductDao;
@@ -69,7 +71,22 @@ public class MainController {
 	@RequestMapping("/launchrequest")
 	public String launchView(Model m) {
 		m.addAttribute("LaunchRequest", true);
-		
+		return "index";
+	}
+	@RequestMapping("/orderrequest")
+	public String launchOrderView(Model m,@RequestParam("order")String status) {
+		m.addAttribute("LaunchRequest", true);
+		if(status.equals("confirmed")){
+			m.addAttribute("confirm",true);
+		}
+		return "index";
+	}
+	@RequestMapping("/ordercancel")
+	public String launchOrderCancelView(Model m,@RequestParam("order")String status) {
+		m.addAttribute("LaunchRequest", true);
+		if(status.equals("cancel")){
+			m.addAttribute("cancel",true);
+		}
 		return "index";
 	}
 

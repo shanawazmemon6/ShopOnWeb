@@ -40,6 +40,12 @@
 <transition on="success" to="end" />
 </action-state>
 
-<end-state id="end" view="thank"></end-state>
+<end-state id="end" view="externalRedirect:contextRelative:/orderrequest?order=confirmed">
+</end-state>
+<view-state id="end_cancel" view="externalRedirect:contextRelative:/ordercancel?order=cancel"></view-state>
+<global-transitions>
+<transition on="cancel" to="end_cancel" ></transition>
+</global-transitions>
+
 
 </flow>

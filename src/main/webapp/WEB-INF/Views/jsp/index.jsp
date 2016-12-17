@@ -162,7 +162,34 @@
 				</c:if>
 			</div>
 			<!-- container -->
-
+<div class="container">
+				<c:if test="${confirm==true}">
+					<div class="col-sm-4 col-sm-offset-4">
+						<div class="alert hello text-center">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>Your order has been confirmed</strong>
+					
+						</div>
+						<!-- alert -->
+					</div>
+					<!-- col-sm -->
+				</c:if>
+			</div>
+			<!-- container -->
+			<div class="container">
+				<c:if test="${cancel==true}">
+					<div class="col-sm-4 col-sm-offset-4">
+						<div class="alert alert-danger hello text-center">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>Your order is cancelled</strong>
+					
+						</div>
+						<!-- alert -->
+					</div>
+					<!-- col-sm -->
+				</c:if>
+			</div>
+			<!-- container -->
 			<br>
 			<br>
 			<jsp:include page="launch.jsp"></jsp:include>

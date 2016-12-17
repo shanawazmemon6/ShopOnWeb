@@ -49,6 +49,7 @@ margin-top: 100px;
 				 value='<%= session.getAttribute("productid") %>'  class="form-control inputone" />
 				
 				<f:button type="submit" name="_eventId_submitBill" class="btn btn-success btn-block button">Submit</f:button>
+				<f:button type="submit" name="_eventId_cancel" class="btn btn-danger btn-block" style="margin-top:10px;">Cancel</f:button>
 				
 			</f:form>
 			
