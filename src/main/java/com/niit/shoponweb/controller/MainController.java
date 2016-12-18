@@ -151,11 +151,15 @@ public class MainController {
 	public String myOrder(ModelMap m,HttpSession session){
 		ArrayList< Shipping> shiplist = new ArrayList<Shipping>();
 		ArrayList< Billing> billlist = new ArrayList<Billing>();
+		ArrayList< String> proidlist = new ArrayList<String>();
+		ArrayList< String> proidlistname = new ArrayList<String>();
+
 
 		String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
 		List<Orders> myd=order.getOrderWithUserId(userid);
 		int size=myd.size();
 		Gson gson=new Gson();
+		
 		for(Orders od:myd){
 			String shipstr=od.getShip_address();
 			String billstr=od.getBill_address();
@@ -163,12 +167,52 @@ public class MainController {
 			bill=gson.fromJson(billstr, Billing.class);
 			shiplist.add(ship);
 			billlist.add(bill);
+			String procheck=od.getPro_id();
+			if(procheck.contains(",")){
+			int	len=procheck.length();
+			
+			int startpos=0;
+			for(int i=0;i<len;i++){
+				char c=procheck.charAt(i);
+				if(c==','){
+				int endpos=i;
+				String pro_id=procheck.substring(startpos, endpos++);
+				proidlist.add(pro_id);
+				startpos=endpos;
+				}
+				
+			}
+			String procheckname=od.getPro_name();
+              int namelen=procheckname.length();
+			int startposnam=0;
+			for(int i=0;i<namelen;i++){
+				char c=procheckname.charAt(i);
+				if(c==','){
+				int endposnm=i;
+				String pro_name=procheckname.substring(startposnam, endposnm++);
+				proidlistname.add(pro_name);
+				System.out.println(pro_name);
+				startposnam=endposnm;
+				}
+				
+			}
+			}
 			
 		}
+		
 		m.addAttribute("orderslist",myd);
 		m.addAttribute("shiplist", shiplist);
 		m.addAttribute("billlist", billlist);
         session.setAttribute("myorsi", size);
+    	m.addAttribute("mul",false);
+
+        if(!proidlist.isEmpty()){
+        	m.addAttribute("mul",true);
+    		m.addAttribute("multi", proidlist);
+    		m.addAttribute("multiname", proidlistname);
+
+
+        }
 		
 		m.addAttribute("myorder", true);
 		return "index";

@@ -28,7 +28,23 @@ public class Orders implements Serializable {
 	 
 	private String pro_id;
 	private  double total;
+	private String status;
+	private String pro_name;
 	
+	
+	
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public double getTotal() {
 		return total;
 	}

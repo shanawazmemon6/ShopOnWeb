@@ -42,9 +42,11 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 			access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/adminrequest**"
 			access="hasRole('ROLE_ADMIN')" />
+		
 		<security:form-login login-page="/loginrequest"
 			login-processing-url="/loginsuccess"
 			authentication-success-forward-url="/loginsuccess"
+			
 			username-parameter="email" password-parameter="password" />
 
 

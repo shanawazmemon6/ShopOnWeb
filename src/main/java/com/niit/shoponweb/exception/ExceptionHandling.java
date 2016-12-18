@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionHandling {
 	
-	@ExceptionHandler(CannotCreateTransactionException.class)
+	@ExceptionHandler(value=CannotCreateTransactionException.class)
 	public String h2ExceptionHandle(ModelMap m){
 		
-		m.addAttribute("error",true);
+		m.addAttribute("",true);
 		m.addAttribute("message", "Server is Busy");
 		System.out.println("Method Executing");
 		
 		return "index";
 	}
 	
-	@ExceptionHandler(DataIntegrityViolationException.class)
+	@ExceptionHandler(value=DataIntegrityViolationException.class)
 	
 	public String primaryKeyExceptionHandle(ModelMap m){
 		

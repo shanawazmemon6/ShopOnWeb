@@ -14,6 +14,10 @@
         http://www.springframework.org/schema/context/spring-context.xsd
          http://www.springframework.org/schema/webflow-config
          http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.3.xsd">
+  
+  
+  <mvc:annotation-driven/>
+ 
  <context:component-scan base-package="com.niit" />
  <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
  <property name="prefix">
@@ -61,9 +65,9 @@
 		<property name="flowRegistry" ref="flowRegistry" />
 		<property name="order" value="0" />
 	</bean>
+	
  <mvc:resources location="/WEB-INF/resources/images/site/" mapping="/images/**"></mvc:resources>
   <mvc:resources location="/WEB-INF/resources/images/product/" mapping="/pro_images/**"></mvc:resources>
  
   <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"></mvc:resources>
- <mvc:annotation-driven/>
 </beans>

@@ -2,9 +2,7 @@ package com.niit.shoponweb.webflow;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.ModelMap;
 import org.springframework.webflow.execution.RequestContext;
 
 import com.google.gson.Gson;
@@ -83,6 +80,8 @@ public class BuyFlow {
 			
 			String	userid= SecurityContextHolder.getContext().getAuthentication().getName();
 			StringBuilder pro=new StringBuilder(); 
+			StringBuilder pro_nm=new StringBuilder(); 
+
 			if(id.equals("null")){
 				List<Cart>  carts=cartdao.getCartWithUserId(userid);
 			 for(Cart cartvalue:carts){
@@ -90,14 +89,18 @@ public class BuyFlow {
 				double price=cartvalue.getPrice();
 				total=total+price;
 				String pr=cartvalue.getPro_id();
+				String prn=cartvalue.getPro_name();
+
 				pro.append(pr).append(",");
+				pro_nm.append(prn).append(",");
 				
 			}
 			 
 			 order.setPro_id(pro.toString());
 			 order.setEmail_id(userid);
 			 order.setOrder_id(random_id);
-
+			 order.setStatus("m");
+             order.setPro_name(pro_nm.toString());
 			 order.setTotal(total);
 
 				
@@ -116,6 +119,8 @@ public class BuyFlow {
 				 order.setTotal(total);
 				 order.setEmail_id(userid);
 				 order.setOrder_id(random_id);
+				 order.setStatus("o");
+                  order.setPro_name(product.getPro_name());
 				 order.setPro_id(id);
 	 			SimpleDateFormat date_format = new SimpleDateFormat("yyyy/MM/dd");
 	 			String date_car = date_format.format(date);
